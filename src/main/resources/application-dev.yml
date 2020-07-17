@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    username: KevDev
+    password: PHdevdev2020
+    url: jdbc:mysql://52.229.167.195:3306/kniotclouddb
+    driver-class-name: com.mysql.jdbc.Driver

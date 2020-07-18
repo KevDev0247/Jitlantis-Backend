@@ -1,0 +1,98 @@
+2020-07-17 20:07:09 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 19496 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
+2020-07-17 20:07:09 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
+2020-07-17 20:07:09 [main] [org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext] [line583] [INFO] - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@24c22fe: startup date [Fri Jul 17 20:07:09 EDT 2020]; root of context hierarchy
+2020-07-17 20:07:09 [background-preinit] [org.hibernate.validator.internal.util.Version] [line30] [INFO] - HV000001: Hibernate Validator 5.3.6.Final
+2020-07-17 20:07:11 [main] [org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer] [line89] [INFO] - Tomcat initialized with port(s): 8080 (http)
+2020-07-17 20:07:11 [localhost-startStop-1] [org.springframework.web.context.ContextLoader] [line276] [INFO] - Root WebApplicationContext: initialization completed in 2417 ms
+2020-07-17 20:07:11 [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean] [line258] [INFO] - Mapping filter: 'characterEncodingFilter' to: [/*]
+2020-07-17 20:07:11 [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean] [line258] [INFO] - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2020-07-17 20:07:11 [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean] [line258] [INFO] - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2020-07-17 20:07:11 [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean] [line258] [INFO] - Mapping filter: 'requestContextFilter' to: [/*]
+2020-07-17 20:07:11 [localhost-startStop-1] [org.springframework.boot.web.servlet.DelegatingFilterProxyRegistrationBean] [line258] [INFO] - Mapping filter: 'springSecurityFilterChain' to: [/*]
+2020-07-17 20:07:11 [localhost-startStop-1] [org.springframework.boot.web.servlet.ServletRegistrationBean] [line190] [INFO] - Mapping servlet: 'dispatcherServlet' to [/]
+2020-07-17 20:07:28 [main] [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] [line356] [INFO] - Building JPA container EntityManagerFactory for persistence unit 'default'
+2020-07-17 20:07:28 [main] [org.hibernate.jpa.internal.util.LogHelper] [line31] [INFO] - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-07-17 20:07:29 [main] [org.hibernate.Version] [line37] [INFO] - HHH000412: Hibernate Core {5.0.12.Final}
+2020-07-17 20:07:29 [main] [org.hibernate.cfg.Environment] [line213] [INFO] - HHH000206: hibernate.properties not found
+2020-07-17 20:07:29 [main] [org.hibernate.cfg.Environment] [line317] [INFO] - HHH000021: Bytecode provider name : javassist
+2020-07-17 20:07:29 [main] [org.hibernate.annotations.common.Version] [line66] [INFO] - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2020-07-17 20:07:29 [main] [org.hibernate.dialect.Dialect] [line156] [INFO] - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-07-17 20:07:29 [main] [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] [line392] [INFO] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-07-17 20:07:30 [main] [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] [line534] [INFO] - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@24c22fe: startup date [Fri Jul 17 20:07:09 EDT 2020]; root of context hierarchy
+2020-07-17 20:07:30 [main] [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] [line543] [INFO] - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2020-07-17 20:07:30 [main] [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] [line543] [INFO] - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2020-07-17 20:07:30 [main] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] [line362] [INFO] - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-07-17 20:07:30 [main] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] [line362] [INFO] - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-07-17 20:07:30 [main] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] [line362] [INFO] - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-07-17 20:07:31 [main] [org.springframework.ui.freemarker.SpringTemplateLoader] [line61] [INFO] - SpringTemplateLoader for FreeMarker: using resource loader [org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@24c22fe: startup date [Fri Jul 17 20:07:09 EDT 2020]; root of context hierarchy] and template loader path [classpath:/templates/]
+2020-07-17 20:07:31 [main] [org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer] [line127] [INFO] - ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2020-07-17 20:07:31 [main] [org.springframework.boot.autoconfigure.security.AuthenticationManagerConfiguration] [line173] [INFO] - 
+
+Using default security password: 62f82489-af89-4119-b240-dbd5752a99a4
+
+2020-07-17 20:07:31 [main] [org.springframework.security.web.DefaultSecurityFilterChain] [line43] [INFO] - Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/css/**'], Ant [pattern='/js/**'], Ant [pattern='/images/**'], Ant [pattern='/webjars/**'], Ant [pattern='/**/favicon.ico'], Ant [pattern='/error']]], []
+2020-07-17 20:07:31 [main] [org.springframework.security.web.DefaultSecurityFilterChain] [line43] [INFO] - Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/**']]], [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6104691c, org.springframework.security.web.context.SecurityContextPersistenceFilter@19d76106, org.springframework.security.web.header.HeaderWriterFilter@665ed71a, org.springframework.security.web.authentication.logout.LogoutFilter@e645600, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6b103db7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@231d3ce, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6081f330, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@195cbf5e, org.springframework.security.web.session.SessionManagementFilter@53df7e67, org.springframework.security.web.access.ExceptionTranslationFilter@746fd19b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@71f056a]
+2020-07-17 20:07:31 [main] [org.springframework.jmx.export.annotation.AnnotationMBeanExporter] [line431] [INFO] - Registering beans for JMX exposure on startup
+2020-07-17 20:07:31 [main] [org.springframework.boot.autoconfigure.logging.AutoConfigurationReportLoggingInitializer] [line101] [INFO] - 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2020-07-17 20:07:31 [main] [org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter] [line42] [ERROR] - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 8080 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 8080, or configure this application to listen on another port.
+
+2020-07-17 20:07:31 [main] [org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext] [line984] [INFO] - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@24c22fe: startup date [Fri Jul 17 20:07:09 EDT 2020]; root of context hierarchy
+2020-07-17 20:07:31 [main] [org.springframework.jmx.export.annotation.AnnotationMBeanExporter] [line449] [INFO] - Unregistering JMX-exposed beans on shutdown
+2020-07-17 20:07:31 [main] [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] [line563] [INFO] - Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-07-17 20:08:01 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 22800 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
+2020-07-17 20:08:01 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
+2020-07-17 20:08:01 [main] [org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext] [line583] [INFO] - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@24c22fe: startup date [Fri Jul 17 20:08:01 EDT 2020]; root of context hierarchy
+2020-07-17 20:08:01 [background-preinit] [org.hibernate.validator.internal.util.Version] [line30] [INFO] - HV000001: Hibernate Validator 5.3.6.Final
+2020-07-17 20:08:03 [main] [org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer] [line89] [INFO] - Tomcat initialized with port(s): 8080 (http)
+2020-07-17 20:08:03 [localhost-startStop-1] [org.springframework.web.context.ContextLoader] [line276] [INFO] - Root WebApplicationContext: initialization completed in 2005 ms
+2020-07-17 20:08:04 [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean] [line258] [INFO] - Mapping filter: 'characterEncodingFilter' to: [/*]
+2020-07-17 20:08:04 [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean] [line258] [INFO] - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2020-07-17 20:08:04 [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean] [line258] [INFO] - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2020-07-17 20:08:04 [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean] [line258] [INFO] - Mapping filter: 'requestContextFilter' to: [/*]
+2020-07-17 20:08:04 [localhost-startStop-1] [org.springframework.boot.web.servlet.DelegatingFilterProxyRegistrationBean] [line258] [INFO] - Mapping filter: 'springSecurityFilterChain' to: [/*]
+2020-07-17 20:08:04 [localhost-startStop-1] [org.springframework.boot.web.servlet.ServletRegistrationBean] [line190] [INFO] - Mapping servlet: 'dispatcherServlet' to [/]
+2020-07-17 20:08:21 [main] [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] [line356] [INFO] - Building JPA container EntityManagerFactory for persistence unit 'default'
+2020-07-17 20:08:21 [main] [org.hibernate.jpa.internal.util.LogHelper] [line31] [INFO] - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-07-17 20:08:21 [main] [org.hibernate.Version] [line37] [INFO] - HHH000412: Hibernate Core {5.0.12.Final}
+2020-07-17 20:08:21 [main] [org.hibernate.cfg.Environment] [line213] [INFO] - HHH000206: hibernate.properties not found
+2020-07-17 20:08:21 [main] [org.hibernate.cfg.Environment] [line317] [INFO] - HHH000021: Bytecode provider name : javassist
+2020-07-17 20:08:21 [main] [org.hibernate.annotations.common.Version] [line66] [INFO] - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2020-07-17 20:08:21 [main] [org.hibernate.dialect.Dialect] [line156] [INFO] - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-07-17 20:08:21 [main] [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] [line392] [INFO] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-07-17 20:08:22 [main] [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] [line534] [INFO] - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@24c22fe: startup date [Fri Jul 17 20:08:01 EDT 2020]; root of context hierarchy
+2020-07-17 20:08:22 [main] [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] [line543] [INFO] - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2020-07-17 20:08:22 [main] [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] [line543] [INFO] - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2020-07-17 20:08:22 [main] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] [line362] [INFO] - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-07-17 20:08:22 [main] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] [line362] [INFO] - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-07-17 20:08:22 [main] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] [line362] [INFO] - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2020-07-17 20:08:22 [main] [org.springframework.ui.freemarker.SpringTemplateLoader] [line61] [INFO] - SpringTemplateLoader for FreeMarker: using resource loader [org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@24c22fe: startup date [Fri Jul 17 20:08:01 EDT 2020]; root of context hierarchy] and template loader path [classpath:/templates/]
+2020-07-17 20:08:22 [main] [org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer] [line127] [INFO] - ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2020-07-17 20:08:22 [main] [org.springframework.boot.autoconfigure.security.AuthenticationManagerConfiguration] [line173] [INFO] - 
+
+Using default security password: c7d217cc-accc-4439-8a85-488a4e3744bd
+
+2020-07-17 20:08:22 [main] [org.springframework.security.web.DefaultSecurityFilterChain] [line43] [INFO] - Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/css/**'], Ant [pattern='/js/**'], Ant [pattern='/images/**'], Ant [pattern='/webjars/**'], Ant [pattern='/**/favicon.ico'], Ant [pattern='/error']]], []
+2020-07-17 20:08:22 [main] [org.springframework.security.web.DefaultSecurityFilterChain] [line43] [INFO] - Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/**']]], [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7adff6cb, org.springframework.security.web.context.SecurityContextPersistenceFilter@175957b6, org.springframework.security.web.header.HeaderWriterFilter@6b2f7527, org.springframework.security.web.authentication.logout.LogoutFilter@7f3e9acc, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@c89e263, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4bfe83d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@33a3e5db, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@13ebccd, org.springframework.security.web.session.SessionManagementFilter@2ba318c2, org.springframework.security.web.access.ExceptionTranslationFilter@665ed71a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1de6dc80]
+2020-07-17 20:08:22 [main] [org.springframework.jmx.export.annotation.AnnotationMBeanExporter] [line431] [INFO] - Registering beans for JMX exposure on startup
+2020-07-17 20:08:23 [main] [org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer] [line201] [INFO] - Tomcat started on port(s): 8080 (http)
+2020-07-17 20:08:23 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line57] [INFO] - Started KnIotCloudBackendApplication in 22.29 seconds (JVM running for 23.784)
+2020-07-17 21:57:28 [http-nio-8080-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line489] [INFO] - FrameworkServlet 'dispatcherServlet': initialization started
+2020-07-17 21:57:28 [http-nio-8080-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line508] [INFO] - FrameworkServlet 'dispatcherServlet': initialization completed in 118 ms

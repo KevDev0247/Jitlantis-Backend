@@ -1,12 +1,16 @@
 package com.phiotonia.kniotcloud.backend.model;
 
+import com.baomidou.mybatisplus.annotations.TableField;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
+import java.util.Date;
 
 @Entity
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,6 +19,13 @@ public class User {
     private String email;
     private String password;
     private Integer roleId;
+
+    private Date createTime;
+
+    @TableField(update = "now()")
+    private Date updateTime;
+
+    private Integer isDelete;
 
     public Integer getId() {
         return id;

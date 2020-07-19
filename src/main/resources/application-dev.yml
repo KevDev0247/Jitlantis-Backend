@@ -8,3 +8,20 @@ spring:
     url: jdbc:mysql://52.229.167.195:3306/kniotclouddb
     driver-class-name: com.mysql.jdbc.Driver
 
+mybatis:
+  mapper-locations: classpath:mapper/*Dao.xml
+  type-aliases-package: com.phiotonia.kniotcloud.backend.*
+
+#showSql
+logging:
+  level:
+    com:
+      example:
+        mapper : debug
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+

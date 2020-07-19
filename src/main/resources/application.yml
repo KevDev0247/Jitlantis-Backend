@@ -7,7 +7,7 @@ springfox.documentation.swagger.v2.path: /v2/api-docs
 mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml
   # Entity Scanning
-  typeAliasesPackage: com.sgg.rest.model
+  typeAliasesPackage: com.phiotonia.kniotcloud.backend.model
 
   global-config:
     # 0:"autoincrement ID", 1:"user-input ID",2:"unique ID (unique ID)", 3:"unique ID UUID";
@@ -35,4 +35,4 @@ mybatis-plus:
 # Logger Config
 logging:
   level:
-    com.sgg.rest: debug
+    com.phiotonia.kniotcloud.backend: debug

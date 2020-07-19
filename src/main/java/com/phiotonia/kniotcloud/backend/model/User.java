@@ -47,6 +47,18 @@ public class User implements Serializable {
         return roleId;
     }
 
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -65,5 +77,17 @@ public class User implements Serializable {
 
     public void setRoleId(Integer roleId) {
         this.roleId = roleId;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
     }
 }

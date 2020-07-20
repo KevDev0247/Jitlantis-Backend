@@ -2,6 +2,7 @@ package com.phiotonia.kniotcloud.backend.security;
 
 import com.phiotonia.kniotcloud.backend.service.LoginService;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -53,6 +54,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .addFilterBefore(corsFilter, ChannelProcessingFilter.class)
                 .addFilterBefore(new JWTAuthenticationFilter(loginService, authenticationSuccessHandler), UsernamePasswordAuthenticationFilter.class)
-        ;
+                .addFilterBefore(new JWTAuthorizationFilter(tokenHelper, loginService), JWTAuthenticationFilter.class);
     }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService);
+    }
+
+
 }

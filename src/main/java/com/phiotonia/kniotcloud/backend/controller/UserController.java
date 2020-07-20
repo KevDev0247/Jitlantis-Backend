@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,11 +24,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @ApiOperation(value = "users list query", notes = "no pagination")
+    @ApiOperation(value = "query users list", notes = "no pagination")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", name = "name", value = "name"),
             @ApiImplicitParam(paramType = "query", name = "email", value = "email")
     })
+    @RequestMapping(value = "/queryList", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> queryPage(
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "email", required = false) String email) {
@@ -36,6 +38,11 @@ public class UserController {
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "delete a user")
+    @ApiImplicitParams({
+            @ApiImplicitParam(required = true, paramType = "query", name = "userId", value = "user's Id")
+    })
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> deleteUser(Integer userId) {
         Map<String, Object> map = new HashMap<>();
         boolean res = userService.delete(userId);

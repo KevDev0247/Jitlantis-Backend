@@ -18,7 +18,7 @@ import java.util.Map;
 
 @Api(tags = {"User"})
 @RestController
-@RequestMapping("/sys_user")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired

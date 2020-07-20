@@ -1,6 +1,6 @@
 package com.phiotonia.kniotcloud.backend.service;
 
-import com.phiotonia.kniotcloud.backend.model.User;
+import com.phiotonia.kniotcloud.backend.model.SysUser;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,19 +17,19 @@ public class LoginService {
 
     private static final Logger LOGGER = Logger.getLogger(LoginService.class);
 
-    public User login(String name, String password) {
+    public SysUser login(String name, String password) {
         LOGGER.info(">>>> start enter Login>>>>");
-        User user = userService.findUserByName(name);
-        if (user != null) {
-            boolean match = encoder.matches(password, user.getPassword());
+        SysUser sysUser = userService.findUserByName(name);
+        if (sysUser != null) {
+            boolean match = encoder.matches(password, sysUser.getPassword());
             if (match) {
-                return user;
+                return sysUser;
             }
         }
         return null;
     }
 
-    public User loadUserById(String userId) {
+    public SysUser loadUserById(String userId) {
         return userService.findUserByName(userId);
     }
 }

@@ -1,6 +1,6 @@
 package com.phiotonia.kniotcloud.backend.security;
 
-import com.phiotonia.kniotcloud.backend.model.User;
+import com.phiotonia.kniotcloud.backend.model.SysUser;
 import com.phiotonia.kniotcloud.backend.service.LoginService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -32,9 +32,9 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
         String token = tokenHelper.getToken(request);
         if (token != null) {
             String userId = tokenHelper.getUsernameFromToken(token);
-            User userEntity = loginService.loadUserById(userId);
-            if (userEntity != null) {
-                request.setAttribute(CURRENT_USER_REQ, userEntity);
+            SysUser sysUserEntity = loginService.loadUserById(userId);
+            if (sysUserEntity != null) {
+                request.setAttribute(CURRENT_USER_REQ, sysUserEntity);
                 SecurityContextHolder.getContext().setAuthentication(new TokenBasedAuthentication(userId));
             }
         }

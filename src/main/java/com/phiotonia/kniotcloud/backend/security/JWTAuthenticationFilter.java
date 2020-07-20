@@ -1,7 +1,7 @@
 package com.phiotonia.kniotcloud.backend.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.phiotonia.kniotcloud.backend.model.User;
+import com.phiotonia.kniotcloud.backend.model.SysUser;
 import com.phiotonia.kniotcloud.backend.service.LoginService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -29,10 +29,10 @@ public class JWTAuthenticationFilter extends AbstractAuthenticationProcessingFil
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
             throws AuthenticationException, IOException, ServletException {
-        User credentials = new ObjectMapper().readValue(request.getInputStream(), User.class);
-        User userEntity = loginService.login(credentials.getName(), credentials.getPassword());
-        if (userEntity != null) {
-            request.setAttribute(CURRENT_USER_REQ, userEntity);
+        SysUser credentials = new ObjectMapper().readValue(request.getInputStream(), SysUser.class);
+        SysUser sysUserEntity = loginService.login(credentials.getName(), credentials.getPassword());
+        if (sysUserEntity != null) {
+            request.setAttribute(CURRENT_USER_REQ, sysUserEntity);
             return new TokenBasedAuthentication(credentials.getName());
         } throw new AuthenticationException("Authentication failed: " + credentials.getName()) {};
     }

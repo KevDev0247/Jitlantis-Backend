@@ -1,15 +1,15 @@
 package com.phiotonia.kniotcloud.backend.service;
 
 import com.baomidou.mybatisplus.service.IService;
-import com.phiotonia.kniotcloud.backend.model.User;
+import com.phiotonia.kniotcloud.backend.model.SysUser;
 
 import java.util.List;
 
-public interface UserService extends IService<User> {
+public interface UserService extends IService<SysUser> {
 
-    User findUserByName(String name);
+    SysUser findUserByName(String name);
 
-    List<User> selectQueryList(String name, String email);
+    List<SysUser> selectQueryList(String name, String email);
 
     boolean delete(Integer userId);
 }

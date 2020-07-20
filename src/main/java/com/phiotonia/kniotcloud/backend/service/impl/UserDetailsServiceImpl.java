@@ -1,6 +1,6 @@
 package com.phiotonia.kniotcloud.backend.service.impl;
 
-import com.phiotonia.kniotcloud.backend.model.User;
+import com.phiotonia.kniotcloud.backend.model.SysUser;
 import com.phiotonia.kniotcloud.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -18,11 +18,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-        User user = userService.findUserByName(userId);
-        if (user == null) {
+        SysUser sysUser = userService.findUserByName(userId);
+        if (sysUser == null) {
             throw new UsernameNotFoundException(userId);
         }
         return new org.springframework.security.core.userdetails.
-                User(user.getName(), user.getPassword(), AuthorityUtils.NO_AUTHORITIES);
+                User(sysUser.getName(), sysUser.getPassword(), AuthorityUtils.NO_AUTHORITIES);
     }
 }

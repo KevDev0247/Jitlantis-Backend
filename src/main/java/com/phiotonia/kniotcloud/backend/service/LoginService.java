@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class LoginService {
 
     @Autowired
-    private UserService userService;
+    private SysUserService sysUserService;
 
     @Autowired
     private BCryptPasswordEncoder encoder;
@@ -19,7 +19,7 @@ public class LoginService {
 
     public SysUser login(String name, String password) {
         LOGGER.info(">>>> start enter Login>>>>");
-        SysUser sysUser = userService.findUserByName(name);
+        SysUser sysUser = sysUserService.findUserByName(name);
         if (sysUser != null) {
             boolean match = encoder.matches(password, sysUser.getPassword());
             if (match) {
@@ -30,6 +30,6 @@ public class LoginService {
     }
 
     public SysUser loadUserById(String userId) {
-        return userService.findUserByName(userId);
+        return sysUserService.findUserByName(userId);
     }
 }

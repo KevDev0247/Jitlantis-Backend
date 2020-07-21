@@ -81,9 +81,9 @@ public class SysUserController {
 
     @ApiOperation(value = "update the password")
     @ApiImplicitParams({
-            @ApiImplicitParam(required = true, type = "query", name = "userId", value = "userId"),
-            @ApiImplicitParam(required = true, type = "query", name = "oldPassword", value = "old"),
-            @ApiImplicitParam(required = true, type = "query", name = "newPassword", value = "new"),
+            @ApiImplicitParam(required = true, paramType = "query", name = "userId", value = "userId"),
+            @ApiImplicitParam(required = true, paramType = "query", name = "oldPassword", value = "old"),
+            @ApiImplicitParam(required = true, paramType = "query", name = "newPassword", value = "new"),
     })
     @RequestMapping(value = "/updatePassword", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> updatePassword(
@@ -98,6 +98,7 @@ public class SysUserController {
             message = "userRetrieved does not exist";
             map.put("data", response);
             map.put("message", message);
+            return new ResponseEntity<>(map, HttpStatus.OK);
         } else {
             response = encoder.matches(oldPassword, userRetrieved.getPassword());
         }
@@ -105,8 +106,9 @@ public class SysUserController {
         if (!response) {
             message = "failed to update the password";
         } else {
-            userRetrieved.setPassword(encoder.encode(newPassword));
             message = "successfully update the password";
+            userRetrieved.setPassword(encoder.encode(newPassword));
+            sysUserService.updateById(userRetrieved);
         }
         map.put("data", response);
         map.put("message", message);

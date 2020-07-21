@@ -118,7 +118,7 @@ public class SysUserController {
 
     @ApiOperation(value = "user sign up")
     @ApiImplicitParams({
-            @ApiImplicitParam(required = true, type = "query", name = "user", value = "SysUser")
+            @ApiImplicitParam(required = true, name = "user", value = "system user entity", dataType = "SysUser")
     })
     @RequestMapping(value = "/signUp", method = RequestMethod.POST)
     public ResponseEntity<Map<String, Object>> getNewUser(@RequestBody SysUser user) {

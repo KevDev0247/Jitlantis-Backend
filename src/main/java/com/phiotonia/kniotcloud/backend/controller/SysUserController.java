@@ -65,16 +65,16 @@ public class SysUserController {
     @RequestMapping(value = "/bindRole", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> updateRole(Integer userId, Integer roleId) {
         Map<String, Object> map = new HashMap<>();
-        SysUser user = sysUserService.selectById(userId);
+        SysUser userRetrieved = sysUserService.selectById(userId);
         boolean response;
 
-        if (user != null) {
-            user.setRoleId(roleId);
-            response = sysUserService.updateById(user);
-            map.put("data", response);
+        if (userRetrieved != null) {
+            userRetrieved.setRoleId(roleId);
+            response = sysUserService.updateById(userRetrieved);
         } else {
-            map.put("data", false);
+            response = false;
         }
+        map.put("data", response);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
@@ -93,14 +93,14 @@ public class SysUserController {
         String message;
         boolean response;
 
-        if (userRetrieved == null) {
+        if (userRetrieved != null) {
+            response = encoder.matches(oldPassword, userRetrieved.getPassword());
+        } else {
             response = false;
             message = "userRetrieved does not exist";
             map.put("data", response);
             map.put("message", message);
             return new ResponseEntity<>(map, HttpStatus.OK);
-        } else {
-            response = encoder.matches(oldPassword, userRetrieved.getPassword());
         }
 
         if (!response) {

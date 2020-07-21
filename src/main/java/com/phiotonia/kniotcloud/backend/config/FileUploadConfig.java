@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 
 import javax.servlet.MultipartConfigElement;
 
-public class FileUploadConfiguration {
+public class FileUploadConfig {
 
     @Bean
     public MultipartConfigElement multipartConfigElement() {

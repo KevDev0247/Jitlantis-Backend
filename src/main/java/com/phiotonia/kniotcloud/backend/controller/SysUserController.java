@@ -27,17 +27,33 @@ public class SysUserController {
     @Autowired
     private BCryptPasswordEncoder encoder;
 
-    @ApiOperation(value = "query users list", notes = "no pagination")
+    @ApiOperation(value = "user sign up")
     @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "query", name = "name", value = "name"),
-            @ApiImplicitParam(paramType = "query", name = "email", value = "email"),
+            @ApiImplicitParam(required = true, name = "user", value = "system user entity", dataType = "SysUser")
     })
-    @RequestMapping(value = "/queryList", method = RequestMethod.GET)
-    public ResponseEntity<Map<String, Object>> queryPage(
-            @RequestParam(value = "name", required = false) String name,
-            @RequestParam(value = "email", required = false) String email) {
+    @RequestMapping(value = "/signUp", method = RequestMethod.POST)
+    public ResponseEntity<Map<String, Object>> createUser(@RequestBody SysUser user) {
         Map<String, Object> map = new HashMap<>();
-        map.put("list", sysUserService.selectQueryList(name, email));
+        SysUser userRetrieved = sysUserService.findUserByName(user.getName());
+        boolean response;
+
+        if (userRetrieved != null) {
+            response = false;
+            map.put("data", response);
+            map.put("message", "The user already existed");
+            return new ResponseEntity<>(map, HttpStatus.OK);
+        }
+
+        user.setPassword(encoder.encode(user.getPassword()));
+        user.setCreateTime(new Date());
+        response = sysUserService.insert(user);
+        map.put("data", response);
+
+        if (response) {
+            map.put("message", "Sign up successful");
+        } else {
+            map.put("message", "Sign up failed");
+        }
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
@@ -61,9 +77,24 @@ public class SysUserController {
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "get users list", notes = "no pagination")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "name", value = "name"),
+            @ApiImplicitParam(paramType = "query", name = "email", value = "email"),
+    })
+    @RequestMapping(value = "/getUsersList", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> getAllUsers(
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "email", required = false) String email) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("list", sysUserService.selectQueryList(name, email));
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
     @ApiOperation(value = "bind roles to users")
     @RequestMapping(value = "/bindRole", method = RequestMethod.GET)
-    public ResponseEntity<Map<String, Object>> updateRole(Integer userId, Integer roleId) {
+    public ResponseEntity<Map<String, Object>> updateUserRole(Integer userId, Integer roleId) {
         Map<String, Object> map = new HashMap<>();
         SysUser userRetrieved = sysUserService.selectById(userId);
         boolean response;
@@ -112,37 +143,6 @@ public class SysUserController {
         }
         map.put("data", response);
         map.put("message", message);
-
-        return new ResponseEntity<>(map, HttpStatus.OK);
-    }
-
-    @ApiOperation(value = "user sign up")
-    @ApiImplicitParams({
-            @ApiImplicitParam(required = true, name = "user", value = "system user entity", dataType = "SysUser")
-    })
-    @RequestMapping(value = "/signUp", method = RequestMethod.POST)
-    public ResponseEntity<Map<String, Object>> getNewUser(@RequestBody SysUser user) {
-        Map<String, Object> map = new HashMap<>();
-        SysUser userRetrieved = sysUserService.findUserByName(user.getName());
-        boolean response;
-
-        if (userRetrieved != null) {
-            response = false;
-            map.put("data", response);
-            map.put("message", "The user already existed");
-            return new ResponseEntity<>(map, HttpStatus.OK);
-        }
-
-        user.setPassword(encoder.encode(user.getPassword()));
-        user.setCreateTime(new Date());
-        response = sysUserService.insert(user);
-        map.put("data", response);
-
-        if (response) {
-            map.put("message", "Sign up successful");
-        } else {
-            map.put("message", "Sign up failed");
-        }
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }

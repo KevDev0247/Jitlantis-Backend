@@ -11,8 +11,6 @@ public class SysRole {
     private String roleName;
     private String remark;
     private Integer createUserId;
-
-    @JsonFormat(pattern = "yyyy/mm/dd", timezone = "GMT+8")
     private Date createTime;
 
     public Integer getId() {

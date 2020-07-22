@@ -10,7 +10,7 @@ public class SysMenu {
     private Integer parentId;
     private Integer level;
     private Integer orderNum;
-    private String text;
+    private String name;
     private String i18n;
     private String link;
     private String icon;
@@ -36,8 +36,8 @@ public class SysMenu {
         return level;
     }
 
-    public String getText() {
-        return text;
+    public String getName() {
+        return name;
     }
 
     public String getI18n() {
@@ -88,8 +88,8 @@ public class SysMenu {
         this.level = level;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setI18n(String i18n) {

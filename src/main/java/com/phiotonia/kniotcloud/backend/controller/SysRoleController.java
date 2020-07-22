@@ -41,7 +41,7 @@ public class SysRoleController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "sysRole", value = "SysRole entity", required = true, dataType = "SysRole")
     })
-    @RequestMapping("/create")
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<Map<String, Object>> createRole(@RequestBody SysRole sysRole) {
         Map<String, Object> map = new HashMap<>();
         boolean response = sysRoleService.insert(sysRole);
@@ -53,7 +53,7 @@ public class SysRoleController {
     @ApiImplicitParams({
             @ApiImplicitParam(required = true, paramType = "query", name = "roleId", value = "role id")
     })
-    @RequestMapping("/delete")
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> deleteRole(Integer roleId) {
         Map<String, Object> map = new HashMap<>();
         boolean response;
@@ -76,7 +76,7 @@ public class SysRoleController {
     }
 
     @ApiOperation(value = "get roles list")
-    @RequestMapping("/getRolesList")
+    @RequestMapping(value = "/getRolesList", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> getAllRoles() {
         Map<String, Object> map = new HashMap<>();
         EntityWrapper<SysRole> wrapper = new EntityWrapper<>();

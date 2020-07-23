@@ -75,7 +75,7 @@ public class SysRoleController {
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "get roles list")
+    @ApiOperation(value = "get all roles list")
     @RequestMapping(value = "/getRolesList", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> getAllRoles() {
         Map<String, Object> map = new HashMap<>();

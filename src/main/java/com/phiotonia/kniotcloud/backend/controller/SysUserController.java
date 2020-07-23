@@ -77,13 +77,13 @@ public class SysUserController {
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "get users list", notes = "no pagination")
+    @ApiOperation(value = "query users list", notes = "no pagination")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", name = "name", value = "name"),
             @ApiImplicitParam(paramType = "query", name = "email", value = "email"),
     })
-    @RequestMapping(value = "/getUsersList", method = RequestMethod.GET)
-    public ResponseEntity<Map<String, Object>> getAllUsers(
+    @RequestMapping(value = "/queryUsersList", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> queryUsersList(
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "email", required = false) String email) {
         Map<String, Object> map = new HashMap<>();

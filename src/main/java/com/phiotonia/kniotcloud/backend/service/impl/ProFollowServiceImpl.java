@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.phiotonia.kniotcloud.backend.dao.ProFollowDao;
 import com.phiotonia.kniotcloud.backend.model.ProFollow;
 import com.phiotonia.kniotcloud.backend.service.ProFollowService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProFollowServiceImpl extends ServiceImpl<ProFollowDao, ProFollow> implements ProFollowService {
 }

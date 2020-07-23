@@ -14,7 +14,7 @@ public class Contact {
     private Integer id;
     private String name;
     private String dept;
-    private String position;
+    private String profession;
     private String tel_no;
     private String email;
     private String qq;
@@ -35,8 +35,8 @@ public class Contact {
         return dept;
     }
 
-    public String getPosition() {
-        return position;
+    public String getProfession() {
+        return profession;
     }
 
     public String getTel_no() {
@@ -79,8 +79,8 @@ public class Contact {
         this.dept = dept;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setProfession(String position) {
+        this.profession = position;
     }
 
     public void setTel_no(String tel_no) {

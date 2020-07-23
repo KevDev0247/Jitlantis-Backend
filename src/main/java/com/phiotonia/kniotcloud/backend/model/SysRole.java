@@ -14,10 +14,15 @@ public class SysRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     private Integer type;
+
     private String roleName;
+
     private String remark;
+
     private Integer createUserId;
+
     private Date createTime;
 
     public Integer getId() {

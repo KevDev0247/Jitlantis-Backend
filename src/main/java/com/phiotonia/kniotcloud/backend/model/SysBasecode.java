@@ -8,13 +8,15 @@ import javax.persistence.Id;
 @Entity
 public class SysBasecode {
 
-    private String typeId;
-    private String typeName;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String basecode;
+
     private String basecodename;
+
+    private String typeId;
+
+    private String typeName;
 
     public String getBasecode() {
         return basecode;

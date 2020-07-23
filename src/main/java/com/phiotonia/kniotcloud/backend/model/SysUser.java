@@ -15,10 +15,15 @@ public class SysUser implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     private String name;
+
     private String username;
+
     private String email;
+
     private String password;
+
     private Integer roleId;
 
     private Date createTime;

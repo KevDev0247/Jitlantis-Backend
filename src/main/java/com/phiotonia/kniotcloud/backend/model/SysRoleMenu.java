@@ -11,7 +11,9 @@ public class SysRoleMenu {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     private Integer roleId;
+
     private Integer menuId;
 
     public Integer getId() {

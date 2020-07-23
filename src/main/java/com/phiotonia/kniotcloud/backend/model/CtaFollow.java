@@ -12,14 +12,23 @@ public class CtaFollow {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     private String operation;
+
     private String type;
+
     private Date contactDate;
+
     private Date nextDate;
+
     private Integer contactId;
+
     private Integer UserId;
+
     private Date createTime;
+
     private Date updateTime;
+
     private Integer isDelete;
 
     public Integer getId() {

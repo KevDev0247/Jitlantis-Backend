@@ -12,13 +12,21 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     private String name;
+
     private String telNo;
+
     private String area;
+
     private String address;
+
     private String remark;
+
     private Date createTime;
+
     private Date updateTime;
+
     private Integer isDelete;
 
     public Integer getId() {

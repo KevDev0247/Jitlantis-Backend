@@ -12,11 +12,17 @@ public class ClientProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     private Integer clientId;
+
     private Integer productId;
+
     private String place;
+
     private Date createTime;
+
     private Date updateTime;
+
     private Integer isDelete;
 
     public Integer getId() {

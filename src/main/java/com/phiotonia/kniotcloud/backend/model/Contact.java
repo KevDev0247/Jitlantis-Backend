@@ -12,15 +12,25 @@ public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     private String name;
+
     private String dept;
+
     private String profession;
+
     private String tel_no;
+
     private String email;
+
     private String qq;
+
     private String wechat;
+
     private Date createTime;
+
     private Date updateTime;
+
     private Integer isDelete;
 
     public Integer getId() {

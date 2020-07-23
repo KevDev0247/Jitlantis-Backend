@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.phiotonia.kniotcloud.backend.dao.ClientProductDao;
 import com.phiotonia.kniotcloud.backend.model.ClientProduct;
 import com.phiotonia.kniotcloud.backend.service.ClientProductService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ClientProductImpl extends ServiceImpl<ClientProductDao, ClientProduct> implements ClientProductService {
 }

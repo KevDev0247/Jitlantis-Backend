@@ -92,19 +92,19 @@ public class SysMenuController {
     @ApiOperation(value = "query menus list", notes = "no pagination")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", name = "parentId", value = "parent id of the menu"),
-            @ApiImplicitParam(paramType = "query", name = "name", value = "name of the menu"),
+            @ApiImplicitParam(paramType = "query", name = "text", value = "text of the menu"),
     })
     @RequestMapping(value = "/queryMenusList", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> queryMenusList(
             @RequestParam(required = false, value = "parentId") Integer parentId,
-            @RequestParam(required = false, value = "name") String name) {
+            @RequestParam(required = false, value = "text") String text) {
         Map<String, Object> map = new HashMap<>();
         EntityWrapper<SysMenu> wrapper = new EntityWrapper<>();
         if (parentId != null) {
             wrapper.eq("parent_id", parentId);
         }
-        if (name != null) {
-            wrapper.like("name", name);
+        if (text != null) {
+            wrapper.like("text", text);
         }
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id", true);

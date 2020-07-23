@@ -12,13 +12,21 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     private String name;
+
     private Integer contactId;
+
     private String description;
+
     private String address;
+
     private Integer clientId;
+
     private Date createTime;
+
     private Date updateTime;
+
     private Integer isDelete;
 
     public Integer getId() {

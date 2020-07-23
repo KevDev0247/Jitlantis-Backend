@@ -12,13 +12,21 @@ public class ProDocument {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     private String operation;
+
     private Integer clientId;
+
     private Integer projectId;
+
     private Integer attachmentId;
+
     private Integer staffId;
+
     private Date createTime;
+
     private Date updateTime;
+
     private Integer isDelete;
 
     public Integer getId() {

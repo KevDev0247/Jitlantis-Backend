@@ -12,16 +12,27 @@ public class ProFollow {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     private String operation;
+
     private String type;
+
     private Date contact_date;
+
     private Date next_date;
+
     private Integer contact_id;
+
     private String title;
+
     private String content;
+
     private Integer staffId;
+
     private Date createDate;
+
     private Date updateDate;
+
     private Integer isDelete;
 
     public Integer getId() {

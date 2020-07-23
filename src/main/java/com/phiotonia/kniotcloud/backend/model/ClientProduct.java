@@ -25,6 +25,16 @@ public class ClientProduct {
 
     private Integer isDelete;
 
+    private String sales;
+
+    private Date installTime;
+
+    private Date guaranteeDueTime;
+
+    private Date keepDueTime;
+
+    private Date inspectDueTime;
+
     public Integer getId() {
         return id;
     }
@@ -53,6 +63,26 @@ public class ClientProduct {
         return isDelete;
     }
 
+    public String getSales() {
+        return sales;
+    }
+
+    public Date getInstallTime() {
+        return installTime;
+    }
+
+    public Date getGuaranteeDueTime() {
+        return guaranteeDueTime;
+    }
+
+    public Date getKeepDueTime() {
+        return keepDueTime;
+    }
+
+    public Date getInspectDueTime() {
+        return inspectDueTime;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -79,5 +109,25 @@ public class ClientProduct {
 
     public void setIsDelete(Integer isDelete) {
         this.isDelete = isDelete;
+    }
+
+    public void setSales(String sales) {
+        this.sales = sales;
+    }
+
+    public void setInstallTime(Date installTime) {
+        this.installTime = installTime;
+    }
+
+    public void setGuaranteeDueTime(Date guaranteeDueTime) {
+        this.guaranteeDueTime = guaranteeDueTime;
+    }
+
+    public void setKeepDueTime(Date keepDueTime) {
+        this.keepDueTime = keepDueTime;
+    }
+
+    public void setInspectDueTime(Date inspectDueTime) {
+        this.inspectDueTime = inspectDueTime;
     }
 }

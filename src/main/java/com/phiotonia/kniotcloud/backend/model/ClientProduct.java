@@ -14,7 +14,7 @@ public class ClientProduct {
     private Integer id;
     private Integer clientId;
     private Integer productId;
-    private String location;
+    private String place;
     private Date createTime;
     private Date updateTime;
     private Integer isDelete;
@@ -31,8 +31,8 @@ public class ClientProduct {
         return productId;
     }
 
-    public String getLocation() {
-        return location;
+    public String getPlace() {
+        return place;
     }
 
     public Date getCreateTime() {
@@ -59,8 +59,8 @@ public class ClientProduct {
         this.productId = productId;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setPlace(String location) {
+        this.place = location;
     }
 
     public void setCreateTime(Date createTime) {

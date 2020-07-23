@@ -7,10 +7,7 @@ import com.phiotonia.kniotcloud.backend.service.ClientProductService;
 import com.phiotonia.kniotcloud.backend.service.ClientService;
 import com.phiotonia.kniotcloud.backend.utils.DeletedEnum;
 import com.phiotonia.kniotcloud.backend.utils.StringUtils;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -102,6 +99,36 @@ public class ClientController {
         Map<String, Object> map = new HashMap<>();
         boolean response;
         response = clientProductService.insert(clientProduct);
+        map.put("data", response);
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "delete client product")
+    @ApiImplicitParams({
+            @ApiImplicitParam(required = true, paramType = "query", name = "clientProductId", value = "ClientProduct id")
+    })
+    @RequestMapping(value = "/deleteClientProduct", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> deleteClientProduct(Integer clientProductId) {
+        Map<String, Object> map = new HashMap<>();
+        ClientProduct clientProductRetrieved = clientProductService.selectById(clientProductId);
+        boolean response;
+
+        if (clientProductRetrieved == null) {
+            response = false;
+            map.put("data", response);
+            map.put("message", "deletion failed, the client does not exist!");
+
+            return new ResponseEntity<>(map, HttpStatus.OK);
+        }
+
+        clientProductRetrieved.setIsDelete(DeletedEnum.Y.value());
+        response = clientProductService.updateById(clientProductRetrieved);
+        if (response) {
+            map.put("message", "deletion successful");
+        } else {
+            map.put("message", "deletion failed");
+        }
         map.put("data", response);
 
         return new ResponseEntity<>(map, HttpStatus.OK);

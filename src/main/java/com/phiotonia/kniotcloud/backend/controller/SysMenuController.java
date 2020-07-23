@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.phiotonia.kniotcloud.backend.model.SysMenu;
 import com.phiotonia.kniotcloud.backend.service.SysMenuService;
 import com.phiotonia.kniotcloud.backend.utils.DeletedEnum;
+import com.phiotonia.kniotcloud.backend.utils.StringUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -34,6 +35,7 @@ public class SysMenuController {
         Map<String, Object> map = new HashMap<>();
         boolean response = sysMenuService.insert(sysMenu);
         map.put("data", response);
+
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -100,15 +102,16 @@ public class SysMenuController {
             @RequestParam(required = false, value = "text") String text) {
         Map<String, Object> map = new HashMap<>();
         EntityWrapper<SysMenu> wrapper = new EntityWrapper<>();
-        if (parentId != null) {
+        if (StringUtils.isNotBlank(parentId.toString())) {
             wrapper.eq("parent_id", parentId);
         }
-        if (text != null) {
+        if (StringUtils.isNotBlank(text)) {
             wrapper.like("text", text);
         }
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id", true);
         map.put("list", sysMenuService.selectList(wrapper));
+
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -121,6 +124,7 @@ public class SysMenuController {
         Map<String, Object> map = new HashMap<>();
         boolean response = sysMenuService.insertBatch(sysMenuList);
         map.put("data", response);
+
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }

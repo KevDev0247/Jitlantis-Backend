@@ -89,7 +89,7 @@ public class ProjectController {
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
-    @ApiOperation("query projects list")
+    @ApiOperation(value = "query projects list", notes = "no pagination")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", name = "contractId", value = "contract id"),
             @ApiImplicitParam(paramType = "query", name = "clientId", value = "client id"),
@@ -112,9 +112,9 @@ public class ProjectController {
         if (StringUtils.isNotBlank(name)) {
             wrapper.eq("name", name);
         }
-        wrapper.eq("isDelete", DeletedEnum.N.value());
+        wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id", true);
-        map.put("data", projectService.selectList(wrapper));
+        map.put("list", projectService.selectList(wrapper));
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }

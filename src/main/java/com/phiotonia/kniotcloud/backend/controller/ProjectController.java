@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Api(tags = {"project"})
 @RestController
-@RequestMapping(value = "/project")
+@RequestMapping("/project")
 public class ProjectController {
 
     @Autowired
@@ -25,7 +25,7 @@ public class ProjectController {
 
     @ApiOperation("create project")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "project", value = "project entity", required = true, dataType = "Project")
+            @ApiImplicitParam(name = "project", value = "Project entity", required = true, dataType = "Project")
     })
     @RequestMapping(value = "/createProject", method = RequestMethod.POST)
     public ResponseEntity<Map<String, Object>> createProject(@RequestBody Project project) {

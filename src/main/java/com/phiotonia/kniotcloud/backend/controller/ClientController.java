@@ -92,7 +92,7 @@ public class ClientController {
 
     @ApiOperation(value = "create client product")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "ClientProduct", value = "ClientProductEntity", required = true, dataType = "ClientProduct")
+            @ApiImplicitParam(name = "clientProduct", value = "ClientProduct entity", required = true, dataType = "ClientProduct")
     })
     @RequestMapping(value = "/createClientProduct", method = RequestMethod.POST)
     public ResponseEntity<Map<String, Object>> createClientProduct(@RequestBody ClientProduct clientProduct) {

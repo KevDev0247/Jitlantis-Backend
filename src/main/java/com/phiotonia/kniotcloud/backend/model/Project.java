@@ -29,6 +29,24 @@ public class Project {
 
     private Integer isDelete;
 
+    private Date contractStartTime;
+
+    private Date contractEndTime;
+
+    private Date deliveryTime;
+
+    private Date acceptTime;
+
+    private String guaranteeType;
+
+    private Date guaranteeDueTime;
+
+    private Date guaranteeMonth;
+
+    private Integer staffId;
+
+    private Integer fileId;
+
     public Integer getId() {
         return id;
     }
@@ -65,6 +83,42 @@ public class Project {
         return isDelete;
     }
 
+    public Date getContractStartTime() {
+        return contractStartTime;
+    }
+
+    public Date getContractEndTime() {
+        return contractEndTime;
+    }
+
+    public Date getDeliveryTime() {
+        return deliveryTime;
+    }
+
+    public Date getAcceptTime() {
+        return acceptTime;
+    }
+
+    public String getGuaranteeType() {
+        return guaranteeType;
+    }
+
+    public Date getGuaranteeDueTime() {
+        return guaranteeDueTime;
+    }
+
+    public Date getGuaranteeMonth() {
+        return guaranteeMonth;
+    }
+
+    public Integer getStaffId() {
+        return staffId;
+    }
+
+    public Integer getFileId() {
+        return fileId;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -99,5 +153,41 @@ public class Project {
 
     public void setIsDelete(Integer isDelete) {
         this.isDelete = isDelete;
+    }
+
+    public void setContractStartTime(Date contractStartTime) {
+        this.contractStartTime = contractStartTime;
+    }
+
+    public void setContractEndTime(Date contractEndTime) {
+        this.contractEndTime = contractEndTime;
+    }
+
+    public void setDeliveryTime(Date deliveryTime) {
+        this.deliveryTime = deliveryTime;
+    }
+
+    public void setAcceptTime(Date acceptTime) {
+        this.acceptTime = acceptTime;
+    }
+
+    public void setGuaranteeType(String guaranteeType) {
+        this.guaranteeType = guaranteeType;
+    }
+
+    public void setGuaranteeDueTime(Date guaranteeDueTime) {
+        this.guaranteeDueTime = guaranteeDueTime;
+    }
+
+    public void setGuaranteeMonth(Date guaranteeMonth) {
+        this.guaranteeMonth = guaranteeMonth;
+    }
+
+    public void setStaffId(Integer staffId) {
+        this.staffId = staffId;
+    }
+
+    public void setFileId(Integer fileId) {
+        this.fileId = fileId;
     }
 }

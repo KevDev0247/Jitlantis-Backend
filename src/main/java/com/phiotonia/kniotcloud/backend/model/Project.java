@@ -15,7 +15,7 @@ public class Project {
 
     private String name;
 
-    private Integer contactId;
+    private Integer contractId;
 
     private String description;
 
@@ -55,8 +55,8 @@ public class Project {
         return name;
     }
 
-    public Integer getContactId() {
-        return contactId;
+    public Integer getContractId() {
+        return contractId;
     }
 
     public String getDescription() {
@@ -127,8 +127,8 @@ public class Project {
         this.name = name;
     }
 
-    public void setContactId(Integer contactId) {
-        this.contactId = contactId;
+    public void setContractId(Integer contactId) {
+        this.contractId = contactId;
     }
 
     public void setDescription(String description) {

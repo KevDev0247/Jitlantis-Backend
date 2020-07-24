@@ -42,6 +42,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/**").permitAll()
                 .antMatchers("/role/**").permitAll()
                 .antMatchers("/common/**").permitAll()
+                .antMatchers("/project/**").permitAll()
+                .antMatchers("/client/**").permitAll()
                 .antMatchers("/swagger-ui.html",
                         "/v2/api-docs", // swagger api json
                         "/swagger-resources/configuration/ui",
@@ -61,6 +63,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
     }
-
-
 }

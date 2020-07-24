@@ -82,6 +82,7 @@ public class SysMenuController {
         if (sysMenuRetrieved == null) {
             response = false;
             map.put("data", response);
+
             return new ResponseEntity<>(map, HttpStatus.OK);
         }
 
@@ -115,12 +116,12 @@ public class SysMenuController {
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "create batch menu")
+    @ApiOperation(value = "create batch menus")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "sysMenuList", value = "SysMenu entity", required = true, dataType = "List<SysMenu>")
+            @ApiImplicitParam(name = "sysMenuList", value = "SysMenu entity list", required = true, dataType = "List<SysMenu>")
     })
     @RequestMapping(value = "/createBatchMenu", method = RequestMethod.POST)
-    public ResponseEntity<Map<String, Object>> createBatchMenu(@RequestBody List<SysMenu> sysMenuList) {
+    public ResponseEntity<Map<String, Object>> createBatchMenus(@RequestBody List<SysMenu> sysMenuList) {
         Map<String, Object> map = new HashMap<>();
         boolean response = sysMenuService.insertBatch(sysMenuList);
         map.put("data", response);

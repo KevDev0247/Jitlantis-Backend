@@ -23,7 +23,7 @@ public class CtaFollow {
 
     private Integer contactId;
 
-    private Integer UserId;
+    private Integer staffId;
 
     private Date createTime;
 
@@ -55,8 +55,8 @@ public class CtaFollow {
         return contactId;
     }
 
-    public Integer getUserId() {
-        return UserId;
+    public Integer getStaffId() {
+        return staffId;
     }
 
     public Date getCreateTime() {
@@ -95,8 +95,8 @@ public class CtaFollow {
         this.contactId = contactId;
     }
 
-    public void setUserId(Integer userId) {
-        UserId = userId;
+    public void setStaffId(Integer staffId) {
+        this.staffId = staffId;
     }
 
     public void setCreateTime(Date createTime) {

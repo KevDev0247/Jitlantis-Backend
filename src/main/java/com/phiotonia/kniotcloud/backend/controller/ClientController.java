@@ -3,8 +3,10 @@ package com.phiotonia.kniotcloud.backend.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.phiotonia.kniotcloud.backend.model.Client;
 import com.phiotonia.kniotcloud.backend.model.ClientProduct;
+import com.phiotonia.kniotcloud.backend.model.CtaFollow;
 import com.phiotonia.kniotcloud.backend.service.ClientProductService;
 import com.phiotonia.kniotcloud.backend.service.ClientService;
+import com.phiotonia.kniotcloud.backend.service.CtaFollowService;
 import com.phiotonia.kniotcloud.backend.utils.DeletedEnum;
 import com.phiotonia.kniotcloud.backend.utils.StringUtils;
 import io.swagger.annotations.*;
@@ -13,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +29,9 @@ public class ClientController {
 
     @Autowired
     private ClientProductService clientProductService;
+
+    @Autowired
+    private CtaFollowService ctaFollowService;
 
     @ApiOperation(value = "create client")
     @ApiImplicitParams({
@@ -145,6 +151,7 @@ public class ClientController {
             @RequestParam(value = "brand", required = false) String brand) {
         Map<String, Object> map = new HashMap<>();
         EntityWrapper<ClientProduct> wrapper = new EntityWrapper<>();
+
         if (StringUtils.isNotBlank(info)) {
             wrapper.eq("place", info);
         }
@@ -152,6 +159,50 @@ public class ClientController {
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id");
         map.put("list", clientProductService.selectList(wrapper));
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "create Cta follow")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "ctaFollow", value = "ctaFollow entity", required = true, dataType = "CtaFollow")
+    })
+    @RequestMapping(value = "/createCtaFollow", method = RequestMethod.POST)
+    public ResponseEntity<Map<String, Object>> createCtaFollow(@RequestBody CtaFollow ctaFollow) {
+        Map<String, Object> map = new HashMap<>();
+        boolean response = ctaFollowService.insert(ctaFollow);
+        map.put("data", response);
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "query Cta Follow list", notes = "no pagination")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "type", value = "type"),
+            @ApiImplicitParam(paramType = "query", name = "contact_date", value = "contact date"),
+            @ApiImplicitParam(paramType = "query", name = "staff_id", value = "staff id"),
+    })
+    @RequestMapping(value = "/queryCtaFollowList", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> queryCtaFollowList(
+            @RequestParam(value = "type", required = false) String type,
+            @RequestParam(value = "contact_date", required = false) Date contact_date,
+            @RequestParam(value = "staff_id", required = false) String staff_id) {
+        Map<String, Object> map = new HashMap<>();
+        EntityWrapper<CtaFollow> wrapper = new EntityWrapper<>();
+
+        if (StringUtils.isNotBlank(type)) {
+            wrapper.eq("type", type);
+        }
+        if (contact_date != null) {
+            wrapper.eq("date", contact_date);
+        }
+        if (StringUtils.isNotBlank(staff_id)) {
+            wrapper.eq("type", staff_id);
+        }
+
+        wrapper.eq("is_delete", DeletedEnum.N.value());
+        wrapper.orderBy("id");
+        map.put("list", ctaFollowService.selectList(wrapper));
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }

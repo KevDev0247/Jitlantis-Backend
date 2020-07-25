@@ -38,11 +38,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/windbell/**").permitAll()
                 .antMatchers("/msg/**").permitAll()
                 .antMatchers("/menu/**").permitAll()
-                .antMatchers("/test/**").permitAll()
                 .antMatchers("/user/**").permitAll()
                 .antMatchers("/role/**").permitAll()
                 .antMatchers("/project/**").permitAll()
+                .antMatchers("/product/**").permitAll()
                 .antMatchers("/client/**").permitAll()
+                .antMatchers("/staff/**").permitAll()
                 .antMatchers("/swagger-ui.html",
                         "/v2/api-docs", // swagger api json
                         "/swagger-resources/configuration/ui",

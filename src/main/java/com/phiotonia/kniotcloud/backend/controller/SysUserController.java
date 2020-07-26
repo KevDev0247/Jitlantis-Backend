@@ -16,6 +16,14 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The controller for SysUser (System User) that handles HTTP requests and responses.
+ * In this frontend-backend-separated architecture,
+ * the controller interacts with the particular service on the frontend.
+ *
+ * @author Kevin Zhijun Wang
+ * @version 2020.0715
+ */
 @Api(tags = {"User"})
 @RestController
 @RequestMapping("/user")

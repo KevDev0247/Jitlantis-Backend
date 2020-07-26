@@ -23,6 +23,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The controller for SysRole (System Role) that handles HTTP requests and responses.
+ * In this frontend-backend-separated architecture,
+ * the controller interacts with the particular service on the frontend.
+ *
+ * @author Kevin Zhijun Wang
+ * @version 2020.0715
+ */
 @Api(tags = {"role"})
 @RestController
 @RequestMapping("/role")

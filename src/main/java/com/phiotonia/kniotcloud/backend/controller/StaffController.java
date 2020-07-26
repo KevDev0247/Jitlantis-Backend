@@ -23,7 +23,7 @@ import java.util.Map;
  * the controller interacts with the particular service on the frontend.
  *
  * @author Kevin Zhijun Wang
- * @version 2020.0715
+ * @version 2020.0724
  */
 @Api(tags = {"staff"})
 @RestController

@@ -25,7 +25,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.phiotonia.kniotcloud.backend.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.jitus.backend.API.controller"))
                 .paths(PathSelectors.any())
                 .build().globalOperationParameters(setHeaderToken());
     }
@@ -33,7 +33,7 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("API Documentation")
-                .description("KNIotCloud Platform")
+                .description("Jitus Cloud Platform")
                 .termsOfServiceUrl("https://www.campusbell.cn")
                 .version("1.0.0")
                 .build();

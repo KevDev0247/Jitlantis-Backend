@@ -32,7 +32,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("API Documentation")
+                .title("Jitus Backend API Documentation")
                 .description("Jitus Cloud Platform")
                 .termsOfServiceUrl("https://www.campusbell.cn")
                 .version("1.0.0")

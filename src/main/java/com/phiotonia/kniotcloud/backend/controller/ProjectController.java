@@ -167,7 +167,7 @@ public class ProjectController {
             @ApiImplicitParam(paramType = "query", name = "staff_id", value = "staff id"),
             @ApiImplicitParam(paramType = "query", name = "operation", value = "operation"),
     })
-    @RequestMapping(value = "/queryProFollowList")
+    @RequestMapping(value = "/queryProFollowList", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> queryProFollowList(
             @RequestParam(value = "type", required = false) String type,
             @RequestParam(value = "contact_date", required = false) Date contact_date,

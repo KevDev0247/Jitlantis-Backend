@@ -20,18 +20,18 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
-	at com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication.main(KnIotCloudBackendApplication.java:21)
+	at KnIotCloudBackendApplication.main(KnIotCloudBackendApplication.java:21)
 Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is java.lang.NullPointerException
 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:189)
 	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:588)
 	... 20 more
 Caused by: java.lang.NullPointerException
 	at org.springframework.security.config.annotation.web.builders.HttpSecurity.addFilterBefore(HttpSecurity.java:1039)
-	at com.phiotonia.kniotcloud.backend.security.WebSecurityConfig.configure(WebSecurityConfig.java:44)
+	at WebSecurityConfig.configure(WebSecurityConfig.java:44)
 	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.getHttp(WebSecurityConfigurerAdapter.java:224)
 	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.init(WebSecurityConfigurerAdapter.java:315)
 	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.init(WebSecurityConfigurerAdapter.java:86)
-	at com.phiotonia.kniotcloud.backend.security.WebSecurityConfig$$EnhancerBySpringCGLIB$$d566c52a.init(<generated>)
+	at WebSecurityConfig$$EnhancerBySpringCGLIB$$d566c52a.init(<generated>)
 	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.init(AbstractConfiguredSecurityBuilder.java:371)
 	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.doBuild(AbstractConfiguredSecurityBuilder.java:325)
 	at org.springframework.security.config.annotation.AbstractSecurityBuilder.build(AbstractSecurityBuilder.java:41)

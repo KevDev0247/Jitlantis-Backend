@@ -1,5 +1,5 @@
-2020-07-19 16:08:52 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 3960 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
-2020-07-19 16:08:52 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
+2020-07-19 16:08:52 [main] [KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 3960 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
+2020-07-19 16:08:52 [main] [KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
 2020-07-19 16:08:52 [main] [org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext] [line583] [INFO] - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2a7ed1f: startup date [Sun Jul 19 16:08:52 EDT 2020]; root of context hierarchy
 2020-07-19 16:08:52 [background-preinit] [org.hibernate.validator.internal.util.Version] [line30] [INFO] - HV000001: Hibernate Validator 5.3.6.Final
 2020-07-19 16:08:54 [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [line327] [INFO] - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d24bed00] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
@@ -45,11 +45,11 @@ Using default security password: 4741ba46-c322-434a-a5a5-a0855f082553
 2020-07-19 16:09:15 [main] [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] [line150] [INFO] - Found 1 custom documentation plugin(s)
 2020-07-19 16:09:15 [main] [springfox.documentation.spring.web.scanners.ApiListingReferenceScanner] [line41] [INFO] - Scanning for api listing references
 2020-07-19 16:09:16 [main] [org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer] [line201] [INFO] - Tomcat started on port(s): 8080 (http)
-2020-07-19 16:09:16 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line57] [INFO] - Started KnIotCloudBackendApplication in 24.279 seconds (JVM running for 26.001)
+2020-07-19 16:09:16 [main] [KnIotCloudBackendApplication] [line57] [INFO] - Started KnIotCloudBackendApplication in 24.279 seconds (JVM running for 26.001)
 2020-07-19 16:09:16 [http-nio-8080-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line489] [INFO] - FrameworkServlet 'dispatcherServlet': initialization started
 2020-07-19 16:09:16 [http-nio-8080-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line508] [INFO] - FrameworkServlet 'dispatcherServlet': initialization completed in 38 ms
-2020-07-19 16:10:45 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 26708 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
-2020-07-19 16:10:45 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
+2020-07-19 16:10:45 [main] [KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 26708 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
+2020-07-19 16:10:45 [main] [KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
 2020-07-19 16:10:45 [main] [org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext] [line583] [INFO] - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2a7ed1f: startup date [Sun Jul 19 16:10:45 EDT 2020]; root of context hierarchy
 2020-07-19 16:10:45 [background-preinit] [org.hibernate.validator.internal.util.Version] [line30] [INFO] - HV000001: Hibernate Validator 5.3.6.Final
 2020-07-19 16:10:46 [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [line327] [INFO] - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$cf3f7de0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
@@ -95,11 +95,11 @@ Using default security password: b0c9832a-e381-4d12-8b43-37e612c702f0
 2020-07-19 16:11:07 [main] [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] [line150] [INFO] - Found 1 custom documentation plugin(s)
 2020-07-19 16:11:07 [main] [springfox.documentation.spring.web.scanners.ApiListingReferenceScanner] [line41] [INFO] - Scanning for api listing references
 2020-07-19 16:11:07 [main] [org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer] [line201] [INFO] - Tomcat started on port(s): 8080 (http)
-2020-07-19 16:11:07 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line57] [INFO] - Started KnIotCloudBackendApplication in 23.243 seconds (JVM running for 25.031)
+2020-07-19 16:11:07 [main] [KnIotCloudBackendApplication] [line57] [INFO] - Started KnIotCloudBackendApplication in 23.243 seconds (JVM running for 25.031)
 2020-07-19 16:11:20 [http-nio-8080-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line489] [INFO] - FrameworkServlet 'dispatcherServlet': initialization started
 2020-07-19 16:11:20 [http-nio-8080-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line508] [INFO] - FrameworkServlet 'dispatcherServlet': initialization completed in 36 ms
-2020-07-19 16:20:00 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 18512 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
-2020-07-19 16:20:00 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
+2020-07-19 16:20:00 [main] [KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 18512 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
+2020-07-19 16:20:00 [main] [KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
 2020-07-19 16:20:00 [main] [org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext] [line583] [INFO] - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2a7ed1f: startup date [Sun Jul 19 16:20:00 EDT 2020]; root of context hierarchy
 2020-07-19 16:20:00 [background-preinit] [org.hibernate.validator.internal.util.Version] [line30] [INFO] - HV000001: Hibernate Validator 5.3.6.Final
 2020-07-19 16:20:02 [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [line327] [INFO] - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$78d20dd8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
@@ -145,11 +145,11 @@ Using default security password: eefd5ee2-dd83-4adf-97c4-c1649b86c689
 2020-07-19 16:20:25 [main] [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] [line150] [INFO] - Found 1 custom documentation plugin(s)
 2020-07-19 16:20:25 [main] [springfox.documentation.spring.web.scanners.ApiListingReferenceScanner] [line41] [INFO] - Scanning for api listing references
 2020-07-19 16:20:26 [main] [org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer] [line201] [INFO] - Tomcat started on port(s): 8080 (http)
-2020-07-19 16:20:26 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line57] [INFO] - Started KnIotCloudBackendApplication in 26.474 seconds (JVM running for 27.946)
+2020-07-19 16:20:26 [main] [KnIotCloudBackendApplication] [line57] [INFO] - Started KnIotCloudBackendApplication in 26.474 seconds (JVM running for 27.946)
 2020-07-19 16:20:36 [http-nio-8080-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line489] [INFO] - FrameworkServlet 'dispatcherServlet': initialization started
 2020-07-19 16:20:36 [http-nio-8080-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line508] [INFO] - FrameworkServlet 'dispatcherServlet': initialization completed in 39 ms
-2020-07-19 16:32:31 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 17552 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
-2020-07-19 16:32:31 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
+2020-07-19 16:32:31 [main] [KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 17552 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
+2020-07-19 16:32:31 [main] [KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
 2020-07-19 16:32:31 [main] [org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext] [line583] [INFO] - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4e928fbf: startup date [Sun Jul 19 16:32:31 EDT 2020]; root of context hierarchy
 2020-07-19 16:32:32 [background-preinit] [org.hibernate.validator.internal.util.Version] [line30] [INFO] - HV000001: Hibernate Validator 5.3.6.Final
 2020-07-19 16:32:33 [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [line327] [INFO] - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$85822f6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
@@ -215,8 +215,8 @@ Verify the connector's configuration, identify and stop any process that's liste
 2020-07-19 16:32:54 [main] [org.springframework.context.support.DefaultLifecycleProcessor] [line358] [INFO] - Stopping beans in phase 2147483647
 2020-07-19 16:32:54 [main] [org.springframework.jmx.export.annotation.AnnotationMBeanExporter] [line449] [INFO] - Unregistering JMX-exposed beans on shutdown
 2020-07-19 16:32:54 [main] [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] [line563] [INFO] - Closing JPA EntityManagerFactory for persistence unit 'default'
-2020-07-19 16:34:03 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 30012 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
-2020-07-19 16:34:03 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
+2020-07-19 16:34:03 [main] [KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 30012 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
+2020-07-19 16:34:03 [main] [KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
 2020-07-19 16:34:03 [main] [org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext] [line583] [INFO] - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4e928fbf: startup date [Sun Jul 19 16:34:03 EDT 2020]; root of context hierarchy
 2020-07-19 16:34:04 [background-preinit] [org.hibernate.validator.internal.util.Version] [line30] [INFO] - HV000001: Hibernate Validator 5.3.6.Final
 2020-07-19 16:34:05 [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [line327] [INFO] - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$fc801981] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
@@ -262,11 +262,11 @@ Using default security password: 935a666d-e504-457f-95c3-aef0d78f6e09
 2020-07-19 16:34:25 [main] [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] [line150] [INFO] - Found 1 custom documentation plugin(s)
 2020-07-19 16:34:25 [main] [springfox.documentation.spring.web.scanners.ApiListingReferenceScanner] [line41] [INFO] - Scanning for api listing references
 2020-07-19 16:34:25 [main] [org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer] [line201] [INFO] - Tomcat started on port(s): 8080 (http)
-2020-07-19 16:34:25 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line57] [INFO] - Started KnIotCloudBackendApplication in 22.496 seconds (JVM running for 23.668)
+2020-07-19 16:34:25 [main] [KnIotCloudBackendApplication] [line57] [INFO] - Started KnIotCloudBackendApplication in 22.496 seconds (JVM running for 23.668)
 2020-07-19 16:34:39 [http-nio-8080-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line489] [INFO] - FrameworkServlet 'dispatcherServlet': initialization started
 2020-07-19 16:34:39 [http-nio-8080-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line508] [INFO] - FrameworkServlet 'dispatcherServlet': initialization completed in 47 ms
-2020-07-19 16:44:26 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 28420 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
-2020-07-19 16:44:26 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
+2020-07-19 16:44:26 [main] [KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 28420 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
+2020-07-19 16:44:26 [main] [KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
 2020-07-19 16:44:26 [main] [org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext] [line583] [INFO] - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2a7ed1f: startup date [Sun Jul 19 16:44:26 EDT 2020]; root of context hierarchy
 2020-07-19 16:44:26 [background-preinit] [org.hibernate.validator.internal.util.Version] [line30] [INFO] - HV000001: Hibernate Validator 5.3.6.Final
 2020-07-19 16:44:28 [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [line327] [INFO] - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$f3d0e467] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
@@ -319,11 +319,11 @@ Using default security password: 4083d9ef-6256-43d0-be19-cab69e8b770a
 2020-07-19 16:45:01 [main] [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] [line150] [INFO] - Found 1 custom documentation plugin(s)
 2020-07-19 16:45:01 [main] [springfox.documentation.spring.web.scanners.ApiListingReferenceScanner] [line41] [INFO] - Scanning for api listing references
 2020-07-19 16:45:02 [main] [org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer] [line201] [INFO] - Tomcat started on port(s): 8080 (http)
-2020-07-19 16:45:02 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line57] [INFO] - Started KnIotCloudBackendApplication in 36.093 seconds (JVM running for 37.447)
+2020-07-19 16:45:02 [main] [KnIotCloudBackendApplication] [line57] [INFO] - Started KnIotCloudBackendApplication in 36.093 seconds (JVM running for 37.447)
 2020-07-19 16:45:06 [http-nio-8080-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line489] [INFO] - FrameworkServlet 'dispatcherServlet': initialization started
 2020-07-19 16:45:06 [http-nio-8080-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line508] [INFO] - FrameworkServlet 'dispatcherServlet': initialization completed in 38 ms
-2020-07-19 16:47:19 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 7152 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
-2020-07-19 16:47:19 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
+2020-07-19 16:47:19 [main] [KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 7152 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
+2020-07-19 16:47:19 [main] [KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
 2020-07-19 16:47:19 [main] [org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext] [line583] [INFO] - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2a7ed1f: startup date [Sun Jul 19 16:47:19 EDT 2020]; root of context hierarchy
 2020-07-19 16:47:19 [background-preinit] [org.hibernate.validator.internal.util.Version] [line30] [INFO] - HV000001: Hibernate Validator 5.3.6.Final
 2020-07-19 16:47:20 [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [line327] [INFO] - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$772c7fc2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
@@ -376,11 +376,11 @@ Using default security password: dfcad15c-9d92-471a-8e84-468577d453f4
 2020-07-19 16:47:40 [main] [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] [line150] [INFO] - Found 1 custom documentation plugin(s)
 2020-07-19 16:47:40 [main] [springfox.documentation.spring.web.scanners.ApiListingReferenceScanner] [line41] [INFO] - Scanning for api listing references
 2020-07-19 16:47:41 [main] [org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer] [line201] [INFO] - Tomcat started on port(s): 8081 (http)
-2020-07-19 16:47:41 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line57] [INFO] - Started KnIotCloudBackendApplication in 22.732 seconds (JVM running for 23.979)
+2020-07-19 16:47:41 [main] [KnIotCloudBackendApplication] [line57] [INFO] - Started KnIotCloudBackendApplication in 22.732 seconds (JVM running for 23.979)
 2020-07-19 16:47:56 [http-nio-8081-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line489] [INFO] - FrameworkServlet 'dispatcherServlet': initialization started
 2020-07-19 16:47:56 [http-nio-8081-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line508] [INFO] - FrameworkServlet 'dispatcherServlet': initialization completed in 27 ms
-2020-07-19 18:43:06 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 21696 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
-2020-07-19 18:43:06 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
+2020-07-19 18:43:06 [main] [KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 21696 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
+2020-07-19 18:43:06 [main] [KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
 2020-07-19 18:43:06 [main] [org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext] [line583] [INFO] - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2a7ed1f: startup date [Sun Jul 19 18:43:06 EDT 2020]; root of context hierarchy
 2020-07-19 18:43:06 [background-preinit] [org.hibernate.validator.internal.util.Version] [line30] [INFO] - HV000001: Hibernate Validator 5.3.6.Final
 2020-07-19 18:43:08 [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [line327] [INFO] - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$772c7fc2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
@@ -433,11 +433,11 @@ Using default security password: 00f01bfc-17cf-4ccd-bca6-081846f45852
 2020-07-19 18:43:27 [main] [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] [line150] [INFO] - Found 1 custom documentation plugin(s)
 2020-07-19 18:43:27 [main] [springfox.documentation.spring.web.scanners.ApiListingReferenceScanner] [line41] [INFO] - Scanning for api listing references
 2020-07-19 18:43:27 [main] [org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer] [line201] [INFO] - Tomcat started on port(s): 8080 (http)
-2020-07-19 18:43:27 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line57] [INFO] - Started KnIotCloudBackendApplication in 21.58 seconds (JVM running for 22.913)
+2020-07-19 18:43:27 [main] [KnIotCloudBackendApplication] [line57] [INFO] - Started KnIotCloudBackendApplication in 21.58 seconds (JVM running for 22.913)
 2020-07-19 18:43:41 [http-nio-8080-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line489] [INFO] - FrameworkServlet 'dispatcherServlet': initialization started
 2020-07-19 18:43:41 [http-nio-8080-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line508] [INFO] - FrameworkServlet 'dispatcherServlet': initialization completed in 25 ms
-2020-07-19 18:56:13 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 26464 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
-2020-07-19 18:56:13 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
+2020-07-19 18:56:13 [main] [KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 26464 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
+2020-07-19 18:56:13 [main] [KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
 2020-07-19 18:56:13 [main] [org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext] [line583] [INFO] - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4e928fbf: startup date [Sun Jul 19 18:56:13 EDT 2020]; root of context hierarchy
 2020-07-19 18:56:13 [background-preinit] [org.hibernate.validator.internal.util.Version] [line30] [INFO] - HV000001: Hibernate Validator 5.3.6.Final
 2020-07-19 18:56:14 [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [line327] [INFO] - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$f093d1cc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
@@ -490,11 +490,11 @@ Using default security password: c2a5c82f-5e84-4a5a-96f4-6441107a9138
 2020-07-19 18:56:34 [main] [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper] [line150] [INFO] - Found 1 custom documentation plugin(s)
 2020-07-19 18:56:34 [main] [springfox.documentation.spring.web.scanners.ApiListingReferenceScanner] [line41] [INFO] - Scanning for api listing references
 2020-07-19 18:56:35 [main] [org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer] [line201] [INFO] - Tomcat started on port(s): 8080 (http)
-2020-07-19 18:56:35 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line57] [INFO] - Started KnIotCloudBackendApplication in 21.822 seconds (JVM running for 22.993)
+2020-07-19 18:56:35 [main] [KnIotCloudBackendApplication] [line57] [INFO] - Started KnIotCloudBackendApplication in 21.822 seconds (JVM running for 22.993)
 2020-07-19 18:57:24 [http-nio-8080-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line489] [INFO] - FrameworkServlet 'dispatcherServlet': initialization started
 2020-07-19 18:57:24 [http-nio-8080-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line508] [INFO] - FrameworkServlet 'dispatcherServlet': initialization completed in 26 ms
-2020-07-19 20:44:51 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 13960 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
-2020-07-19 20:44:51 [main] [com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
+2020-07-19 20:44:51 [main] [KnIotCloudBackendApplication] [line48] [INFO] - Starting KnIotCloudBackendApplication on DESKTOP-KEVDEV-X with PID 13960 (D:\KNiotCloud-Backend\target\classes started by Owner in D:\KNiotCloud-Backend)
+2020-07-19 20:44:51 [main] [KnIotCloudBackendApplication] [line597] [INFO] - The following profiles are active: dev
 2020-07-19 20:44:51 [main] [org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext] [line583] [INFO] - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1130520d: startup date [Sun Jul 19 20:44:51 EDT 2020]; root of context hierarchy
 2020-07-19 20:44:52 [background-preinit] [org.hibernate.validator.internal.util.Version] [line30] [INFO] - HV000001: Hibernate Validator 5.3.6.Final
 2020-07-19 20:44:53 [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [line327] [INFO] - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c82cc55c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
@@ -560,18 +560,18 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
-	at com.phiotonia.kniotcloud.backend.KnIotCloudBackendApplication.main(KnIotCloudBackendApplication.java:21)
+	at KnIotCloudBackendApplication.main(KnIotCloudBackendApplication.java:21)
 Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is java.lang.NullPointerException
 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:189)
 	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:588)
 	... 20 more
 Caused by: java.lang.NullPointerException
 	at org.springframework.security.config.annotation.web.builders.HttpSecurity.addFilterBefore(HttpSecurity.java:1039)
-	at com.phiotonia.kniotcloud.backend.security.WebSecurityConfig.configure(WebSecurityConfig.java:43)
+	at WebSecurityConfig.configure(WebSecurityConfig.java:43)
 	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.getHttp(WebSecurityConfigurerAdapter.java:224)
 	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.init(WebSecurityConfigurerAdapter.java:315)
 	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.init(WebSecurityConfigurerAdapter.java:86)
-	at com.phiotonia.kniotcloud.backend.security.WebSecurityConfig$$EnhancerBySpringCGLIB$$9bd02bf9.init(<generated>)
+	at WebSecurityConfig$$EnhancerBySpringCGLIB$$9bd02bf9.init(<generated>)
 	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.init(AbstractConfiguredSecurityBuilder.java:371)
 	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.doBuild(AbstractConfiguredSecurityBuilder.java:325)
 	at org.springframework.security.config.annotation.AbstractSecurityBuilder.build(AbstractSecurityBuilder.java:41)

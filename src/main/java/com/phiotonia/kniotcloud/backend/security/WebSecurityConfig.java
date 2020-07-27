@@ -44,6 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/product/**").permitAll()
                 .antMatchers("/client/**").permitAll()
                 .antMatchers("/staff/**").permitAll()
+                .antMatchers("/contact/**").permitAll()
                 .antMatchers("/swagger-ui.html",
                         "/v2/api-docs", // swagger api json
                         "/swagger-resources/configuration/ui",

@@ -41,9 +41,9 @@ public class SwaggerConfig {
 
     private List<Parameter> setHeaderToken() {
         ParameterBuilder tokenPar = new ParameterBuilder();
-        List<Parameter> pars = new ArrayList<>();
+        List<Parameter> parameters = new ArrayList<>();
         tokenPar.name("Authorization").description("token").modelRef(new ModelRef("string")).parameterType("header").required(false).build();
-        pars.add(tokenPar.build());
-        return pars;
+        parameters.add(tokenPar.build());
+        return parameters;
     }
 }

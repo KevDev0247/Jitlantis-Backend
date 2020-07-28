@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Map;
 
-@Api(tags = {"File"})
+@Api(tags = {"file"})
 @RestController
 @RequestMapping("/file")
 public class FileController {

@@ -24,7 +24,7 @@ import static com.jitus.backend.API.utils.SystemConstants.UPLOAD_FILE_PATH;
  * the controller interacts with the particular service on the frontend.
  *
  * @author Kevin Zhijun Wang
- * @version 2020.0721
+ * @version 2020.0726
  */
 @Api(tags = {"file"})
 @RestController

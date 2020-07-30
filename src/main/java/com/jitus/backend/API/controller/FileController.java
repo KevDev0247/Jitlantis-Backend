@@ -18,6 +18,14 @@ import java.util.Map;
 
 import static com.jitus.backend.API.utils.SystemConstants.UPLOAD_FILE_PATH;
 
+/**
+ * The controller for File that handles HTTP requests and responses.
+ * In this frontend-backend-separated architecture,
+ * the controller interacts with the particular service on the frontend.
+ *
+ * @author Kevin Zhijun Wang
+ * @version 2020.0721
+ */
 @Api(tags = {"file"})
 @RestController
 @RequestMapping("/file")

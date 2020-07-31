@@ -30,7 +30,6 @@ mybatis-plus:
     mapUnderscoreToCamelCase: true
     cache-enabled: false
     call-setters-on-nulls: true
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 # Logger Config
 logging:

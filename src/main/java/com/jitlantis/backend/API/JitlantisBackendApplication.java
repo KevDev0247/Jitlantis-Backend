@@ -9,7 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 @EnableCaching
-@MapperScan("com.jitus.backend.API.dao")
+@MapperScan("com.jitlantis.backend.API.dao")
 public class JitlantisBackendApplication {
 
     @Bean

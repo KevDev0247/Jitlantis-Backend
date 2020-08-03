@@ -1,5 +1,11 @@
 # Jitus-Backend
 
+## Jitus Team Roles
+- Product Manager: Feng Yuan
+- UI & UX designer:  Ying Quan
+- Web Frontend: Kevin Zhijun Wang, Yonggang Su
+- Web Backend: Kevin Zhijun Wang
+
 ## SpringBootUsage
 
 1.create database

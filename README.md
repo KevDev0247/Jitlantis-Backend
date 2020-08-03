@@ -1,6 +1,6 @@
-# Jitus-Backend
+# Jitlantis-Backend
 
-## Jitus Team Roles and Contributions
+## Jitulantis Team
 Roles:
 - Feng Yuan: Cofounder, Product Manager
 - Yonggang Su: Cofounder, System Architect, Frontend Developer, Mobile Developer

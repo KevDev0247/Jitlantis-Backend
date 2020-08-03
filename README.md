@@ -1,6 +1,6 @@
 # Jitus-Backend
 
-## Jitus Team Roles
+## Jitus Team Roles and Contributions
 - Product Manager: Feng Yuan
 - UI & UX designer:  Ying Quan
 - Web Frontend: Kevin Zhijun Wang, Yonggang Su

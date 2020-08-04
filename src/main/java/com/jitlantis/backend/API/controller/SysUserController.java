@@ -154,4 +154,39 @@ public class SysUserController {
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
+
+    @ApiOperation(value = "Get User details")
+    @RequestMapping(value = "/getUser", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> getUser(Integer userId) {
+        Map<String, Object> map = new HashMap<>();
+        boolean response;
+
+        SysUser userRetrieved = sysUserService.selectById(userId);
+        if (userRetrieved != null) {
+            map.put("data", userRetrieved);
+        } else {
+            response = false;
+            map.put("data", response);
+        }
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Update User", notes = "User id cannot be changed")
+    @RequestMapping(value = "/updateUser", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> updateUser(@RequestParam SysUser sysUser) {
+        Map<String, Object> map = new HashMap<>();
+        boolean response;
+
+        SysUser sysUserRetrieved = sysUserService.selectById(sysUser.getId());
+        if (sysUserRetrieved != null) {
+            response = sysUserService.updateById(sysUser);
+            map.put("data", response);
+        } else {
+            response = false;
+        }
+        map.put("data", response);
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
 }

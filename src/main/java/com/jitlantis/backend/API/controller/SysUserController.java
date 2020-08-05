@@ -35,7 +35,7 @@ public class SysUserController {
     @Autowired
     private BCryptPasswordEncoder encoder;
 
-    @ApiOperation(value = "user sign up")
+    @ApiOperation(value = "User Sign Up")
     @ApiImplicitParams({
             @ApiImplicitParam(required = true, name = "user", value = "system user entity", dataType = "SysUser")
     })
@@ -62,6 +62,24 @@ public class SysUserController {
         } else {
             map.put("message", "Sign up failed");
         }
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Update User", notes = "User id cannot be changed")
+    @RequestMapping(value = "/updateUser", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> updateUser(@RequestParam SysUser sysUser) {
+        Map<String, Object> map = new HashMap<>();
+        boolean response;
+
+        SysUser sysUserRetrieved = sysUserService.selectById(sysUser.getId());
+        if (sysUserRetrieved != null) {
+            response = sysUserService.updateById(sysUser);
+            map.put("data", response);
+        } else {
+            response = false;
+        }
+        map.put("data", response);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
@@ -168,24 +186,6 @@ public class SysUserController {
             response = false;
             map.put("data", response);
         }
-
-        return new ResponseEntity<>(map, HttpStatus.OK);
-    }
-
-    @ApiOperation(value = "Update User", notes = "User id cannot be changed")
-    @RequestMapping(value = "/updateUser", method = RequestMethod.GET)
-    public ResponseEntity<Map<String, Object>> updateUser(@RequestParam SysUser sysUser) {
-        Map<String, Object> map = new HashMap<>();
-        boolean response;
-
-        SysUser sysUserRetrieved = sysUserService.selectById(sysUser.getId());
-        if (sysUserRetrieved != null) {
-            response = sysUserService.updateById(sysUser);
-            map.put("data", response);
-        } else {
-            response = false;
-        }
-        map.put("data", response);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }

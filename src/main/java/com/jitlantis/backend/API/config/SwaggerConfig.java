@@ -25,15 +25,15 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.jitus.backend.API.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.jitlantis.backend.API.controller"))
                 .paths(PathSelectors.any())
                 .build().globalOperationParameters(setHeaderToken());
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Jitus Backend API Documentation")
-                .description("Jitus Cloud Platform")
+                .title("Jitlantis Backend API Documentation")
+                .description("Jitlantis Cloud Platform")
                 .termsOfServiceUrl("https://www.campusbell.cn")
                 .version("1.0.0")
                 .build();

@@ -42,13 +42,22 @@ public class SysUserController {
     @RequestMapping(value = "/signUp", method = RequestMethod.POST)
     public ResponseEntity<Map<String, Object>> createUser(@RequestBody SysUser user) {
         Map<String, Object> map = new HashMap<>();
-        SysUser userRetrieved = sysUserService.findUserByName(user.getName());
         boolean response;
 
+        if (user.getName() == null || user.getPassword() == null) {
+            response = false;
+            map.put("data", response);
+            map.put("message", "Some fields are null");
+
+            return new ResponseEntity<>(map, HttpStatus.OK);
+        }
+
+        SysUser userRetrieved = sysUserService.findUserByName(user.getName());
         if (userRetrieved != null) {
             response = false;
             map.put("data", response);
             map.put("message", "The user already existed");
+
             return new ResponseEntity<>(map, HttpStatus.OK);
         }
 

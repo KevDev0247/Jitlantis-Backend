@@ -85,11 +85,9 @@ public class SysRoleController {
 
     @ApiOperation(value = "get all roles list")
     @RequestMapping(value = "/getRolesList", method = RequestMethod.GET)
-    public ResponseEntity<Map<String, Object>> getAllRoles() {
+    public ResponseEntity<Map<String, Object>> getAllRoles(String roleName, String remark) {
         Map<String, Object> map = new HashMap<>();
-        EntityWrapper<SysRole> wrapper = new EntityWrapper<>();
-        wrapper.orderBy("id", false);
-        map.put("list", sysRoleService.selectList(wrapper));
+        map.put("list", sysRoleService.selectQueryList(roleName, remark));
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 

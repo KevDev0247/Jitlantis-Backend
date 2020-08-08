@@ -165,11 +165,11 @@ public class CommonUtils {
         connection.setInstanceFollowRedirects(true);
         connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
         connection.connect();
-        DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream());
-        outputStream.writeBytes(params);
+        DataOutputStream out = new DataOutputStream(connection.getOutputStream());
+        out.writeBytes(params);
 
-        outputStream.flush();
-        outputStream.close();
+        out.flush();
+        out.close();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
         String line;
@@ -197,11 +197,11 @@ public class CommonUtils {
         connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
         connection.setRequestProperty(tokenName, token);
         connection.connect();
-        DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream());
-        outputStream.writeBytes(params);
+        DataOutputStream out = new DataOutputStream(connection.getOutputStream());
+        out.writeBytes(params);
 
-        outputStream.flush();
-        outputStream.close();
+        out.flush();
+        out.close();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
         String line;

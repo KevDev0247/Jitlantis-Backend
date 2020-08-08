@@ -137,7 +137,7 @@ public class SysMenuController {
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Get Role Menu List")
+    @ApiOperation(value = "get role menu list")
     @ApiImplicitParams({
             @ApiImplicitParam(required = true, paramType = "query", name = "roleId", value = "Role Id")
     })

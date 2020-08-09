@@ -24,7 +24,8 @@ import java.util.Map;
  * the controller interacts with the particular service on the frontend.
  *
  * @author Kevin Zhijun Wang
- * @version 2020.0720
+ * @see SysMenu
+ * created on 2020/07/20
  */
 @Api(tags = {"menu"})
 @RestController

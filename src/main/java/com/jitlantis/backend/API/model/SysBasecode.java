@@ -5,6 +5,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * The model for SysBasecode that maps the structure from the database entities.
+ * This model will carry the data in other sections
+ * SysBasecode refers to the foundation data in System section
+ * Foundation data refers to specific information on essential features that change rarely or slowly,
+ * such as area code, criteria, etc.
+ *
+ * @author Kevin Zhijun Wang
+ * created on 2020/07/23
+ */
 @Entity
 public class SysBasecode {
 

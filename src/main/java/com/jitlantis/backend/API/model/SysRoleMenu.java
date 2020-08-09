@@ -5,6 +5,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * The model for SysRoleMenu that maps the structure from the database entities.
+ * This model will carry the data in other sections
+ * SysRoleMenu stores the relationship between roles and the menu access of each roles in System section
+ *
+ * @author Kevin Zhijun Wang
+ * created on 2020/07/21
+ */
 @Entity
 public class SysRoleMenu {
 

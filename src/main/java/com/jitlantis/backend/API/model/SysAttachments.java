@@ -6,6 +6,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
+/**
+ * The model for SysAttachment that maps the structure from the database entities.
+ * This model will carry the data in other sections
+ * SysAttachment refers to the attachments in System section
+ *
+ * @author Kevin Zhijun Wang
+ * created on 2020/07/23
+ */
 @Entity
 public class SysAttachments {
 

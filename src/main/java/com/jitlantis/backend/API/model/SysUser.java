@@ -9,6 +9,14 @@ import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * The model for SysUser that maps the structure from the database entities.
+ * This model will carry the data in other sections
+ * SysUser refers to a user in System section
+ *
+ * @author Kevin Zhijun Wang
+ * created on 2020/07/17
+ */
 @Entity
 public class SysUser implements Serializable {
 

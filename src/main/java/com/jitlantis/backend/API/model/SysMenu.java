@@ -8,6 +8,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
+/**
+ * The model for SysMenu that maps the structure from the database entities.
+ * This model will carry the data in other sections
+ * SysMenu refers to the menu access assigned to each role in System section
+ *
+ * @author Kevin Zhijun Wang
+ * created on 2020/07/21
+ */
 @Entity
 public class SysMenu {
 

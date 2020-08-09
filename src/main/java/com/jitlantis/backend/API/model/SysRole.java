@@ -1,13 +1,19 @@
 package com.jitlantis.backend.API.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
+/**
+ * The model for SysRole that maps the structure from the database entities.
+ * This model will carry the data in other sections
+ * SysRole refers to the roles of different types of users in System section
+ *
+ * @author Kevin Zhijun Wang
+ * created on 2020/07/21
+ */
 @Entity
 public class SysRole {
 

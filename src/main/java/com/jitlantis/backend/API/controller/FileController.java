@@ -20,6 +20,7 @@ import static com.jitlantis.backend.API.utils.SystemConstants.UPLOAD_FILE_PATH;
  * the controller interacts with the particular service on the frontend.
  *
  * @author Kevin Zhijun Wang
+ * @see SysAttachments
  * created on 2020/07/26
  */
 @Api(tags = {"file"})

@@ -1,6 +1,7 @@
 package com.jitlantis.backend.API.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.jitlantis.backend.API.model.SysRoleMenu;
 import com.jitlantis.backend.API.utils.DeletedEnum;
 import com.jitlantis.backend.API.utils.StringUtils;
 import com.jitlantis.backend.API.model.SysMenu;
@@ -25,6 +26,7 @@ import java.util.Map;
  *
  * @author Kevin Zhijun Wang
  * @see SysMenu
+ * @see SysRoleMenu
  * created on 2020/07/20
  */
 @Api(tags = {"menu"})

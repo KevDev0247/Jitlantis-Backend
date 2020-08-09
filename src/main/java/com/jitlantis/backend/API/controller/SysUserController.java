@@ -1,5 +1,6 @@
 package com.jitlantis.backend.API.controller;
 
+import com.jitlantis.backend.API.model.SysRole;
 import com.jitlantis.backend.API.service.SysUserService;
 import com.jitlantis.backend.API.model.SysUser;
 import io.swagger.annotations.Api;
@@ -22,7 +23,9 @@ import java.util.Map;
  * the controller interacts with the particular service on the frontend.
  *
  * @author Kevin Zhijun Wang
+ * @see BCryptPasswordEncoder
  * @see SysUser
+ * @see SysRole
  * created on 2020/07/19
  */
 @Api(tags = {"User"})

@@ -30,6 +30,8 @@ import java.util.Map;
  *
  * @author Kevin Zhijun Wang
  * @see SysRole
+ * @see SysMenu
+ * @see SysRoleMenu
  * creatd on 2020/07/20
  */
 @Api(tags = {"role"})

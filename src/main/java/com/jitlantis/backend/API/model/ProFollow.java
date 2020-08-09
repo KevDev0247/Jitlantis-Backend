@@ -6,6 +6,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
+/**
+ * The model for ProFollow that maps the structure from the database entities.
+ * This model will carry the data in other sections
+ * ProFollow refers to the Project Follow-up records
+ *
+ * @author Kevin Zhijun Wang
+ * created on 2020/07/23
+ */
 @Entity
 public class ProFollow {
 

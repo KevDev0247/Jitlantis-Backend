@@ -144,7 +144,7 @@ public class SysMenuController {
     @ApiImplicitParams({
             @ApiImplicitParam(required = true, paramType = "query", name = "roleId", value = "Role Id")
     })
-    @GetMapping(value = "/roleMenuList")
+    @GetMapping(value = "/getRoleMenuList")
     public ResponseEntity<Map<String, Object>> getRoleMenuList(@RequestParam("roleId") Integer roleId) {
         Map<String, Object> map = new HashMap<>();
         List<SysMenu> menuList = sysMenuService.selectMenuListByRoleId(roleId);

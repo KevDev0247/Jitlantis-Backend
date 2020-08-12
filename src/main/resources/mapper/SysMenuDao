@@ -8,8 +8,7 @@
         SELECT
             m.*
         FROM
-            <include refid="tableName"></include> m
-        LEFT JOIN sys_role_menu rm ON rm.menu_id = m.id
+            <include refid="tableName"></include> m LEFT JOIN sys_role_menu rm ON rm.menu_id = m.id
         WHERE m.is_delete = 0 AND rm.role_id=${roleId} ORDER BY m.parent_id ASC
     </select>
 

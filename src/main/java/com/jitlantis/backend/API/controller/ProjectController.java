@@ -197,4 +197,13 @@ public class ProjectController {
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
+
+    @ApiOperation(value = "Project Details")
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> getProject(Integer id) {
+        Map<String, Object> map = new HashMap<>();
+        Project project = projectService.selectById(id);
+        map.put("data", project);
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
 }

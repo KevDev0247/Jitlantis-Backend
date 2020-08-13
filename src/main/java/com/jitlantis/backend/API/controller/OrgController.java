@@ -37,16 +37,16 @@ public class OrgController {
     @Autowired
     private SysOrganizationService orgService;
 
-    @ApiOperation(value = "create organization with JSON")
-    @RequestMapping(value = "/createOrgJson", method = RequestMethod.POST)
-    public ResponseEntity<Map<String, Object>> createOrganizationWithJson(@RequestBody SysOrganization sysOrganization) {
+    @ApiOperation(value = "create organization")
+    @RequestMapping(value = "/createOrg", method = RequestMethod.POST)
+    public ResponseEntity<Map<String, Object>> createOrganization(@RequestBody SysOrganization sysOrganization) {
         Map<String, Object> map = new HashMap<>();
         boolean response = orgService.insert(sysOrganization);
         map.put("data", response);
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "create organization")
+    @ApiOperation(value = "create organization with parameters")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", name = "orgParentNo", value = "Parent Organization", dataType = "int"),
             @ApiImplicitParam(required = true, paramType = "query", name = "orgName", value = "Full Name"),
@@ -57,8 +57,8 @@ public class OrgController {
             @ApiImplicitParam(required = true, paramType = "query", name = "orgFoundDate", value = "Found Date", dataType = "date"),
             @ApiImplicitParam(required = true, paramType = "query", name = "orgDissolveDate", value = "Dissolve Date", dataType = "date"),
     })
-    @RequestMapping(value = "/createOrg", method = RequestMethod.GET)
-    public ResponseEntity<Map<String, Object>> createOrganization(
+    @RequestMapping(value = "/createOrgWithParam", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> createOrganizationWithParams(
             @RequestParam(value = "orgParentNo", required = false) Integer orgParentNo, @RequestParam(value = "orgAbr") String orgAbr,
             @RequestParam(value = "orgName") String orgName, @RequestParam(value = "orgStatus", required = false) Integer orgStatus,
             @RequestParam(value = "orgNo") String orgNo, @RequestParam(value = "sort", required = false) Integer sort,

@@ -1,5 +1,7 @@
 package com.jitlantis.backend.API.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,24 +32,32 @@ public class Project {
 
     private Integer clientId;
 
+    @JsonFormat(pattern="yyyy/MM/dd",timezone = "GMT+8")
     private Date createTime;
 
+    @JsonFormat(pattern="yyyy/MM/dd",timezone = "GMT+8")
     private Date updateTime;
 
     private Integer isDelete;
 
+    @JsonFormat(pattern="yyyy/MM/dd",timezone = "GMT+8")
     private Date contractStartTime;
 
+    @JsonFormat(pattern="yyyy/MM/dd",timezone = "GMT+8")
     private Date contractEndTime;
 
+    @JsonFormat(pattern="yyyy/MM/dd",timezone = "GMT+8")
     private Date deliveryTime;
 
+    @JsonFormat(pattern="yyyy/MM/dd",timezone = "GMT+8")
     private Date acceptTime;
 
     private String guaranteeType;
 
+    @JsonFormat(pattern="yyyy/MM/dd",timezone = "GMT+8")
     private Date guaranteeDueTime;
 
+    @JsonFormat(pattern="yyyy/MM/dd",timezone = "GMT+8")
     private Date guaranteeMonth;
 
     private Integer staffId;

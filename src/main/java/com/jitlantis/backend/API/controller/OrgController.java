@@ -13,10 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -40,6 +37,45 @@ public class OrgController {
     @Autowired
     private SysOrganizationService orgService;
 
+    @ApiOperation(value = "create organization with JSON")
+    @RequestMapping(value = "/createOrgJson", method = RequestMethod.POST)
+    public ResponseEntity<Map<String, Object>> createOrganizationWithJson(@RequestBody SysOrganization sysOrganization) {
+        Map<String, Object> map = new HashMap<>();
+        boolean response = orgService.insert(sysOrganization);
+        map.put("data", response);
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "create organization")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "orgParentNo", value = "Parent Organization", dataType = "int"),
+            @ApiImplicitParam(required = true, paramType = "query", name = "orgName", value = "Full Name"),
+            @ApiImplicitParam(required = true, paramType = "query", name = "orgAbr", value = "Abbreviation"),
+            @ApiImplicitParam(paramType = "query", name = "orgStatus", value = "Status", dataType = "int"),
+            @ApiImplicitParam(required = true, paramType = "query", name = "orgNo", value = "Number"),
+            @ApiImplicitParam(required = true, paramType = "query", name = "sort", value = "Sorted Number", dataType = "int"),
+            @ApiImplicitParam(required = true, paramType = "query", name = "orgFoundDate", value = "Found Date", dataType = "date"),
+            @ApiImplicitParam(required = true, paramType = "query", name = "orgDissolveDate", value = "Dissolve Date", dataType = "date"),
+    })
+    @RequestMapping(value = "/createOrg", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> createOrganization(
+            @RequestParam(value = "orgParentNo", required = false) Integer orgParentNo, @RequestParam(value = "orgAbr") String orgAbr,
+            @RequestParam(value = "orgName") String orgName, @RequestParam(value = "orgStatus", required = false) Integer orgStatus,
+            @RequestParam(value = "orgNo") String orgNo, @RequestParam(value = "sort", required = false) Integer sort,
+            @RequestParam(value = "orgFoundDate") @DateTimeFormat Date orgFoundDate,
+            @RequestParam(value = "orgDissolveDate") @DateTimeFormat Date orgDissolveDate) {
+        Map<String, Object> map = new HashMap<>();
+        if (!StringUtils.isNotBlank(orgParentNo.toString())) {
+            orgParentNo = 0;
+        }
+
+        boolean response = orgService
+                .createOrg(orgParentNo, orgName, orgAbr, orgStatus, orgNo, sort, orgFoundDate, orgDissolveDate);
+        map.put("data", response);
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
     @ApiOperation(value = "get organization list")
     @GetMapping(value = "/getOrgList")
     public ResponseEntity<Map<String, Object>> getOrgList(@RequestParam("orgId") Integer orgId) {
@@ -58,35 +94,6 @@ public class OrgController {
             }
         }
         map.put("data", orgList);
-
-        return new ResponseEntity<>(map, HttpStatus.OK);
-    }
-
-    @ApiOperation(value = "create organization")
-    @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "query", name = "orgParentNo", value = "Parent Organization", dataType = "int"),
-            @ApiImplicitParam(required = true, paramType = "query", name = "orgName", value = "Full Name"),
-            @ApiImplicitParam(required = true, paramType = "query", name = "orgAbr", value = "Abbreviation"),
-            @ApiImplicitParam(paramType = "query", name = "orgStatus", value = "Status", dataType = "int"),
-            @ApiImplicitParam(required = true, paramType = "query", name = "orgNo", value = "Number"),
-            @ApiImplicitParam(required = true, paramType = "query", name = "sort", value = "Sorted Number", dataType = "int"),
-            @ApiImplicitParam(required = true, paramType = "query", name = "orgFoundDate", value = "Found Date", dataType = "date"),
-            @ApiImplicitParam(required = true, paramType = "query", name = "orgDissolveDate", value = "Dissolve Date", dataType = "date"),
-    })
-    public ResponseEntity<Map<String, Object>> createOrganization(
-            @RequestParam(value = "orgParentNo", required = false) Integer orgParentNo, @RequestParam(value = "orgAbr") String orgAbr,
-            @RequestParam(value = "orgName") String orgName, @RequestParam(value = "orgStatus", required = false) Integer orgStatus,
-            @RequestParam(value = "orgNo") String orgNo, @RequestParam(value = "sort", required = false) Integer sort,
-            @RequestParam(value = "orgFoundDate") @DateTimeFormat Date orgFoundDate,
-            @RequestParam(value = "orgDissolveDate") @DateTimeFormat Date orgDissolveDate) {
-        Map<String, Object> map = new HashMap<>();
-        if (!StringUtils.isNotBlank(orgParentNo.toString())) {
-            orgParentNo = 0;
-        }
-
-        boolean response = orgService
-                .createOrg(orgParentNo, orgName, orgAbr, orgStatus, orgNo, sort, orgFoundDate, orgDissolveDate);
-        map.put("data", response);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }

@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.parser.Entity;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -103,6 +104,32 @@ public class ClientController {
         } else {
             map.put("message", "deletion failed");
         }
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "query client list", notes = "no pagination")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "name", value = "Name"),
+            @ApiImplicitParam(paramType = "query", name = "area", value = "Area"),
+    })
+    @RequestMapping(value = "/queryClientList", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> queryClientList(
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "name", required = false) String area) {
+        Map<String, Object> map = new HashMap<>();
+        EntityWrapper<Client> wrapper = new EntityWrapper<>();
+
+        if (StringUtils.isNotBlank(name)) {
+            wrapper.eq("name", name);
+        }
+        if (StringUtils.isNotBlank(area)) {
+            wrapper.like("area", area);
+        }
+
+        wrapper.eq("is_delete", DeletedEnum.N.value());
+        wrapper.orderBy("id", true);
+        map.put("list", clientService.selectList(wrapper));
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }

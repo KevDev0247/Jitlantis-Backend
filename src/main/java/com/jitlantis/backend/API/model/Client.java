@@ -20,6 +20,8 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    private Integer orgId;
+
     private String name;
 
     private String telNo;
@@ -38,6 +40,10 @@ public class Client {
 
     public Integer getId() {
         return id;
+    }
+
+    public Integer getOrgId() {
+        return orgId;
     }
 
     public String getName() {
@@ -74,6 +80,10 @@ public class Client {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public void setOrgId(Integer orgId) {
+        this.orgId = orgId;
     }
 
     public void setName(String name) {

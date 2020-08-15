@@ -20,10 +20,10 @@ Contributions:
 - UI & UX design: Ying Quan
 
 ## System Design
-![System Design](https://user-images.githubusercontent.com/58012125/90317906-8d2dca00-defa-11ea-8d09-652bf7375634.png)
+![System Design](https://user-images.githubusercontent.com/58012125/90318570-5f974f80-deff-11ea-908b-413f72bf750d.png)
 
 ## Architecture
-![Architecture](https://user-images.githubusercontent.com/58012125/90317935-c108ef80-defa-11ea-9a93-7bc2473e5289.png)
+![Architecture](https://user-images.githubusercontent.com/58012125/90318700-47740000-df00-11ea-98ee-29f74af087fe.png)
 
 
 ## SpringBootUsage

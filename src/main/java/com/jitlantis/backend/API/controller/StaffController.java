@@ -101,13 +101,13 @@ public class StaffController {
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", name = "dept", value = "department"),
             @ApiImplicitParam(paramType = "query", name = "company", value = "company"),
-            @ApiImplicitParam(paramType = "query", name = "s_code", value = "s_code"),
+            @ApiImplicitParam(paramType = "query", name = "name", value = "name"),
     })
     @RequestMapping(value = "/queryStaffList", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> queryStaffList(
             @RequestParam(value = "dept", required = false) String dept,
             @RequestParam(value = "company", required = false) String company,
-            @RequestParam(value = "s_code", required = false) String s_code) {
+            @RequestParam(value = "name", required = false) String name) {
         Map<String, Object> map = new HashMap<>();
         EntityWrapper<Staff> wrapper = new EntityWrapper<>();
 
@@ -117,8 +117,8 @@ public class StaffController {
         if (StringUtils.isNotBlank(company)) {
             wrapper.eq("company", company);
         }
-        if (StringUtils.isNotBlank(s_code)) {
-            wrapper.eq("s_code", s_code);
+        if (StringUtils.isNotBlank(name)) {
+            wrapper.eq("name", name);
         }
 
         wrapper.eq("is_delete", DeletedEnum.N.value());

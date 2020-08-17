@@ -24,17 +24,31 @@ public class SysUser implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    private Integer orgId;
-
     private String name;
 
     private String username;
+
+    private String realName;
 
     private String email;
 
     private String password;
 
     private Integer roleId;
+
+    private Integer orgId;
+
+    private String profession;
+
+    private String telno;
+
+    private String qq;
+
+    private String wechat;
+
+    private String sCode;
+
+    private String address;
 
     private Date createTime;
 
@@ -83,6 +97,34 @@ public class SysUser implements Serializable {
         return isDelete;
     }
 
+    public String getRealName() {
+        return realName;
+    }
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public String getTelno() {
+        return telno;
+    }
+
+    public String getQq() {
+        return qq;
+    }
+
+    public String getWechat() {
+        return wechat;
+    }
+
+    public String getsCode() {
+        return sCode;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -109,6 +151,34 @@ public class SysUser implements Serializable {
 
     public void setRoleId(Integer roleId) {
         this.roleId = roleId;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
+
+    public void setTelno(String telno) {
+        this.telno = telno;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
+
+    public void setWechat(String wechat) {
+        this.wechat = wechat;
+    }
+
+    public void setsCode(String sCode) {
+        this.sCode = sCode;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public void setCreateTime(Date createTime) {

@@ -17,7 +17,7 @@
             <include refid="tableName"></include>
             WHERE
             <if test="orgName != null">org_name LIKE '%${orgName}%' AND </if>
-            <if test="orgAbr != null">org_abr LIKE '%${orgAbr}%'</if>
+            <if test="orgAbr != null">org_abr LIKE '%${orgAbr}%' AND </if>
             1 = 1
             ORDER BY id DESC;
     </select>

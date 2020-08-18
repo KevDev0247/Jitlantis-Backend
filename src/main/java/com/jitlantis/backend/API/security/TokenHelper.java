@@ -20,6 +20,7 @@ public class TokenHelper {
                 .setSubject(username)
                 .setIssuedAt(generateCurrentDate())
                 .setExpiration(generateExpirationDate())
+                .signWith(SIGNATURE_ALGORITHM, SECRETE)
                 .compact();
     }
 

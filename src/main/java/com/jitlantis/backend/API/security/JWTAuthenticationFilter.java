@@ -19,7 +19,7 @@ public class JWTAuthenticationFilter extends AbstractAuthenticationProcessingFil
     private LoginService loginService;
 
     public JWTAuthenticationFilter(LoginService loginService, AuthenticationSuccessHandler successHandler) {
-        super(new AntPathRequestMatcher("/Login", "POST"));
+        super(new AntPathRequestMatcher("/login", "POST"));
         this.setAuthenticationSuccessHandler(successHandler);
         this.loginService = loginService;
     }

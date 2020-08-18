@@ -32,7 +32,7 @@ import java.util.Map;
 @Api(tags = {"Organization"})
 @RestController
 @RequestMapping("/org")
-public class OrgController {
+public class SysOrgController {
 
     @Autowired
     private SysOrganizationService orgService;

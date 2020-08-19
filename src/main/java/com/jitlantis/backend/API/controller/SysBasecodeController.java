@@ -75,7 +75,7 @@ public class SysBasecodeController {
     @RequestMapping(value = "/deleteBasecode", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> deleteSysBasecode(Integer sysBasecodeId) {
         Map<String, Object> map = new HashMap<>();
-        boolean response = true;
+        boolean response;
 
         SysBasecode basecode = sysBasecodeService.selectById(sysBasecodeId);
         if (basecode == null) {
@@ -122,7 +122,6 @@ public class SysBasecodeController {
             @RequestParam(value = "typename", required = false) String typeName,
             @RequestParam(value = "basecodename", required = false) String basecodeName) {
         Map<String, Object> map = new HashMap<>();
-        boolean response;
 
         EntityWrapper<SysBasecode> wrapper = new EntityWrapper<>();
         if (StringUtils.isNotBlank(typeName)) {

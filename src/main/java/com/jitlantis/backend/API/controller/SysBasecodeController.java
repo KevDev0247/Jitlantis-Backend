@@ -1,6 +1,9 @@
 package com.jitlantis.backend.API.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.jitlantis.backend.API.model.Client;
+import com.jitlantis.backend.API.model.ClientProduct;
+import com.jitlantis.backend.API.model.CtaFollow;
 import com.jitlantis.backend.API.model.SysBasecode;
 import com.jitlantis.backend.API.service.SysBasecodeService;
 import com.jitlantis.backend.API.utils.StringUtils;
@@ -16,6 +19,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The controller for Basecode that handles HTTP requests and responses.
+ * In this frontend-backend-separated architecture,
+ * the controller interacts with the particular service on the frontend.
+ *
+ * @author Kevin Zhijun Wang
+ * @see SysBasecode
+ * created on 2020/08/18
+ */
 @Api(tags = "Basic Data")
 @RestController
 @RequestMapping("/basecode")
@@ -24,7 +36,7 @@ public class SysBasecodeController {
     @Autowired
     private SysBasecodeService sysBasecodeService;
 
-    @ApiOperation(value = "Create Basic Data")
+    @ApiOperation(value = "create basic data")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "sysBasecode", value = "Foundation Data", required = true, dataType = "SysBasecode")
     })
@@ -37,7 +49,7 @@ public class SysBasecodeController {
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Update Basic Data")
+    @ApiOperation(value = "update basic data")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "sysBasecode", value = "Foundation Data", required = true, dataType = "SysBasecode")
     })
@@ -56,7 +68,7 @@ public class SysBasecodeController {
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Delete Basic Data")
+    @ApiOperation(value = "delete basic data")
     @ApiImplicitParams({
             @ApiImplicitParam(required = true, paramType = "query", name = "sysBasecodeId", value = "Foundation Data Id")
     })
@@ -85,7 +97,22 @@ public class SysBasecodeController {
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Query Basic Data List")
+    @ApiOperation(value = "get basic data details")
+    @RequestMapping(value = "/getBasecodeDetail", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> getBasecode(String id) {
+        Map<String, Object> map = new HashMap<>();
+
+        EntityWrapper<SysBasecode> wrapper = new EntityWrapper<>();
+        if (StringUtils.isNotBlank(id)) {
+            wrapper.eq("basecode", id);
+        }
+        SysBasecode basecode = sysBasecodeService.selectOne(wrapper);
+        map.put("data", basecode);
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "query basic data list")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", name = "typename", value = "Data Type Name"),
             @ApiImplicitParam(paramType = "query", name = "basecodename", value = "Basic Data Name"),

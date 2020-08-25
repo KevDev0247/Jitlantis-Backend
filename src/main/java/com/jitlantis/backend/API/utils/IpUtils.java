@@ -30,6 +30,14 @@ public class IpUtils {
         return "0:0:0:0:0:0:0:1".equals(ip) ? "127.0.0.1" : ip;
     }
 
+    public static boolean isInternalIp(String ip) {
+        byte[] address = textToNumericFormatV4(ip);
+        if (address == null) {
+            return false;
+        }
+        return internalIp(address) || "127.0.0.1".equals(ip);
+    }
+
     public static boolean internalIp(byte[] address) {
         final byte b0 = address[0];
         final byte b1 = address[1];

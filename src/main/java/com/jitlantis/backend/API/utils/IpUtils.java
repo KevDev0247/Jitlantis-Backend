@@ -1,6 +1,5 @@
 package com.jitlantis.backend.API.utils;
 
-import javax.print.DocFlavor;
 import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
 import java.net.UnknownHostException;

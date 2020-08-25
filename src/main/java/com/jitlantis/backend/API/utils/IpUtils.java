@@ -1,5 +1,6 @@
 package com.jitlantis.backend.API.utils;
 
+import javax.print.DocFlavor;
 import javax.servlet.http.HttpServletRequest;
 
 public class IpUtils {
@@ -29,6 +30,35 @@ public class IpUtils {
         return "0:0:0:0:0:0:0:1".equals(ip) ? "127.0.0.1" : ip;
     }
 
+    public static boolean internalIp(byte[] address) {
+        final byte b0 = address[0];
+        final byte b1 = address[1];
+
+        final byte SECTION_1 = (byte) 0x0A;
+
+        final byte SECTION_2 = (byte) 0xAC;
+        final byte SECTION_3 = (byte) 0x10;
+        final byte SECTION_4 = (byte) 0x1F;
+
+        final byte SECTION_5 = (byte) 0xC0;
+        final byte SECTION_6 = (byte) 0xA8;
+        switch (b0) {
+            case SECTION_1:
+                return true;
+            case SECTION_2:
+                if (b1 >= SECTION_3 && b1 <= SECTION_4) {
+                    return true;
+                }
+            case SECTION_5:
+                switch (b1) {
+                    case SECTION_6:
+                        return true;
+                }
+            default:
+                return false;
+        }
+    }
+
     public static byte[] textToNumericFormatV4(String text) {
         if (text.length() == 0) {
             return null;
@@ -53,7 +83,7 @@ public class IpUtils {
                     break;
                 case 2:
                     parsedElement = Long.parseLong(elements[0]);
-                    if ((parsedElement < 0L) || parsedElement > 4294967295L) {
+                    if ((parsedElement < 0L) || parsedElement > 255L) {
                         return null;
                     }
 

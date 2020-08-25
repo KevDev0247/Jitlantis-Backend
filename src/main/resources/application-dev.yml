@@ -3,14 +3,14 @@ server:
 
 spring:
   datasource:
-    username: KevDev
-    password: PHdevdev2020
-    url: jdbc:mysql://52.229.167.195:3306/kniotclouddb
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/jitlantisclouddb
     driver-class-name: com.mysql.jdbc.Driver
 
 mybatis:
   mapper-locations: classpath:mapper/*Dao.xml
-  type-aliases-package: com.phiotonia.kniotcloud.backend.*
+  type-aliases-package: com.jitlantis.backend.API.*
 
 #showSql
 logging:

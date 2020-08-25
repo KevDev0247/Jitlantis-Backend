@@ -1,5 +1,6 @@
 package com.jitlantis.backend.API.controller;
 
+import com.jitlantis.backend.API.annotation.MyLog;
 import com.jitlantis.backend.API.model.SysRole;
 import com.jitlantis.backend.API.service.SysUserService;
 import com.jitlantis.backend.API.model.SysUser;
@@ -102,6 +103,7 @@ public class SysUserController {
             @ApiImplicitParam(required = true, paramType = "query", name = "userId", value = "userId")
     })
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    @MyLog(value = "delete a user")
     public ResponseEntity<Map<String, Object>> deleteUser(Integer userId) {
         Map<String, Object> map = new HashMap<>();
         boolean response = sysUserService.delete(userId);
@@ -122,6 +124,7 @@ public class SysUserController {
             @ApiImplicitParam(paramType = "query", name = "email", value = "email"),
     })
     @RequestMapping(value = "/queryUsersList", method = RequestMethod.GET)
+    @MyLog(value = "query users list")
     public ResponseEntity<Map<String, Object>> queryUsersList(
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "email", required = false) String email) {

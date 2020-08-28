@@ -2,6 +2,7 @@ package com.jitlantis.backend.API.base;
 
 import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.format.FastDateFormat;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -156,5 +157,53 @@ public class WolfConverter {
             return list;
         }
         return null;
+    }
+
+    public List<String> getStringListFromString(String field) {
+        if (field != null && field.length() > 0) {
+            return Arrays.asList(field.split(","));
+        }
+        return null;
+    }
+
+    public List<String> getStringListFromLongList(List<Long> field) {
+        if (field != null && field.size() > 0) {
+            List<String> list = new ArrayList<>();
+            for (long id : field) {
+                String string = String.valueOf(id);
+                list.add(string);
+            }
+            return list;
+        }
+        return null;
+    }
+
+    public List<Long> getIntersection(List<Long> list1, List<Long> list2) {
+        if (list1 == null || list1.size() == 0) {
+            return list2;
+        }
+        if (list2 == null || list2.size() == 0) {
+            return list1;
+        }
+        List<Long> resultList = new ArrayList<>();
+        for (long item : list1) {
+            if (list2.contains(item)) {
+                resultList.add(item);
+            }
+        }
+        return resultList;
+    }
+
+    public List<Long> getUnion(List<Long> list1, List<Long> list2) {
+        if (list1 == null || list1.size() == 0) {
+            return list2;
+        }
+        if (list2 == null || list2.size() == 0) {
+            return list1;
+        }
+        list2.removeAll(list1);
+        list1.removeAll(list2);
+        
+        return list1;
     }
 }

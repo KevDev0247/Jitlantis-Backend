@@ -2,15 +2,13 @@ package com.jitlantis.backend.API.base;
 
 import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.format.FastDateFormat;
+import com.alibaba.fastjson.JSON;
 import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class WolfConverter {
@@ -203,7 +201,100 @@ public class WolfConverter {
         }
         list2.removeAll(list1);
         list1.removeAll(list2);
-        
+
         return list1;
     }
+
+    public <T> List<T> convertJsonStringToList(String jsonString, Class<T> clazz) {
+        if (jsonString != null && jsonString.length() > 0) {
+            return JSON.parseArray(jsonString, clazz);
+        }
+        return null;
+    }
+
+    public <T> List<T> mergeListByAny(Class<T> clazz, List<?> refList, Map<String, String> rules,
+                                      Map<String, WolfEntityGroup<?>> assistMap) {
+        if (clazz != null && refList != null && refList.size() > 0) {
+            List<T> resultList = new ArrayList<>();
+            for (Object object : refList) {
+                T t = convertObjectToBean(object, clazz);
+                if (rules != null && rules.size() > 0) {
+                    for (Map.Entry<String, String> entry : rules.entrySet()) {
+                        String keyField = entry.getKey();
+                        String valueField = entry.getValue();
+                        Object valueFieldValue = WolfBeanUtil.getFieldValue(object, valueField);
+                        WolfEntityGroup<?> wolfEntityGroup = null;
+                        if (assistMap != null && assistMap.containsKey(keyField)) {
+                            wolfEntityGroup = assistMap.get(keyField);
+                        }
+                        Object valueObject = null;
+                        if (wolfEntityGroup != null && valueFieldValue != null) {
+                            valueObject = wolfEntityGroup.getTDataByValue(String.valueOf(valueFieldValue));
+                        }
+                        WolfBeanUtil.setFieldValue(t, keyField, valueObject);
+                    }
+                }
+                resultList.add(t);
+            }
+            return resultList;
+        }
+        return null;
+    }
+
+    public <T> Map<String, T> groupIdByField(Class<T> clazz, List<?> entityList, String dateField, String formatPattern) {
+        if (entityList != null && entityList.size() > 0) {
+            Map<String, T> resultMap = new HashMap<>();
+            String tmpField = "id";
+            String pattern;
+            if (dateField != null && dateField.trim().length() > 0) {
+                tmpField = dateField.trim();
+            }
+            for (Object object : entityList) {
+                T t = convertObjectToBean(object, clazz);
+                Map<String, Object> map = convertBeanToMap(object);
+                if (map.containsKey(tmpField)) {
+                    String keyValue = String.valueOf(map.get(tmpField));
+                    if (formatPattern != null && formatPattern.trim().length() > 0) {
+                        pattern = formatPattern.trim();
+                        keyValue = FastDateFormat.getInstance(pattern).format(map.get(tmpField));
+                    }
+                    resultMap.put(keyValue.trim(), t);
+                }
+            }
+            return resultMap;
+        }
+        return null;
+    }
+
+    public <T> Map<String, List<T>> groupListsByField(Class<T> clazz, List<?> entityList, String dateField, String formatPattern) {
+        if (entityList != null && entityList.size() > 0) {
+            Map<String, List<T>> resultMap = new HashMap<>();
+            String tmpField = "id";
+            String pattern;
+            if (dateField != null && dateField.trim().length() > 0) {
+                tmpField = dateField.trim();
+            }
+            for (Object object : entityList) {
+                T t = convertObjectToBean(object, clazz);
+                Map<String, Object> map = convertBeanToMap(object);
+                if (map.containsKey(tmpField)) {
+                    List<T> list = new ArrayList<>();
+                    String keyValue = String.valueOf(map.get(tmpField));
+                    if (formatPattern != null && formatPattern.trim().length() > 0) {
+                        pattern = formatPattern.trim();
+                        keyValue = FastDateFormat.getInstance(pattern).format(map.get(tmpField));
+                    }
+                    if (resultMap.containsKey(keyValue.trim())) {
+                        list = resultMap.get(keyValue.trim());
+                    }
+                    list.add(t);
+                    resultMap.put(keyValue.trim(), list);
+                }
+            }
+            return resultMap;
+        }
+        return null;
+    }
+
+    
 }

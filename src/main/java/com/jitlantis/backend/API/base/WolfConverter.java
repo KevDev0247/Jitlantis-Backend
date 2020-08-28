@@ -157,6 +157,14 @@ public class WolfConverter {
         return null;
     }
 
+    public List<String> getStringListFromSingleEntity(String field) {
+        if (field != null && field.length() > 0) {
+            String[] result = field.split(",");
+            return new ArrayList<>(Arrays.asList(result));
+        }
+        return null;
+    }
+
     public List<String> getStringListFromString(String field) {
         if (field != null && field.length() > 0) {
             return Arrays.asList(field.split(","));
@@ -203,13 +211,6 @@ public class WolfConverter {
         list1.removeAll(list2);
 
         return list1;
-    }
-
-    public <T> List<T> convertJsonStringToList(String jsonString, Class<T> clazz) {
-        if (jsonString != null && jsonString.length() > 0) {
-            return JSON.parseArray(jsonString, clazz);
-        }
-        return null;
     }
 
     public <T> List<T> mergeListByAny(Class<T> clazz, List<?> refList, Map<String, String> rules,
@@ -296,5 +297,34 @@ public class WolfConverter {
         return null;
     }
 
-    
+    public <T> List<T> convertJsonStringToList(String jsonString, Class<T> clazz) {
+        if (jsonString != null && jsonString.length() > 0) {
+            return JSON.parseArray(jsonString, clazz);
+        }
+        return null;
+    }
+
+    public List<String> convertJsonStringToList(String jsonString) {
+        if (jsonString != null && jsonString.length() > 0) {
+            String[] pathArray = (jsonString.substring(1, jsonString.length() - 1)).split(",");
+            if (pathArray.length > 1) {
+                pathArray[0] = pathArray[0].replace("[", "");
+                pathArray[pathArray.length - 1] = pathArray[pathArray.length - 1].replace("]", "");
+                for (int i = 0; i < pathArray.length; i++) {
+                    pathArray[i] = pathArray[i].replace("\"", "");
+                }
+            }
+            pathArray[0] = pathArray[0].replace("[", "").replace("]", "");
+            if (pathArray[0].equals("")) {
+                return null;
+            }
+            return Arrays.asList(pathArray);
+        }
+
+        return null;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new WolfConverter().convertJsonStringToList("[]"));
+    }
 }

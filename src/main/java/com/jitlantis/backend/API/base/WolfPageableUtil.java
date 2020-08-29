@@ -36,7 +36,6 @@ public class WolfPageableUtil {
         } else {
             directionList.add(Direction.ASC);
         }
-
         return directionList;
     }
 
@@ -51,10 +50,8 @@ public class WolfPageableUtil {
             } else {
                 sortList.add(sort.trim());
             }
-
             return sortList;
         }
-        
         return null;
     }
 }

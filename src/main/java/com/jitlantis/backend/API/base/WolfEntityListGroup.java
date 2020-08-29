@@ -48,12 +48,12 @@ public class WolfEntityListGroup<T> implements WolfEntityGroup<T> {
     }
 
     @Override
-    public Object getTDataByValue(String value) {
+    public List<T> getTDataByValue(String value) {
         if (globalMap != null && globalMap.size() > 0 && value != null && value.trim().length() > 0) {
             if (globalMap.containsKey(value.trim())) {
                 return globalMap.get(value.trim());
             }
         }
-        return new ArrayList<T>();
+        return new ArrayList<>();
     }
 }

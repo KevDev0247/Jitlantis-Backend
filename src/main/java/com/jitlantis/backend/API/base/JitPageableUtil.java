@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class WolfPageableUtil {
+public class JitPageableUtil {
 
     private final int defaultPage = 1;
 

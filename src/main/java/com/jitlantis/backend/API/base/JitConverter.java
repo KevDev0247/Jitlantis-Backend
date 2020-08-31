@@ -3,7 +3,6 @@ package com.jitlantis.backend.API.base;
 import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.format.FastDateFormat;
 import com.alibaba.fastjson.JSON;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -11,42 +10,42 @@ import org.springframework.util.StringUtils;
 import java.util.*;
 
 @Component
-public class WolfConverter {
+public class JitConverter {
 
     @Autowired
-    private WolfPageableUtil wolfPageableUtil;
+    private JitPageableUtil jitPageableUtil;
 
     private final List<String> pageKeyList = new ArrayList<>(Arrays.asList("page", "limit", "sort", "order"));
 
     public <T> T convertMapToBean(Map<?, ?> map, Class<T> clazz) {
         if (map != null && map.size() > 0 && clazz != null) {
-            return WolfBeanUtil.mapToBeanIgnoreCase(map, clazz, true);
+            return JitBeanUtil.mapToBeanIgnoreCase(map, clazz, true);
         }
         return null;
     }
 
     public <T> T convertObjectToBean(Object bean, Class<T> clazz) {
-        return WolfBeanUtil.mapToBeanIgnoreCase(convertBeanToMap(bean), clazz, true);
+        return JitBeanUtil.mapToBeanIgnoreCase(convertBeanToMap(bean), clazz, true);
     }
 
     public Map<String, Object> convertBeanToMap(Object bean) {
         if (bean != null) {
-            return WolfBeanUtil.beanToMap(bean, false, false);
+            return JitBeanUtil.beanToMap(bean, false, false);
         }
         return null;
     }
 
     public Map<String, Object> mergeBeanToMap(Object bean, Map<String, Object> targetMap, boolean ignoreNullValue) {
         if (bean != null && targetMap != null) {
-            return WolfBeanUtil.beanToMap(bean, targetMap, false, ignoreNullValue);
+            return JitBeanUtil.beanToMap(bean, targetMap, false, ignoreNullValue);
         }
         return null;
     }
 
     public <T> T mergeMapToBean(Class<T> clazz, Map<String, Object> sourceMap, Object bean) {
-        T t = WolfBeanUtil.mapToBeanIgnoreCase(sourceMap, clazz, true);
+        T t = JitBeanUtil.mapToBeanIgnoreCase(sourceMap, clazz, true);
         if (t != null && bean != null) {
-            WolfBeanUtil.copyProperties(bean, t);
+            JitBeanUtil.copyProperties(bean, t);
             return t;
         }
         return null;
@@ -135,7 +134,7 @@ public class WolfConverter {
                 Map<String, Object> map = convertBeanToMap(object);
                 if (map.containsKey(tmpField)) {
                     String fieldValue = FastDateFormat.getInstance(pattern).format(map.get(tmpField));
-                    WolfBeanUtil.setFieldValue(t, tmpField, fieldValue);
+                    JitBeanUtil.setFieldValue(t, tmpField, fieldValue);
                 }
                 list.add(t);
             }
@@ -214,7 +213,7 @@ public class WolfConverter {
     }
 
     public <T> List<T> mergeListByAny(Class<T> clazz, List<?> refList, Map<String, String> rules,
-                                      Map<String, WolfEntityGroup<?>> assistMap) {
+                                      Map<String, JitEntityGroup<?>> assistMap) {
         if (clazz != null && refList != null && refList.size() > 0) {
             List<T> resultList = new ArrayList<>();
             for (Object object : refList) {
@@ -223,16 +222,16 @@ public class WolfConverter {
                     for (Map.Entry<String, String> entry : rules.entrySet()) {
                         String keyField = entry.getKey();
                         String valueField = entry.getValue();
-                        Object valueFieldValue = WolfBeanUtil.getFieldValue(object, valueField);
-                        WolfEntityGroup<?> wolfEntityGroup = null;
+                        Object valueFieldValue = JitBeanUtil.getFieldValue(object, valueField);
+                        JitEntityGroup<?> jitEntityGroup = null;
                         if (assistMap != null && assistMap.containsKey(keyField)) {
-                            wolfEntityGroup = assistMap.get(keyField);
+                            jitEntityGroup = assistMap.get(keyField);
                         }
                         Object valueObject = null;
-                        if (wolfEntityGroup != null && valueFieldValue != null) {
-                            valueObject = wolfEntityGroup.getTDataByValue(String.valueOf(valueFieldValue));
+                        if (jitEntityGroup != null && valueFieldValue != null) {
+                            valueObject = jitEntityGroup.getTDataByValue(String.valueOf(valueFieldValue));
                         }
-                        WolfBeanUtil.setFieldValue(t, keyField, valueObject);
+                        JitBeanUtil.setFieldValue(t, keyField, valueObject);
                     }
                 }
                 resultList.add(t);
@@ -325,6 +324,6 @@ public class WolfConverter {
     }
 
     public static void main(String[] args) {
-        System.out.println(new WolfConverter().convertJsonStringToList("[]"));
+        System.out.println(new JitConverter().convertJsonStringToList("[]"));
     }
 }

@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WolfBeanUtil extends BeanUtil {
+public class JitBeanUtil extends BeanUtil {
 
     public static <E> E mergeDefaultValueToBean(E bean) {
         if (bean != null) {

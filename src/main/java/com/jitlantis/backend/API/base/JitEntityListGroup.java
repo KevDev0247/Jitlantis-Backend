@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class WolfEntityListGroup<T> implements WolfEntityGroup<T> {
+public class JitEntityListGroup<T> implements JitEntityGroup<T> {
 
     private Class<T> clazz;
 
@@ -17,7 +17,7 @@ public class WolfEntityListGroup<T> implements WolfEntityGroup<T> {
 
     private Map<String, List<T>> globalMap;
 
-    public WolfEntityListGroup(Class<T> clazz, List<?> dataList, String field) {
+    public JitEntityListGroup(Class<T> clazz, List<?> dataList, String field) {
         this.clazz = clazz;
         this.dataList = dataList;
         this.field = field;

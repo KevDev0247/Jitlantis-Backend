@@ -1,9 +1,23 @@
 package com.jitlantis.backend.API.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 
+/**
+ * The model for RepairRecord that maps the structure from the database entities.
+ * This model will carry the data in other sections
+ *
+ * @author Kevin Zhijun Wang
+ * created on 2020/08/29
+ */
+@Entity
 public class RepairRecord {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private Integer repairId;

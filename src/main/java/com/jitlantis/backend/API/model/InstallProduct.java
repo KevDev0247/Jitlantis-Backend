@@ -6,6 +6,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
+/**
+ * The model for InstallProduct that maps the structure from the database entities.
+ * This model will carry the data in other sections
+ *
+ * @author Kevin Zhijun Wang
+ * created on 2020/08/29
+ */
 @Entity
 public class InstallProduct {
 

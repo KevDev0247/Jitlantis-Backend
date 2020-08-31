@@ -1,6 +1,7 @@
 package com.jitlantis.backend.API.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.jitlantis.backend.API.model.Contact;
 import com.jitlantis.backend.API.model.Contract;
 import com.jitlantis.backend.API.service.ContractService;
 import com.jitlantis.backend.API.utils.DeletedEnum;
@@ -17,6 +18,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The controller for Contract that handles HTTP requests and responses.
+ * In this frontend-backend-separated architecture,
+ * the controller interacts with the particular service on the frontend.
+ *
+ * @author Kevin Zhijun Wang
+ * @see Contract
+ * created on 2020/08/31
+ */
 @Api(tags = {"Contract"})
 @RestController
 @RequestMapping(value = "/contract")

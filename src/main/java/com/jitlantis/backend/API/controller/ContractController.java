@@ -1,7 +1,6 @@
 package com.jitlantis.backend.API.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.jitlantis.backend.API.model.Contact;
 import com.jitlantis.backend.API.model.Contract;
 import com.jitlantis.backend.API.service.ContractService;
 import com.jitlantis.backend.API.utils.DeletedEnum;
@@ -72,7 +71,7 @@ public class ContractController {
     @ApiImplicitParams({
             @ApiImplicitParam(required = true, paramType = "query", name = "contractId", value = "contract id")
     })
-    @RequestMapping(value = "/queryContractList", method = RequestMethod.GET)
+    @RequestMapping(value = "/deleteContract", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> deleteContract(Integer contractId) {
         Map<String, Object> map = new HashMap<>();
         boolean response;

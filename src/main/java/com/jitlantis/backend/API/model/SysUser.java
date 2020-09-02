@@ -40,7 +40,7 @@ public class SysUser implements Serializable {
 
     private String profession;
 
-    private String telno;
+    private String telNo;
 
     private String qq;
 
@@ -105,8 +105,8 @@ public class SysUser implements Serializable {
         return profession;
     }
 
-    public String getTelno() {
-        return telno;
+    public String getTelNo() {
+        return telNo;
     }
 
     public String getQq() {
@@ -161,8 +161,8 @@ public class SysUser implements Serializable {
         this.profession = profession;
     }
 
-    public void setTelno(String telno) {
-        this.telno = telno;
+    public void setTelNo(String telno) {
+        this.telNo = telno;
     }
 
     public void setQq(String qq) {

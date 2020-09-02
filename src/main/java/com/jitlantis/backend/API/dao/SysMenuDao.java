@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Mapper
+@Component
 public interface SysMenuDao extends BaseMapper<SysMenu> {
 
     List<SysMenu> selectMenuListByRoleId(@Param("roleId") Integer roleId);

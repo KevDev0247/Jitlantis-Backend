@@ -1,12 +1,15 @@
 package com.jitlantis.backend.API.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.jitlantis.backend.API.annotation.MyLog;
 import com.jitlantis.backend.API.model.Client;
 import com.jitlantis.backend.API.model.ClientProduct;
 import com.jitlantis.backend.API.model.CtaFollow;
+import com.jitlantis.backend.API.model.SysUser;
 import com.jitlantis.backend.API.service.ClientProductService;
 import com.jitlantis.backend.API.service.ClientService;
 import com.jitlantis.backend.API.service.CtaFollowService;
+import com.jitlantis.backend.API.service.SysUserService;
 import com.jitlantis.backend.API.utils.StringUtils;
 import com.jitlantis.backend.API.utils.DeletedEnum;
 import io.swagger.annotations.*;
@@ -25,7 +28,8 @@ import java.util.Map;
  * In this frontend-backend-separated architecture,
  * the controller interacts with the particular service on the frontend.
  *
- * @author Kevin Zhijun Wang
+ * @author Kevin Zhijun Wang, Yonggang Su
+ * @see SysUser
  * @see Client
  * @see ClientProduct
  * @see CtaFollow
@@ -45,14 +49,17 @@ public class ClientController {
     @Autowired
     private CtaFollowService ctaFollowService;
 
+    @Autowired
+    private SysUserService userService;
+
     @ApiOperation(value = "create client")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "client", value = "Client entity", required = true, dataType = "Client")
+            @ApiImplicitParam(name = "client", value = "Client entity", required = true, dataType = "SysUser")
     })
     @RequestMapping(value = "/createClient", method = RequestMethod.POST)
-    public ResponseEntity<Map<String, Object>> createClient(@RequestBody Client client) {
+    public ResponseEntity<Map<String, Object>> createClient(@RequestBody SysUser client) {
         Map<String, Object> map = new HashMap<>();
-        boolean response = clientService.insert(client);
+        boolean response = userService.insert(client);
         map.put("data", response);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
@@ -60,18 +67,18 @@ public class ClientController {
 
     @ApiOperation(value = "update client")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "client", value = "Client entity", required = true, dataType = "Client")
+            @ApiImplicitParam(name = "client", value = "Client entity", required = true, dataType = "SysUser")
     })
     @RequestMapping(value = "/updateClient", method = RequestMethod.POST)
-    public ResponseEntity<Map<String, Object>> updateClient(@RequestBody Client client) {
+    public ResponseEntity<Map<String, Object>> updateClient(@RequestBody SysUser client) {
         Map<String, Object> map = new HashMap<>();
         boolean response;
 
-        Client clientRetrieved = clientService.selectById(client.getId());
+        SysUser clientRetrieved = userService.selectById(client.getId());
         if (clientRetrieved == null) {
             response = false;
         } else {
-            response = clientService.updateById(client);
+            response = userService.updateById(client);
         }
         map.put("data", response);
 
@@ -108,29 +115,53 @@ public class ClientController {
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "get client details")
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> getClient(Integer id) {
+        Map<String, Object> map = new HashMap<>();
+        SysUser client = userService.selectById(id);
+        map.put("data", client);
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+//    @ApiOperation(value = "query client list", notes = "no pagination")
+//    @ApiImplicitParams({
+//            @ApiImplicitParam(paramType = "query", name = "name", value = "Name"),
+//            @ApiImplicitParam(paramType = "query", name = "area", value = "Area"),
+//    })
+//    @RequestMapping(value = "/queryClientList", method = RequestMethod.GET)
+//    public ResponseEntity<Map<String, Object>> queryClientList(
+//            @RequestParam(value = "name", required = false) String name,
+//            @RequestParam(value = "name", required = false) String area) {
+//        Map<String, Object> map = new HashMap<>();
+//        EntityWrapper<Client> wrapper = new EntityWrapper<>();
+//
+//        if (StringUtils.isNotBlank(name)) {
+//            wrapper.eq("name", name);
+//        }
+//        if (StringUtils.isNotBlank(area)) {
+//            wrapper.like("area", area);
+//        }
+//
+//        wrapper.eq("is_delete", DeletedEnum.N.value());
+//        wrapper.orderBy("id", true);
+//        map.put("list", clientService.selectList(wrapper));
+//
+//        return new ResponseEntity<>(map, HttpStatus.OK);
+//    }
+
     @ApiOperation(value = "query client list", notes = "no pagination")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", name = "name", value = "Name"),
             @ApiImplicitParam(paramType = "query", name = "area", value = "Area"),
     })
     @RequestMapping(value = "/queryClientList", method = RequestMethod.GET)
+    @MyLog(value = "query users list")
     public ResponseEntity<Map<String, Object>> queryClientList(
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "name", required = false) String area) {
         Map<String, Object> map = new HashMap<>();
-        EntityWrapper<Client> wrapper = new EntityWrapper<>();
-
-        if (StringUtils.isNotBlank(name)) {
-            wrapper.eq("name", name);
-        }
-        if (StringUtils.isNotBlank(area)) {
-            wrapper.like("area", area);
-        }
-
-        wrapper.eq("is_delete", DeletedEnum.N.value());
-        wrapper.orderBy("id", true);
-        map.put("list", clientService.selectList(wrapper));
-
+        map.put("data", userService.selectClientQueryList(name, area));
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 

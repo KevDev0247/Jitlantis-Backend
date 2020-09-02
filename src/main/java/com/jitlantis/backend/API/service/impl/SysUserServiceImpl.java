@@ -9,9 +9,16 @@ import com.jitlantis.backend.API.model.SysUser;
 import com.jitlantis.backend.API.utils.DeletedEnum;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The implementation of the Service interface for system user
+ *
+ * @author Kevin Zhijun Wang, Yonggang Su
+ * created on 2020/07/21
+ */
 @Service
 public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> implements SysUserService {
 
@@ -45,5 +52,24 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
             res = this.updateById(sysUser);
         }
         return res;
+    }
+
+    @Override
+    public List<SysUser> selectClientQueryList(String name, String email) {
+        EntityWrapper<SysUser> wrapper = new EntityWrapper<>();
+        if (StringUtils.isNotEmpty(name)) {
+            wrapper.like("name", name);
+        }
+        if (StringUtils.isNotEmpty(email)) {
+            wrapper.like("email", email);
+        }
+        List<Integer> roleIds = new ArrayList<>();
+        roleIds.add(7);
+        roleIds.add(8);
+        roleIds.add(9);
+        wrapper.in("role_id", roleIds);
+        wrapper.eq("is_delete", DeletedEnum.N.value());
+        wrapper.orderBy("id", true);
+        return this.selectList(wrapper);
     }
 }

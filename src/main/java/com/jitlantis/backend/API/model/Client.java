@@ -24,7 +24,7 @@ public class Client {
 
     private String name;
 
-    private String telNo;
+    private String telno;
 
     private String area;
 
@@ -50,8 +50,8 @@ public class Client {
         return name;
     }
 
-    public String getTelNo() {
-        return telNo;
+    public String getTelno() {
+        return telno;
     }
 
     public String getArea() {
@@ -90,8 +90,8 @@ public class Client {
         this.name = name;
     }
 
-    public void setTelNo(String telNo) {
-        this.telNo = telNo;
+    public void setTelno(String telNo) {
+        this.telno = telNo;
     }
 
     public void setArea(String area) {

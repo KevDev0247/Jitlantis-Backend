@@ -94,7 +94,7 @@ public class ClientController {
         Map<String, Object> map = new HashMap<>();
         boolean response;
 
-        Client clientRetrieved = clientService.selectById(clientId);
+        SysUser clientRetrieved = userService.selectById(clientId);
         if (clientRetrieved == null) {
             response = false;
             map.put("data", response);
@@ -104,7 +104,7 @@ public class ClientController {
         }
 
         clientRetrieved.setIsDelete(DeletedEnum.Y.value());
-        response = clientService.updateById(clientRetrieved);
+        response = userService.updateById(clientRetrieved);
 
         if (response) {
             map.put("message", "deletion successful");

@@ -14,7 +14,7 @@ import java.util.Date;
  * This model will carry the data in other sections
  * SysUser refers to a user in System section
  *
- * @author Kevin Zhijun Wang
+ * @author Kevin Zhijun Wang, Yonggang Su
  * created on 2020/07/17
  */
 @Entity

@@ -24,20 +24,20 @@ public class SysBasecode {
 
     private String basecodename;
 
-    private String typeId;
+    private String typeid;
 
-    private String typeName;
+    private String typename;
 
     public String getBasecode() {
         return basecode;
     }
 
-    public String getTypeId() {
-        return typeId;
+    public String getTypeid() {
+        return typeid;
     }
 
-    public String getTypeName() {
-        return typeName;
+    public String getTypename() {
+        return typename;
     }
 
     public String getBasecodename() {
@@ -48,12 +48,12 @@ public class SysBasecode {
         this.basecode = id;
     }
 
-    public void setTypeId(String typeId) {
-        this.typeId = typeId;
+    public void setTypeid(String typeId) {
+        this.typeid = typeId;
     }
 
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
+    public void setTypename(String typeName) {
+        this.typename = typeName;
     }
 
     public void setBasecodename(String value) {

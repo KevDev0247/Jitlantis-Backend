@@ -1,5 +1,7 @@
 package com.jitlantis.backend.API.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +12,7 @@ import java.util.Date;
  * The model for Contract that maps the structure from the database entities.
  * This model will carry the data in other sections
  *
- * @author Kevin Zhijun Wang
+ * @author Kevin Zhijun Wang, Yonggang Su
  * created on 2020/08/31
  */
 @Entity
@@ -22,8 +24,10 @@ public class Contract {
 
     private String signPlace;
 
+    @JsonFormat(pattern = "yyyy/MM/dd", timezone = "GMT+8")
     private Date startDate;
 
+    @JsonFormat(pattern = "yyyy/MM/dd", timezone = "GMT+8")
     private Date endDate;
 
     private Integer projectId;
@@ -40,6 +44,7 @@ public class Contract {
 
     private String telno;
 
+    @JsonFormat(pattern = "yyyy/MM/dd", timezone = "GMT+8")
     private Date signDate;
 
     private Integer signmanId;
@@ -48,8 +53,10 @@ public class Contract {
 
     private Integer price;
 
+    @JsonFormat(pattern = "yyyy/MM/dd", timezone = "GMT+8")
     private Date createTime;
 
+    @JsonFormat(pattern = "yyyy/MM/dd", timezone = "GMT+8")
     private Date updateTime;
 
     private Integer isDelete;

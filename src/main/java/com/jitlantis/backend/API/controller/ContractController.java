@@ -22,7 +22,7 @@ import java.util.Map;
  * In this frontend-backend-separated architecture,
  * the controller interacts with the particular service on the frontend.
  *
- * @author Kevin Zhijun Wang
+ * @author Kevin Zhijun Wang, Yonggang Su
  * @see Contract
  * created on 2020/08/31
  */
@@ -93,6 +93,16 @@ public class ContractController {
         } else {
             map.put("message", "deletion failed");
         }
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "view contract")
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> getContact(Integer id) {
+        Map<String, Object> map = new HashMap<>();
+        Contract contract = contractService.selectById(id);
+        map.put("data", contract);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }

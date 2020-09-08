@@ -198,7 +198,7 @@ public class ProjectController {
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Project Details")
+    @ApiOperation(value = "project details")
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> getProject(Integer id) {
         Map<String, Object> map = new HashMap<>();

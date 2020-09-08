@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -51,7 +52,7 @@ public class Contract {
 
     private Integer status;
 
-    private Integer price;
+    private BigDecimal price;
 
     @JsonFormat(pattern = "yyyy/MM/dd", timezone = "GMT+8")
     private Date createTime;
@@ -117,7 +118,7 @@ public class Contract {
         return status;
     }
 
-    public Integer getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
@@ -189,7 +190,7 @@ public class Contract {
         this.status = status;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

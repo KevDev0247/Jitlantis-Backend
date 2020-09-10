@@ -1,5 +1,7 @@
 package com.jitlantis.backend.API.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +12,7 @@ import java.util.Date;
  * The model for Repair that maps the structure from the database entities.
  * This model will carry the data in other sections
  *
- * @author Kevin Zhijun Wang
+ * @author Kevin Zhijun Wang, Yonggang Su
  * created on 2020/08/29
  */
 @Entity
@@ -22,7 +24,8 @@ public class Repair {
 
     private String repairUnit;
 
-    private String fixDate;
+    @JsonFormat(pattern="yyyy/MM/dd",timezone = "GMT+8")
+    private Date fixDate;
 
     private Integer projectId;
 
@@ -40,8 +43,10 @@ public class Repair {
 
     private Integer staffId;
 
+    @JsonFormat(pattern="yyyy/MM/dd",timezone = "GMT+8")
     private Date createTime;
 
+    @JsonFormat(pattern="yyyy/MM/dd",timezone = "GMT+8")
     private Date updateTime;
 
     private Integer isDelete;
@@ -54,7 +59,7 @@ public class Repair {
         return repairUnit;
     }
 
-    public String getFixDate() {
+    public Date getFixDate() {
         return fixDate;
     }
 
@@ -110,7 +115,7 @@ public class Repair {
         this.repairUnit = repairUnit;
     }
 
-    public void setFixDate(String fixDate) {
+    public void setFixDate(Date fixDate) {
         this.fixDate = fixDate;
     }
 

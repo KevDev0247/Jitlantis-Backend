@@ -1,6 +1,7 @@
 package com.jitlantis.backend.API.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.jitlantis.backend.API.model.Client;
 import com.jitlantis.backend.API.model.ClientProduct;
 import com.jitlantis.backend.API.model.CtaFollow;
@@ -24,7 +25,7 @@ import java.util.Map;
  * In this frontend-backend-separated architecture,
  * the controller interacts with the particular service on the frontend.
  *
- * @author Kevin Zhijun Wang
+ * @author Kevin Zhijun Wang, Yonggang Su
  * @see SysBasecode
  * created on 2020/08/18
  */
@@ -73,11 +74,13 @@ public class SysBasecodeController {
             @ApiImplicitParam(required = true, paramType = "query", name = "sysBasecodeId", value = "Foundation Data Id")
     })
     @RequestMapping(value = "/deleteBasecode", method = RequestMethod.GET)
-    public ResponseEntity<Map<String, Object>> deleteSysBasecode(Integer sysBasecodeId) {
+    public ResponseEntity<Map<String, Object>> deleteSysBasecode(String sysBasecodeId) {
         Map<String, Object> map = new HashMap<>();
         boolean response;
 
-        SysBasecode basecode = sysBasecodeService.selectById(sysBasecodeId);
+        EntityWrapper<SysBasecode> wrapper = new EntityWrapper<>();
+        wrapper.eq("basecode", sysBasecodeId);
+        SysBasecode basecode = sysBasecodeService.selectOne(wrapper);
         if (basecode == null) {
             response = false;
             map.put("data", response);

@@ -111,7 +111,7 @@ public class RepairController {
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", name = "status", value = "Status"),
             @ApiImplicitParam(paramType = "query", name = "repairUnit", value = "Repair Unit"),
-            @ApiImplicitParam(paramType = "query", name = "name", value = "Name"),
+            @ApiImplicitParam(paramType = "query", name = "name", value = "Client"),
     })
     @RequestMapping(value = "/queryRepairList", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> queryRepairList(

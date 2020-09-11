@@ -7,5 +7,5 @@ import com.jitlantis.backend.API.service.ClientProductService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ClientProductImpl extends ServiceImpl<ClientProductDao, ClientProduct> implements ClientProductService {
+public class ClientProductServiceImpl extends ServiceImpl<ClientProductDao, ClientProduct> implements ClientProductService {
 }

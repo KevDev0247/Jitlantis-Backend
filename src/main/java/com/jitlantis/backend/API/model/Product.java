@@ -20,6 +20,8 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    private Integer repairId;
+
     private String title;
 
     private String serial_no;
@@ -36,6 +38,10 @@ public class Product {
 
     public Integer getId() {
         return id;
+    }
+
+    public Integer getRepairId() {
+        return repairId;
     }
 
     public String getTitle() {
@@ -68,6 +74,10 @@ public class Product {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public void setRepairId(Integer repairId) {
+        this.repairId = repairId;
     }
 
     public void setTitle(String title) {

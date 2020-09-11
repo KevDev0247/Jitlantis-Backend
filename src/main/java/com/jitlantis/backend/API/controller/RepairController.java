@@ -80,7 +80,7 @@ public class RepairController {
         if (repairRetrieved == null) {
             response = false;
             map.put("data", response);
-            map.put("message", "deletion failed, the project does not exist!");
+            map.put("message", "deletion failed, the order does not exist!");
 
             return new ResponseEntity<>(map, HttpStatus.OK);
         }

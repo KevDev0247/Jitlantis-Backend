@@ -57,7 +57,7 @@ public class RepairRecordController {
         if (repairrecordSelected == null) {
             response = false;
         } else {
-            response = repairrecordService.updateById(repairrecordSelected);
+            response = repairrecordService.updateById(repairrecord);
         }
         map.put("data", response);
 

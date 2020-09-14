@@ -24,7 +24,6 @@ public class SysLogServiceImpl extends ServiceImpl<SysLogDao, SysLog> implements
             toTime = null;
         }
 
-        List<SysLog> sysLogList = sysLogDao.selectLogList(fromTime, toTime);
-        return sysLogList;
+        return sysLogDao.selectLogList(fromTime, toTime);
     }
 }

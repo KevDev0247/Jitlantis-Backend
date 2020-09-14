@@ -66,14 +66,14 @@ public class RepairRecordController {
 
     @ApiOperation(value = "delete repair record")
     @ApiImplicitParams({
-            @ApiImplicitParam(required = true, paramType = "query", name = "repairrecordId", value = "Repair Record Id")
+            @ApiImplicitParam(required = true, paramType = "query", name = "repairRecordId", value = "Repair Record Id")
     })
     @RequestMapping(value = "/deleteRepairRecord", method = RequestMethod.GET)
-    public ResponseEntity<Map<String, Object>> deleteRepairRecord(Integer repairrecordId) {
+    public ResponseEntity<Map<String, Object>> deleteRepairRecord(Integer repairRecordId) {
         Map<String, Object> map = new HashMap<>();
         boolean response;
 
-        RepairRecord repairrecordRetrieved = repairrecordService.selectById(repairrecordId);
+        RepairRecord repairrecordRetrieved = repairrecordService.selectById(repairRecordId);
         if (repairrecordRetrieved == null) {
             response = false;
             map.put("data", response);

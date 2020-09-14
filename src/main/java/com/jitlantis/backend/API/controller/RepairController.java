@@ -121,7 +121,7 @@ public class RepairController {
         Map<String, Object> map = new HashMap<>();
         EntityWrapper<Repair> wrapper = new EntityWrapper<>();
 
-        if (StringUtils.isNotBlank(status + "")) {
+        if (StringUtils.isNotBlank(status + "") && status != null) {
             wrapper.eq("status", status);
         }
         if (StringUtils.isNotBlank(repairUnit)) {

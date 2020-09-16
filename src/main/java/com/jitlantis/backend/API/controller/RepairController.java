@@ -1,6 +1,8 @@
 package com.jitlantis.backend.API.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
+import com.jitlantis.backend.API.base.PageRequest;
 import com.jitlantis.backend.API.model.Repair;
 import com.jitlantis.backend.API.service.RepairService;
 import com.jitlantis.backend.API.utils.DeletedEnum;
@@ -93,6 +95,23 @@ public class RepairController {
             map.put("message", "deletion failed");
         }
         map.put("data", response);
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "work order list", notes = "pagination")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "status", value = "Status"),
+            @ApiImplicitParam(paramType = "query", name = "search", value = "Search"),
+    })
+    @RequestMapping(value = "/pageList", method = RequestMethod.POST)
+    public ResponseEntity<Map<String, Object>> selectPageList(
+            @RequestBody PageRequest pageQuery,
+            @RequestParam(value = "status", required = false) Integer status,
+            @RequestParam(value = "search", required = false) String search) {
+        Map<String, Object> map = new HashMap<>();
+        Page<Repair> page = repairService.selectPageList(pageQuery.getPageNum(), pageQuery.getPageSize(), status, search);
+        map.put("data", page);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }

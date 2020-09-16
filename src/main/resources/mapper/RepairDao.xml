@@ -3,4 +3,11 @@
 
 <mapper namespace="com.jitlantis.backend.API.dao.RepairDao">
     <sql id="tableName">repair</sql>
+
+    <select id="selectPageList" resultType="com.jitlantis.backend.API.model.Repair">
+        SELECT * FROM repair WHERE is_delete = 0 AND
+        <if test="status != null">status = ${status} AND </if>
+        <if test="search != null">name LIKE '%${search}%' AND </if>
+        1 = 1 ORDER BY id ASC
+    </select>
 </mapper>

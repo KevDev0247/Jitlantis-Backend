@@ -38,10 +38,10 @@ public class RepairRecordController {
     })
     @RequestMapping(value = "/createRepairRecord", method = RequestMethod.POST)
     public ResponseEntity<Map<String, Object>> createRepairRecord(@RequestBody RepairRecord repairrecord) {
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<String,Object>();
         boolean response = repairrecordService.insert(repairrecord);
         map.put("data", response);
-        return new ResponseEntity<>(map, HttpStatus.OK);
+        return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
     }
 
     @ApiOperation(value = "update repair record")
@@ -50,9 +50,8 @@ public class RepairRecordController {
     })
     @RequestMapping(value = "/updateRepairRecord", method = RequestMethod.POST)
     public ResponseEntity<Map<String, Object>> updateRepairRecord(@RequestBody RepairRecord repairrecord) {
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<String,Object>();
         boolean response;
-
         RepairRecord repairrecordSelected = repairrecordService.selectById(repairrecord.getId());
         if (repairrecordSelected == null) {
             response = false;
@@ -60,8 +59,7 @@ public class RepairRecordController {
             response = repairrecordService.updateById(repairrecord);
         }
         map.put("data", response);
-
-        return new ResponseEntity<>(map, HttpStatus.OK);
+        return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
     }
 
     @ApiOperation(value = "delete repair record")
@@ -70,16 +68,14 @@ public class RepairRecordController {
     })
     @RequestMapping(value = "/deleteRepairRecord", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> deleteRepairRecord(Integer repairRecordId) {
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<String,Object>();
         boolean response;
-
         RepairRecord repairrecordRetrieved = repairrecordService.selectById(repairRecordId);
         if (repairrecordRetrieved == null) {
             response = false;
             map.put("data", response);
             map.put("message", "deletion failed, the repair record does not exist!");
-
-            return new ResponseEntity<>(map, HttpStatus.OK);
+            return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
         }
         repairrecordRetrieved.setIsDelete(DeletedEnum.Y.value());
         response = repairrecordService.updateById(repairrecordRetrieved);
@@ -88,7 +84,7 @@ public class RepairRecordController {
         } else {
             map.put("message", "deletion failed");
         }
-        return new ResponseEntity<>(map, HttpStatus.OK);
+        return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
     }
 
     @ApiOperation(value = "query repair record list", notes = "no pagination")
@@ -102,9 +98,8 @@ public class RepairRecordController {
             @RequestParam(value = "dcode", required = false) String dcode,
             @RequestParam(value = "ccode", required = false) String ccode,
             @RequestParam(value = "content", required = false) String content) {
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<String,Object>();
         EntityWrapper<RepairRecord> wrapper = new EntityWrapper<>();
-
         if (StringUtils.isNotBlank(dcode)) {
             wrapper.eq("dcode", dcode);
         }
@@ -114,12 +109,11 @@ public class RepairRecordController {
         if (StringUtils.isNotBlank(content)) {
             wrapper.like("content", content);
         }
-
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id");
         map.put("list", repairrecordService.selectList(wrapper));
 
-        return new ResponseEntity<>(map, HttpStatus.OK);
+        return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
     }
 
     @ApiOperation(value = "view repair record",notes = "")

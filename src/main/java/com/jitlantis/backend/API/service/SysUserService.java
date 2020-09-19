@@ -1,6 +1,7 @@
 package com.jitlantis.backend.API.service;
 
 import com.baomidou.mybatisplus.service.IService;
+import com.jitlantis.backend.API.dto.BaseItemDto;
 import com.jitlantis.backend.API.model.SysUser;
 
 import java.util.List;
@@ -18,6 +19,8 @@ public interface SysUserService extends IService<SysUser> {
     List<SysUser> selectQueryList(String name, String email);
 
     List<SysUser> selectClientQueryList(String name, String email);
+
+    List<BaseItemDto> optionList(String name);
 
     boolean delete(Integer userId);
 }

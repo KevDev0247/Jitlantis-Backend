@@ -2,12 +2,12 @@ package com.jitlantis.backend.API.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.jitlantis.backend.API.annotation.MyLog;
+import com.jitlantis.backend.API.dto.BaseItemDto;
 import com.jitlantis.backend.API.model.Client;
 import com.jitlantis.backend.API.model.ClientProduct;
 import com.jitlantis.backend.API.model.CtaFollow;
 import com.jitlantis.backend.API.model.SysUser;
 import com.jitlantis.backend.API.service.ClientProductService;
-import com.jitlantis.backend.API.service.ClientService;
 import com.jitlantis.backend.API.service.CtaFollowService;
 import com.jitlantis.backend.API.service.SysUserService;
 import com.jitlantis.backend.API.utils.StringUtils;
@@ -18,9 +18,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -39,9 +39,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/client")
 public class ClientController {
-
-    @Autowired
-    private ClientService clientService;
 
     @Autowired
     private ClientProductService clientProductService;
@@ -124,32 +121,6 @@ public class ClientController {
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
-//    @ApiOperation(value = "query client list", notes = "no pagination")
-//    @ApiImplicitParams({
-//            @ApiImplicitParam(paramType = "query", name = "name", value = "Name"),
-//            @ApiImplicitParam(paramType = "query", name = "area", value = "Area"),
-//    })
-//    @RequestMapping(value = "/queryClientList", method = RequestMethod.GET)
-//    public ResponseEntity<Map<String, Object>> queryClientList(
-//            @RequestParam(value = "name", required = false) String name,
-//            @RequestParam(value = "name", required = false) String area) {
-//        Map<String, Object> map = new HashMap<>();
-//        EntityWrapper<Client> wrapper = new EntityWrapper<>();
-//
-//        if (StringUtils.isNotBlank(name)) {
-//            wrapper.eq("name", name);
-//        }
-//        if (StringUtils.isNotBlank(area)) {
-//            wrapper.like("area", area);
-//        }
-//
-//        wrapper.eq("is_delete", DeletedEnum.N.value());
-//        wrapper.orderBy("id", true);
-//        map.put("list", clientService.selectList(wrapper));
-//
-//        return new ResponseEntity<>(map, HttpStatus.OK);
-//    }
-
     @ApiOperation(value = "query client list", notes = "no pagination")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", name = "name", value = "Name"),
@@ -159,9 +130,21 @@ public class ClientController {
     @MyLog(value = "query users list")
     public ResponseEntity<Map<String, Object>> queryClientList(
             @RequestParam(value = "name", required = false) String name,
-            @RequestParam(value = "name", required = false) String area) {
+            @RequestParam(value = "area", required = false) String area) {
         Map<String, Object> map = new HashMap<>();
         map.put("data", userService.selectClientQueryList(name, area));
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation("query client option list")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "name", value = "Client Name"),
+    })
+    @RequestMapping(value = "/optionList", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> queryClientOptionList (@RequestParam(value = "name", required = false) String name) {
+        Map<String, Object> map = new HashMap<>();
+        List<BaseItemDto> baseItemDtoList = userService.optionList(name);
+        map.put("data", baseItemDtoList);
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 

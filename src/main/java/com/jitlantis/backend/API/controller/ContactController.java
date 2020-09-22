@@ -1,6 +1,7 @@
 package com.jitlantis.backend.API.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.jitlantis.backend.API.dto.BaseItemDto;
 import com.jitlantis.backend.API.model.Contact;
 import com.jitlantis.backend.API.utils.StringUtils;
 import com.jitlantis.backend.API.service.ContactService;
@@ -15,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -94,6 +96,18 @@ public class ContactController {
             map.put("message", "deletion failed");
         }
 
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation("query contact option list")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "name", value = "Contact Name"),
+    })
+    @RequestMapping(value = "/optionList", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> queryClientOptionList (@RequestParam(value = "name", required = false) String name) {
+        Map<String, Object> map = new HashMap<>();
+        List<BaseItemDto> baseItemDtoList = contactService.optionList(name);
+        map.put("data", baseItemDtoList);
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 

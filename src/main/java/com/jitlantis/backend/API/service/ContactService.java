@@ -9,4 +9,6 @@ import java.util.List;
 public interface ContactService extends IService<Contact> {
 
     List<BaseItemDto> optionList(String name);
+
+    Contact selectById(Integer id);
 }

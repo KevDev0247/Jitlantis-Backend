@@ -22,6 +22,9 @@ public class ContactServiceImpl extends ServiceImpl<ContactDao, Contact> impleme
     @Autowired
     private JitConverter jitConverter;
 
+    @Autowired
+    private ContactDao contactDao;
+
     @Override
     public List<BaseItemDto> optionList(String name) {
         EntityWrapper<Contact> wrapper = new EntityWrapper<>();
@@ -38,5 +41,10 @@ public class ContactServiceImpl extends ServiceImpl<ContactDao, Contact> impleme
         }
 
         return baseItemDtoList;
+    }
+
+    @Override
+    public Contact selectById(Integer id) {
+        return contactDao.selectById(id);
     }
 }

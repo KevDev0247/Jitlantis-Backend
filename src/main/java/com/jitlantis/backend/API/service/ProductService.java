@@ -9,4 +9,6 @@ import java.util.List;
 public interface ProductService extends IService<Product> {
 
     List<BaseItemDto> optionList(String name);
+
+    Product selectById(Integer id);
 }

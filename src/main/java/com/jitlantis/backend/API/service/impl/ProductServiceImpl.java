@@ -28,6 +28,9 @@ public class ProductServiceImpl extends ServiceImpl<ProductDao, Product> impleme
     @Autowired
     private JitConverter jitConverter;
 
+    @Autowired
+    private ProductDao productDao;
+
     @Override
     public List<BaseItemDto> optionList(String name) {
         EntityWrapper<Product> wrapper = new EntityWrapper<>();
@@ -44,5 +47,10 @@ public class ProductServiceImpl extends ServiceImpl<ProductDao, Product> impleme
         }
 
         return baseItemDtoList;
+    }
+
+    @Override
+    public Product selectById(Integer id) {
+        return productDao.selectById(id);
     }
 }

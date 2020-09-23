@@ -3,4 +3,7 @@
 
 <mapper namespace="com.jitlantis.backend.API.dao.ProjectDao">
     <sql id="tableName">project</sql>
+    <select id="selectById" resultType="Project" parameterType="int">
+        SELECT * FROM project WHERE id=#{0}
+    </select>
 </mapper>

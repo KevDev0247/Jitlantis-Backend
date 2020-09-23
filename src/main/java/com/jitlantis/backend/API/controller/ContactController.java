@@ -141,4 +141,13 @@ public class ContactController {
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
+
+    @ApiOperation(value = "contact detail")
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> getContact(Integer id) {
+        Map<String, Object> map = new HashMap<>();
+        Contact contact = contactService.selectById(id);
+        map.put("data", contact);
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
 }

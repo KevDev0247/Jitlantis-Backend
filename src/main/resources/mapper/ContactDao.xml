@@ -10,7 +10,7 @@
     <select id="selectMapById" resultMap="contactmap" parameterType="int">
         SELECT * FROM contact WHERE id=#{0}
     </select>
-    <select id="selectById" resultMap="Contact" parameterType="int">
+    <select id="selectById" resultType="Contact" parameterType="int">
         SELECT * FROM contact WHERE id=#{0}
     </select>
 </mapper>

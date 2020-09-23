@@ -10,7 +10,7 @@ import java.util.Date;
  * The model for Product that maps the structure from the database entities.
  * This model will carry the data in other sections
  *
- * @author Kevin Zhijun Wang
+ * @author Kevin Zhijun Wang, Yonggang Su
  * created on 2020/07/23
  */
 @Entity
@@ -20,7 +20,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    private Integer repairId;
+    private Integer status;
 
     private String title;
 
@@ -40,8 +40,8 @@ public class Product {
         return id;
     }
 
-    public Integer getRepairId() {
-        return repairId;
+    public Integer getStatus() {
+        return status;
     }
 
     public String getTitle() {
@@ -76,8 +76,8 @@ public class Product {
         this.id = id;
     }
 
-    public void setRepairId(Integer repairId) {
-        this.repairId = repairId;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public void setTitle(String title) {

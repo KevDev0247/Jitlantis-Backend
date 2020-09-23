@@ -2,6 +2,7 @@ package com.jitlantis.backend.API.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.jitlantis.backend.API.dto.BaseItemDto;
+import com.jitlantis.backend.API.model.Contact;
 import com.jitlantis.backend.API.model.Product;
 import com.jitlantis.backend.API.service.ProductService;
 import com.jitlantis.backend.API.utils.DeletedEnum;
@@ -139,6 +140,15 @@ public class ProductController {
         wrapper.orderBy("id");
         map.put("list", productService.selectList(wrapper));
 
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "product detail")
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> getContact(Integer id) {
+        Map<String, Object> map = new HashMap<>();
+        Product product = productService.selectById(id);
+        map.put("data", product);
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }

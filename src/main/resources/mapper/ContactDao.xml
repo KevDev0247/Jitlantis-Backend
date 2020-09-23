@@ -3,4 +3,14 @@
 
 <mapper namespace="com.jitlantis.backend.API.dao.ContactDao">
     <sql id="tableName">contact</sql>
+    <resultMap type="Contact" id="contactmap">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+    <select id="selectMapById" resultMap="contactmap" parameterType="int">
+        SELECT * FROM contact WHERE id=#{0}
+    </select>
+    <select id="selectById" resultMap="Contact" parameterType="int">
+        SELECT * FROM contact WHERE id=#{0}
+    </select>
 </mapper>

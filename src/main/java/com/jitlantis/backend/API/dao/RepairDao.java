@@ -14,4 +14,6 @@ import java.util.List;
 public interface RepairDao extends BaseMapper<Repair> {
 
     List<Repair> selectPageList(Page<Repair> page, @Param("status") Integer status, @Param("search") String search);
+
+    List<Repair> selall();
 }

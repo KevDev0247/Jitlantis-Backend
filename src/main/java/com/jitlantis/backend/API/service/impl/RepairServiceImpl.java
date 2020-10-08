@@ -8,6 +8,8 @@ import com.jitlantis.backend.API.service.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RepairServiceImpl extends ServiceImpl<RepairDao, Repair> implements RepairService {
 
@@ -19,5 +21,10 @@ public class RepairServiceImpl extends ServiceImpl<RepairDao, Repair> implements
         Page<Repair> page = new Page<>(pageNum, pageSize);
         page.setRecords(repairDao.selectPageList(page, status, search));
         return page;
+    }
+
+    @Override
+    public List<Repair> selall() {
+        return repairDao.selall();
     }
 }

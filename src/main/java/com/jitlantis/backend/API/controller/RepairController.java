@@ -2,8 +2,15 @@ package com.jitlantis.backend.API.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.jitlantis.backend.API.base.JitConverter;
+import com.jitlantis.backend.API.base.JitEntityGroup;
+import com.jitlantis.backend.API.base.JitEntityStringGroup;
 import com.jitlantis.backend.API.base.PageRequest;
+import com.jitlantis.backend.API.dao.RepairDao;
+import com.jitlantis.backend.API.dto.RepairDto;
+import com.jitlantis.backend.API.model.Project;
 import com.jitlantis.backend.API.model.Repair;
+import com.jitlantis.backend.API.service.ProjectService;
 import com.jitlantis.backend.API.service.RepairService;
 import com.jitlantis.backend.API.utils.DeletedEnum;
 import com.jitlantis.backend.API.utils.StringUtils;
@@ -16,7 +23,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityGraph;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -35,6 +45,12 @@ public class RepairController {
 
     @Autowired
     private RepairService repairService;
+
+    @Autowired
+    private ProjectService projectService;
+
+    @Autowired
+    private JitConverter jitConverter;
 
     @ApiOperation(value = "create work order")
     @ApiImplicitParams({
@@ -128,23 +144,28 @@ public class RepairController {
 
     @ApiOperation(value = "query work order list")
     @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "query", name = "status", value = "Status"),
-            @ApiImplicitParam(paramType = "query", name = "repairUnit", value = "Repair Unit"),
-            @ApiImplicitParam(paramType = "query", name = "name", value = "Client"),
+            @ApiImplicitParam(paramType = "query", name = "info", value = "Project name"),
+            @ApiImplicitParam(paramType = "query", name = "code", value = "Repair company"),
+            @ApiImplicitParam(paramType = "query", name = "name", value = "Work Order"),
     })
     @RequestMapping(value = "/queryRepairList", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> queryRepairList(
-            @RequestParam(value = "status", required = false) Integer status,
-            @RequestParam(value = "repairUnit", required = false) String repairUnit,
+            @RequestParam(value = "info", required = false) String info,
+            @RequestParam(value = "code", required = false) String code,
             @RequestParam(value = "name", required = false) String name) {
         Map<String, Object> map = new HashMap<>();
         EntityWrapper<Repair> wrapper = new EntityWrapper<>();
 
-        if (StringUtils.isNotBlank(status + "") && status != null) {
-            wrapper.eq("status", status);
+        List<Project> projectList;
+        List<Long> projectIds;
+        projectList = projectService.queryList(info);
+
+        if (projectList != null && projectList.size() > 0) {
+            projectIds = jitConverter.getLongListFromEntityList(projectList, "id");
+            wrapper.in("project_id", projectIds);
         }
-        if (StringUtils.isNotBlank(repairUnit)) {
-            wrapper.like("repair_unit", repairUnit);
+        if (StringUtils.isNotBlank(code)) {
+            wrapper.like("code", code);
         }
         if (StringUtils.isNotBlank(name)) {
             wrapper.like("name", name);
@@ -152,7 +173,19 @@ public class RepairController {
 
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id");
-        map.put("list", repairService.selectList(wrapper));
+        List<Repair> repairList = repairService.selectList(wrapper);
+        List<RepairDto> repairDtos = jitConverter.mergeListByAny(RepairDto.class, repairList, null, null);
+
+        Map<String, String> fileRule = new HashMap<>();
+        Map<String, JitEntityGroup<?>> fileMap = new HashMap<>();
+
+        if (projectList != null && projectList.size() > 0) {
+            fileRule.put("projectName", "projectId");
+            JitEntityStringGroup<String> fileGroup = new JitEntityStringGroup<>(projectList, "id", "name");
+            fileMap.put("projectName", fileGroup);
+        }
+        repairDtos = jitConverter.mergeListByAny(RepairDto.class, repairDtos, fileRule, fileMap);
+        map.put("list", repairDtos);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }

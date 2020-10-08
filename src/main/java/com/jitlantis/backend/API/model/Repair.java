@@ -33,6 +33,8 @@ public class Repair {
 
     private String name;
 
+    private String code;
+
     private String address;
 
     private String telno;
@@ -73,6 +75,10 @@ public class Repair {
 
     public String getName() {
         return name;
+    }
+
+    public String getCode() {
+        return code;
     }
 
     public String getAddress() {
@@ -129,6 +135,10 @@ public class Repair {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public void setAddress(String address) {

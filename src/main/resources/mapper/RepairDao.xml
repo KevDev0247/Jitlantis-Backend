@@ -4,6 +4,19 @@
 <mapper namespace="com.jitlantis.backend.API.dao.RepairDao">
     <sql id="tableName">repair</sql>
 
+    <resultMap id="repairmap" type="com.jitlantis.backend.API.dto.RepairDto">
+        <result property="contactId" column="contact_id"/>
+        <result property="projectId" column="project_id"/>
+        <result property="installId" column="install_id"/>
+        <association property="contact" select="com.jitlantis.backend.API.dao.ContactDao.selectById" column="contact_id"></association>
+        <association property="project" select="com.jitlantis.backend.API.dao.ProjectDao.selectById" column="project_id"></association>
+        <association property="product" select="com.jitlantis.backend.API.dao.ProductDao.selectById" column="product_id"></association>
+    </resultMap>
+
+    <select id="selall" resultMap="repairmap">
+        SELECT * FROM repair
+    </select>
+
     <select id="selectPageList" resultType="com.jitlantis.backend.API.model.Repair">
         SELECT * FROM repair WHERE is_delete = 0 AND
         <if test="status != null">status = ${status} AND </if>

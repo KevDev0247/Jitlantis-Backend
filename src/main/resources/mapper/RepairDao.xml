@@ -23,4 +23,18 @@
         <if test="search != null">name LIKE '%${search}%' AND </if>
         1 = 1 ORDER BY id ASC
     </select>
+
+    <select id="getSearchList" resultType="com.jitlantis.backend.API.model.Repair">
+        SELECT
+            repair.*
+        FROM
+            repair repair
+        LEFT JOIN product product ON repair.install_id = product.id
+        LEFT JOIN project project ON repair.project_id = project.id
+        LEFT JOIN contact contact ON repair.contact_id = contact.id
+        WHERE
+              <if test="search != null">concat(product.title, project.name, contact.name) LIKE '%${search}%' AND</if>
+                        1 = 1
+        ORDER BY id ASC
+    </select>
 </mapper>

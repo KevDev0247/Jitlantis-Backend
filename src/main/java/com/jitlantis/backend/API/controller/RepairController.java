@@ -144,7 +144,7 @@ public class RepairController {
 
     @ApiOperation(value = "query work order list")
     @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "query", name = "info", value = "Project name"),
+            @ApiImplicitParam(paramType = "query", name = "info", value = "Info (product, client, project)"),
             @ApiImplicitParam(paramType = "query", name = "code", value = "Repair company"),
             @ApiImplicitParam(paramType = "query", name = "name", value = "Work Order"),
     })
@@ -156,12 +156,15 @@ public class RepairController {
         Map<String, Object> map = new HashMap<>();
         EntityWrapper<Repair> wrapper = new EntityWrapper<>();
 
-        List<Project> projectList;
-        List<Long> projectIds;
-        projectList = projectService.queryList(info);
+        List<Repair> repairList = repairService.getSearchList(info);
+        if (repairList == null || repairList.size() == 0) {
+            map.put("list", repairList);
+            return new ResponseEntity<>(map, HttpStatus.OK);
+        }
 
+        List<Project> projectList = projectService.queryList(info);
         if (projectList != null && projectList.size() > 0) {
-            projectIds = jitConverter.getLongListFromEntityList(projectList, "id");
+            List<Long> projectIds = jitConverter.getLongListFromEntityList(projectList, "id");
             wrapper.in("project_id", projectIds);
         }
         if (StringUtils.isNotBlank(code)) {
@@ -170,10 +173,10 @@ public class RepairController {
         if (StringUtils.isNotBlank(name)) {
             wrapper.like("name", name);
         }
-
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id");
-        List<Repair> repairList = repairService.selectList(wrapper);
+
+        repairList = repairService.selectList(wrapper);
         List<RepairDto> repairDtos = jitConverter.mergeListByAny(RepairDto.class, repairList, null, null);
 
         Map<String, String> fileRule = new HashMap<>();

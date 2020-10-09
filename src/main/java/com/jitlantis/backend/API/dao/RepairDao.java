@@ -16,4 +16,6 @@ public interface RepairDao extends BaseMapper<Repair> {
     List<Repair> selectPageList(Page<Repair> page, @Param("status") Integer status, @Param("search") String search);
 
     List<Repair> selall();
+
+    List<Repair> getSearchList(@Param("search") String search);
 }

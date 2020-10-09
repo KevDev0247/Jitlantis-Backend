@@ -11,4 +11,6 @@ public interface RepairService extends IService<Repair> {
     Page<Repair> selectPageList(int pageNum, int pageSize, Integer status, String search);
 
     List<Repair> selall();
+
+    List<Repair> getSearchList(String info);
 }

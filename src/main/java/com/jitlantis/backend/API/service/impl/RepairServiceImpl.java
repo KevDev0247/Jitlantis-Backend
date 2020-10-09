@@ -27,4 +27,9 @@ public class RepairServiceImpl extends ServiceImpl<RepairDao, Repair> implements
     public List<Repair> selall() {
         return repairDao.selall();
     }
+
+    @Override
+    public List<Repair> getSearchList(String info) {
+        return repairDao.getSearchList(info);
+    }
 }

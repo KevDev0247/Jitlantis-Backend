@@ -89,7 +89,7 @@ public class SysBasecodeController {
             return new ResponseEntity<>(map, HttpStatus.OK);
         }
 
-        response = sysBasecodeService.deleteById(sysBasecodeId);
+        response = sysBasecodeService.delete(wrapper);
         if (response) {
             map.put("message", "Deletion successful!");
         } else {

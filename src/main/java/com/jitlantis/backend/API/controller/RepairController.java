@@ -8,8 +8,12 @@ import com.jitlantis.backend.API.base.JitEntityStringGroup;
 import com.jitlantis.backend.API.base.PageRequest;
 import com.jitlantis.backend.API.dao.RepairDao;
 import com.jitlantis.backend.API.dto.RepairDto;
+import com.jitlantis.backend.API.model.Contact;
+import com.jitlantis.backend.API.model.Product;
 import com.jitlantis.backend.API.model.Project;
 import com.jitlantis.backend.API.model.Repair;
+import com.jitlantis.backend.API.service.ContactService;
+import com.jitlantis.backend.API.service.ProductService;
 import com.jitlantis.backend.API.service.ProjectService;
 import com.jitlantis.backend.API.service.RepairService;
 import com.jitlantis.backend.API.utils.DeletedEnum;
@@ -48,6 +52,12 @@ public class RepairController {
 
     @Autowired
     private ProjectService projectService;
+
+    @Autowired
+    private ContactService contactService;
+
+    @Autowired
+    private ProductService productService;
 
     @Autowired
     private JitConverter jitConverter;
@@ -162,11 +172,17 @@ public class RepairController {
             return new ResponseEntity<>(map, HttpStatus.OK);
         }
 
-        List<Project> projectList = projectService.queryList(info);
-        if (projectList != null && projectList.size() > 0) {
-            List<Long> projectIds = jitConverter.getLongListFromEntityList(projectList, "id");
-            wrapper.in("project_id", projectIds);
-        }
+        List<Long> projectIds = jitConverter.getLongListFromEntityList(repairList, "project_id");
+        List<Project> projectList = projectService.findAllByIds(projectIds);
+
+        List<Long> productIds = jitConverter.getLongListFromEntityList(repairList, "product_id");
+        List<Product> productList = productService.findAllByIds(productIds);
+
+        List<Long> contactIds = jitConverter.getLongListFromEntityList(repairList, "contact_id");
+        List<Contact> contactList = contactService.findAllByIds(contactIds);
+
+        List<Long> repairIds = jitConverter.getLongListFromEntityList(repairList, "repair_id");
+        wrapper.in("id", repairIds);
         if (StringUtils.isNotBlank(code)) {
             wrapper.like("code", code);
         }
@@ -187,6 +203,19 @@ public class RepairController {
             JitEntityStringGroup<String> fileGroup = new JitEntityStringGroup<>(projectList, "id", "name");
             fileMap.put("projectName", fileGroup);
         }
+
+        if (productList != null && productList.size() > 0) {
+            fileRule.put("productName", "productId");
+            JitEntityStringGroup<String> fileGroup = new JitEntityStringGroup<>(productList, "id", "name");
+            fileMap.put("productName", fileGroup);
+        }
+
+        if (contactList != null && contactList.size() > 0) {
+            fileRule.put("contactName", "contactId");
+            JitEntityStringGroup<String> fileGroup = new JitEntityStringGroup<>(contactList, "id", "name");
+            fileMap.put("contactName", fileGroup);
+        }
+
         repairDtos = jitConverter.mergeListByAny(RepairDto.class, repairDtos, fileRule, fileMap);
         map.put("list", repairDtos);
 

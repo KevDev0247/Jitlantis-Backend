@@ -3,6 +3,7 @@ package com.jitlantis.backend.API.service.impl;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.jitlantis.backend.API.dao.ProjectDao;
+import com.jitlantis.backend.API.model.Product;
 import com.jitlantis.backend.API.model.Project;
 import com.jitlantis.backend.API.service.ProjectService;
 import com.jitlantis.backend.API.utils.DeletedEnum;
@@ -31,6 +32,16 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectDao, Project> impleme
         }
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id", true);
+        return this.selectList(wrapper);
+    }
+
+    @Override
+    public List<Project> findAllByIds(List<Long> projectIds) {
+        EntityWrapper<Project> wrapper = new EntityWrapper<>();
+        wrapper.in("id", projectIds);
+        wrapper.eq("is_delete", DeletedEnum.N.value());
+        wrapper.orderBy("id", true);
+
         return this.selectList(wrapper);
     }
 }

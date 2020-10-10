@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.jitlantis.backend.API.base.JitConverter;
 import com.jitlantis.backend.API.dto.BaseItemDto;
+import com.jitlantis.backend.API.model.Contact;
 import com.jitlantis.backend.API.model.SysUser;
 import com.jitlantis.backend.API.service.ProductService;
 import com.jitlantis.backend.API.dao.ProductDao;
@@ -52,5 +53,15 @@ public class ProductServiceImpl extends ServiceImpl<ProductDao, Product> impleme
     @Override
     public Product selectById(Integer id) {
         return productDao.selectById(id);
+    }
+
+    @Override
+    public List<Product> findAllByIds(List<Long> productIds) {
+        EntityWrapper<Product> wrapper = new EntityWrapper<>();
+        wrapper.in("id", productIds);
+        wrapper.eq("is_delete", DeletedEnum.N.value());
+        wrapper.orderBy("id", true);
+
+        return this.selectList(wrapper);
     }
 }

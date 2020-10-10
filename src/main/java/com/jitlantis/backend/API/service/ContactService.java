@@ -11,4 +11,6 @@ public interface ContactService extends IService<Contact> {
     List<BaseItemDto> optionList(String name);
 
     Contact selectById(Integer id);
+
+    List<Contact> findAllByIds(List<Long> contactIds);
 }

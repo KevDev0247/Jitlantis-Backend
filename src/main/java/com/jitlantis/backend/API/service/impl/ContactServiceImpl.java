@@ -47,4 +47,14 @@ public class ContactServiceImpl extends ServiceImpl<ContactDao, Contact> impleme
     public Contact selectById(Integer id) {
         return contactDao.selectById(id);
     }
+
+    @Override
+    public List<Contact> findAllByIds(List<Long> contactIds) {
+        EntityWrapper<Contact> wrapper = new EntityWrapper<>();
+        wrapper.in("id", contactIds);
+        wrapper.eq("is_delete", DeletedEnum.N.value());
+        wrapper.orderBy("id", true);
+
+        return this.selectList(wrapper);
+    }
 }

@@ -76,7 +76,8 @@ public class AccessoryController {
             return new ResponseEntity<>(map, HttpStatus.OK);
         }
 
-        response = accessoryService.deleteById(accessoryId);
+        accessoryRetrieved.setIsDelete(DeletedEnum.Y.value());
+        response = accessoryService.updateById(accessoryRetrieved);
         if (response) {
             map.put("message", "deletion successful");
         } else {
@@ -111,7 +112,7 @@ public class AccessoryController {
         Map<String, Object> map = new HashMap<>();
         EntityWrapper<Accessory> wrapper = new EntityWrapper<>();
 
-        if (StringUtils.isNotBlank(type + "")) {
+        if (StringUtils.isNotBlank(type + "") && type > 0) {
             wrapper.eq("type", type);
         }
         if (StringUtils.isNotBlank(code)) {

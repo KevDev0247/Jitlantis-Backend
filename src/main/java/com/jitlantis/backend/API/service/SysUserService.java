@@ -20,6 +20,8 @@ public interface SysUserService extends IService<SysUser> {
 
     List<SysUser> selectClientQueryList(String name, String email);
 
+    List<SysUser> selectRepairmanQueryList(String name, String company);
+
     List<BaseItemDto> optionList(String name);
 
     boolean delete(Integer userId);

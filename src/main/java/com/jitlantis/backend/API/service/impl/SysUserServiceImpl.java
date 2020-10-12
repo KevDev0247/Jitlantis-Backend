@@ -80,15 +80,26 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     }
 
     @Override
-    public List<BaseItemDto> optionList(String name) {
+    public List<SysUser> selectRepairmanQueryList(String name, String company) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<BaseItemDto> optionList(String info) {
         EntityWrapper<SysUser> wrapper = new EntityWrapper<>();
-        if (StringUtils.isNotBlank(name)) {
-            wrapper.like("name", name);
+        if (StringUtils.isNotBlank(info)) {
+            wrapper.like("name", info);
         }
+        List<Integer> roleIds = new ArrayList<>();
+        roleIds.add(7);
+        roleIds.add(8);
+        roleIds.add(9);
+        wrapper.in("role_id", roleIds);
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id");
-        List<SysUser> userList = this.selectList(wrapper);
 
+        List<SysUser> userList = this.selectList(wrapper);
         List<BaseItemDto> baseItemDtoList = jitConverter.mergeListByAny(BaseItemDto.class, userList, null, null);
         if (baseItemDtoList == null || baseItemDtoList.size() == 0) {
             baseItemDtoList = new ArrayList<>();

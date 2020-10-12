@@ -2,6 +2,7 @@ package com.jitlantis.backend.API.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.jitlantis.backend.API.annotation.MyLog;
 import com.jitlantis.backend.API.base.JitConverter;
 import com.jitlantis.backend.API.base.JitEntityGroup;
 import com.jitlantis.backend.API.base.JitEntityStringGroup;
@@ -12,10 +13,7 @@ import com.jitlantis.backend.API.model.Contact;
 import com.jitlantis.backend.API.model.Product;
 import com.jitlantis.backend.API.model.Project;
 import com.jitlantis.backend.API.model.Repair;
-import com.jitlantis.backend.API.service.ContactService;
-import com.jitlantis.backend.API.service.ProductService;
-import com.jitlantis.backend.API.service.ProjectService;
-import com.jitlantis.backend.API.service.RepairService;
+import com.jitlantis.backend.API.service.*;
 import com.jitlantis.backend.API.utils.DeletedEnum;
 import com.jitlantis.backend.API.utils.StringUtils;
 import io.swagger.annotations.Api;
@@ -58,6 +56,9 @@ public class RepairController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private SysUserService userService;
 
     @Autowired
     private JitConverter jitConverter;
@@ -218,6 +219,22 @@ public class RepairController {
 
         repairDtos = jitConverter.mergeListByAny(RepairDto.class, repairDtos, fileRule, fileMap);
         map.put("list", repairDtos);
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "query repairman list")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "name", value = "Repairman Name"),
+            @ApiImplicitParam(paramType = "query", name = "company", value = "Company"),
+    })
+    @RequestMapping(value = "/queryRepairmanList", method = RequestMethod.GET)
+    @MyLog(value = "query repairman list")
+    public ResponseEntity<Map<String, Object>> queryRepairmanList(
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "company", required = false) String company) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("data", userService.selectRepairmanQueryList(name, company));
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }

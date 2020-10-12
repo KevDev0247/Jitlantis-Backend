@@ -2,7 +2,6 @@ package com.jitlantis.backend.API.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.jitlantis.backend.API.dto.BaseItemDto;
-import com.jitlantis.backend.API.model.Contact;
 import com.jitlantis.backend.API.model.Product;
 import com.jitlantis.backend.API.service.ProductService;
 import com.jitlantis.backend.API.utils.DeletedEnum;

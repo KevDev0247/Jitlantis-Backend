@@ -127,7 +127,7 @@ public class ClientController {
             @ApiImplicitParam(paramType = "query", name = "area", value = "Area"),
     })
     @RequestMapping(value = "/queryClientList", method = RequestMethod.GET)
-    @MyLog(value = "query users list")
+    @MyLog(value = "query clients list")
     public ResponseEntity<Map<String, Object>> queryClientList(
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "area", required = false) String area) {

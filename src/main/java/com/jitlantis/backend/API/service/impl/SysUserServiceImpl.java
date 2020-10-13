@@ -81,8 +81,24 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
 
     @Override
     public List<SysUser> selectRepairmanQueryList(String name, String company) {
-        // TODO Auto-generated method stub
-        return null;
+        EntityWrapper<SysUser> wrapper = new EntityWrapper<>();
+
+        if (StringUtils.isNotBlank(name)) {
+            wrapper.like("name", name);
+        }
+        if (StringUtils.isNotBlank(company)) {
+            wrapper.like("company", company);
+        }
+
+        List<Integer> roleIds = new ArrayList<>();
+        roleIds.add(2);
+        roleIds.add(3);
+
+        wrapper.in("role_id", roleIds);
+        wrapper.eq("is_delete", DeletedEnum.N.value());
+        wrapper.orderBy("id", true);
+
+        return this.selectList(wrapper);
     }
 
     @Override

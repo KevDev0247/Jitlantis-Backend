@@ -20,7 +20,7 @@ import java.util.*;
  * Some of the common utility functions needed in other classes.
  *
  * @author Kevin Zhijun Wang
- * @version 2020.0808
+ * created on 2020/08/08
  */
 public class CommonUtils {
 

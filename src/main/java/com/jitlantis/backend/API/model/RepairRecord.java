@@ -22,6 +22,10 @@ public class RepairRecord {
 
     private Integer repairId;
 
+    private Integer productId;
+    
+    private Integer type;
+
     private String description;
 
     private String dcode;
@@ -44,6 +48,14 @@ public class RepairRecord {
 
     public Integer getRepairId() {
         return repairId;
+    }
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public Integer getType() {
+        return type;
     }
 
     public String getDescription() {
@@ -84,6 +96,14 @@ public class RepairRecord {
 
     public void setRepairId(Integer repairId) {
         this.repairId = repairId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     public void setDescription(String description) {

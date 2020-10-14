@@ -1,6 +1,7 @@
 package com.jitlantis.backend.API.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.jitlantis.backend.API.dto.BaseItemDto;
 import com.jitlantis.backend.API.model.Product;
 import com.jitlantis.backend.API.service.ProductService;
 import com.jitlantis.backend.API.utils.DeletedEnum;
@@ -15,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -97,6 +99,18 @@ public class ProductController {
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
+    @ApiOperation("query product option list")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "name", value = "Product Name"),
+    })
+    @RequestMapping(value = "/optionList", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> queryClientOptionList (@RequestParam(value = "name", required = false) String name) {
+        Map<String, Object> map = new HashMap<>();
+        List<BaseItemDto> baseItemDtoList = productService.optionList(name);
+        map.put("data", baseItemDtoList);
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
     @ApiOperation(value = "query product list", notes = "no pagination")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", name = "dept", value = "department"),
@@ -125,6 +139,15 @@ public class ProductController {
         wrapper.orderBy("id");
         map.put("list", productService.selectList(wrapper));
 
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "product detail")
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> getContact(Integer id) {
+        Map<String, Object> map = new HashMap<>();
+        Product product = productService.selectById(id);
+        map.put("data", product);
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }

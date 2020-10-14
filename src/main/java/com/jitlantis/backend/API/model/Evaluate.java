@@ -10,7 +10,7 @@ import java.util.Date;
  * The model for Evaluate that maps the structure from the database entities.
  * This model will carry the data in other sections
  *
- * @author Kevin Zhijun Wang
+ * @author Kevin Zhijun Wang, Yonggang Su
  * created on 2020/08/29
  */
 @Entity
@@ -19,6 +19,8 @@ public class Evaluate {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    private Integer repairId;
 
     private String comments;
 
@@ -30,6 +32,10 @@ public class Evaluate {
 
     public Integer getId() {
         return id;
+    }
+
+    public Integer getRepairId() {
+        return repairId;
     }
 
     public String getComments() {
@@ -66,5 +72,9 @@ public class Evaluate {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public void setRepairId(Integer repairId) {
+        this.repairId = repairId;
     }
 }

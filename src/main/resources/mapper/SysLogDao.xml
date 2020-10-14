@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jitlantis.backend.API.dao.SysLogDao">
+    <sql id="tableName">sys_log</sql>
+
+    <select id="selectLogList" resultType="com.jitlantis.backend.API.model.SysLog">
+        SELECT * FROM
+            <include refid="tableName"></include>
+        WHERE
+            <if test="fromTime != null and toTime != null">create_time between '${fromTime' and date_add('${toTime', interval 1 day) and</if>
+        1 = 1 ORDER BY id DESC
+    </select>
+</mapper>

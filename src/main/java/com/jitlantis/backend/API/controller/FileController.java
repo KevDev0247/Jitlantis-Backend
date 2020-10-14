@@ -39,8 +39,8 @@ public class FileController {
     @RequestMapping(value = "/uploadToOOS", method = RequestMethod.POST)
     public ResponseEntity<Map<String, Object>> uploadToOOS(@RequestParam("file") MultipartFile file) throws IOException {
         Map<String, Object> map = new HashMap<>();
-        String url = OSSFileUtils.uploadToCloud(file);
-        map.put("url", url);
+        map.put("url", "6666");
+        map.put("fileid", "99999");
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }

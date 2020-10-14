@@ -7,5 +7,5 @@ import com.jitlantis.backend.API.service.RepairRecordService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RepairRecordImpl extends ServiceImpl<RepairRecordDao, RepairRecord> implements RepairRecordService {
+public class RepairRecordServiceImpl extends ServiceImpl<RepairRecordDao, RepairRecord> implements RepairRecordService {
 }

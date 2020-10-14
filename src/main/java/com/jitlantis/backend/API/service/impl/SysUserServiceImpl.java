@@ -2,11 +2,14 @@ package com.jitlantis.backend.API.service.impl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.baomidou.mybatisplus.toolkit.StringUtils;
+import com.jitlantis.backend.API.base.JitConverter;
 import com.jitlantis.backend.API.dao.SysUserDao;
+import com.jitlantis.backend.API.dto.BaseItemDto;
 import com.jitlantis.backend.API.service.SysUserService;
 import com.jitlantis.backend.API.model.SysUser;
 import com.jitlantis.backend.API.utils.DeletedEnum;
+import com.jitlantis.backend.API.utils.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,6 +25,9 @@ import java.util.List;
 @Service
 public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> implements SysUserService {
 
+    @Autowired
+    private JitConverter jitConverter;
+
     private SysUserDao sysUserDao;
 
     @Override
@@ -33,7 +39,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     @Override
     public List<SysUser> selectQueryList(String name, String email) {
         EntityWrapper<SysUser> wrapper = new EntityWrapper<>();
-        if (StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(email)) {
+        if (StringUtils.isNotBlank(name) && StringUtils.isNotBlank(email)) {
             wrapper.like("name", name);
             wrapper.like("email", email);
         }
@@ -57,10 +63,10 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     @Override
     public List<SysUser> selectClientQueryList(String name, String email) {
         EntityWrapper<SysUser> wrapper = new EntityWrapper<>();
-        if (StringUtils.isNotEmpty(name)) {
+        if (StringUtils.isNotBlank(name)) {
             wrapper.like("name", name);
         }
-        if (StringUtils.isNotEmpty(email)) {
+        if (StringUtils.isNotBlank(email)) {
             wrapper.like("email", email);
         }
         List<Integer> roleIds = new ArrayList<>();
@@ -71,5 +77,50 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id", true);
         return this.selectList(wrapper);
+    }
+
+    @Override
+    public List<SysUser> selectRepairmanQueryList(String name, String company) {
+        EntityWrapper<SysUser> wrapper = new EntityWrapper<>();
+
+        if (StringUtils.isNotBlank(name)) {
+            wrapper.like("name", name);
+        }
+        if (StringUtils.isNotBlank(company)) {
+            wrapper.like("company", company);
+        }
+
+        List<Integer> roleIds = new ArrayList<>();
+        roleIds.add(2);
+        roleIds.add(3);
+
+        wrapper.in("role_id", roleIds);
+        wrapper.eq("is_delete", DeletedEnum.N.value());
+        wrapper.orderBy("id", true);
+
+        return this.selectList(wrapper);
+    }
+
+    @Override
+    public List<BaseItemDto> optionList(String info) {
+        EntityWrapper<SysUser> wrapper = new EntityWrapper<>();
+        if (StringUtils.isNotBlank(info)) {
+            wrapper.like("name", info);
+        }
+        List<Integer> roleIds = new ArrayList<>();
+        roleIds.add(7);
+        roleIds.add(8);
+        roleIds.add(9);
+        wrapper.in("role_id", roleIds);
+        wrapper.eq("is_delete", DeletedEnum.N.value());
+        wrapper.orderBy("id");
+
+        List<SysUser> userList = this.selectList(wrapper);
+        List<BaseItemDto> baseItemDtoList = jitConverter.mergeListByAny(BaseItemDto.class, userList, null, null);
+        if (baseItemDtoList == null || baseItemDtoList.size() == 0) {
+            baseItemDtoList = new ArrayList<>();
+        }
+
+        return baseItemDtoList;
     }
 }

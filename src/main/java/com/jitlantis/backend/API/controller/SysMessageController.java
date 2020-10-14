@@ -2,6 +2,8 @@ package com.jitlantis.backend.API.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.jitlantis.backend.API.model.SysMessage;
+import com.jitlantis.backend.API.model.SysRole;
+import com.jitlantis.backend.API.model.SysUser;
 import com.jitlantis.backend.API.service.SysMessageService;
 import com.jitlantis.backend.API.utils.DeletedEnum;
 import com.jitlantis.backend.API.utils.StringUtils;
@@ -12,11 +14,21 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The controller for SysMessage (Messages sent to system users) that handles HTTP requests and responses.
+ * In this frontend-backend-separated architecture,
+ * the controller interacts with the particular service on the frontend.
+ *
+ * @author Kevin Zhijun Wang
+ * @see SysMessage
+ * created on 2020/10/13
+ */
 @Api(tags = {"System Messages"})
 @RestController
 @RequestMapping(value = "/sysMessage")

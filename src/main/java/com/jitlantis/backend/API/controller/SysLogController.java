@@ -1,5 +1,6 @@
 package com.jitlantis.backend.API.controller;
 
+import com.jitlantis.backend.API.model.Accessory;
 import com.jitlantis.backend.API.model.SysLog;
 import com.jitlantis.backend.API.service.SysLogService;
 import io.swagger.annotations.Api;
@@ -18,6 +19,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The controller for SysLog (System Logs) that handles HTTP requests and responses.
+ * System Logs record all actions taken on this platform.
+ * In this frontend-backend-separated architecture,
+ * the controller interacts with the particular service on the frontend.
+ *
+ * @author Kevin Zhijun Wang
+ * @see SysLog
+ * created on 2020/08/25
+ */
 @Api(tags = {"Logs"})
 @RestController
 @RequestMapping("/sysLog")

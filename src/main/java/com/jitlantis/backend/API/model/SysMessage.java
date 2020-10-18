@@ -2,6 +2,14 @@ package com.jitlantis.backend.API.model;
 
 import java.util.Date;
 
+/**
+ * The model for SysMessage that maps the structure from the database entities.
+ * This model will carry the data in other sections.
+ * System Messages refers to the messages sent to different users and tenants in the system
+ *
+ * @author Kevin Zhijun Wang
+ * created on 2020/08/24
+ */
 public class SysMessage {
 
     private Integer id;

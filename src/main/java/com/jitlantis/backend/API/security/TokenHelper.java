@@ -20,7 +20,7 @@ public class TokenHelper {
                 .setSubject(username)
                 .setIssuedAt(generateCurrentDate())
                 .setExpiration(generateExpirationDate())
-                .signWith(SIGNATURE_ALGORITHM, SECRETE)
+                .signWith(SIGNATURE_ALGORITHM, SECRET)
                 .compact();
     }
 
@@ -46,7 +46,7 @@ public class TokenHelper {
 
     public String getUsernameFromToken(String token) {
         return Jwts.parser()
-                .setSigningKey(SECRETE)
+                .setSigningKey(SECRET)
                 .parseClaimsJws(token)
                 .getBody()
                 .getSubject();

@@ -157,13 +157,15 @@ public class RepairController {
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", name = "info", value = "Info (product, client, project)"),
             @ApiImplicitParam(paramType = "query", name = "code", value = "Repair company"),
-            @ApiImplicitParam(paramType = "query", name = "name", value = "Work Order"),
+            @ApiImplicitParam(paramType = "query", name = "name", value = "Work Order Name"),
+            @ApiImplicitParam(paramType = "query", name = "status", value = "Work Order Status"),
     })
     @RequestMapping(value = "/queryRepairList", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> queryRepairList(
             @RequestParam(value = "info", required = false) String info,
             @RequestParam(value = "code", required = false) String code,
-            @RequestParam(value = "name", required = false) String name) {
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "status", required = false) Integer status) {
         Map<String, Object> map = new HashMap<>();
         EntityWrapper<Repair> wrapper = new EntityWrapper<>();
 
@@ -189,6 +191,9 @@ public class RepairController {
         }
         if (StringUtils.isNotBlank(name)) {
             wrapper.like("name", name);
+        }
+        if (StringUtils.isNotBlank(status + "") && status > 0) {
+            wrapper.eq("status", status);
         }
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id");

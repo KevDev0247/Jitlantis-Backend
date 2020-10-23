@@ -51,7 +51,7 @@ public class FileController {
                 attachmentEntity.setFilename(fileName);
                 attachmentEntity.setExtension(extension);
                 sysAttachmentsService.create(attachmentEntity);
-                
+
                 map.put("fileid", attachmentEntity.getFileid());
                 map.put("url", url);
             }

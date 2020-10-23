@@ -24,8 +24,7 @@ public class TokenUtil {
             return null;
         }
 
-        String userId = new TokenHelper().getUsernameFromToken(authHeader);
-        return userId;
+        return new TokenHelper().getUsernameFromToken(authHeader);
     }
 
     public static HttpServletRequest getRequest() {

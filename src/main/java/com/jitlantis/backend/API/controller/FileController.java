@@ -1,5 +1,6 @@
 package com.jitlantis.backend.API.controller;
 
+import com.jitlantis.backend.API.dto.UploadResponseDto;
 import com.jitlantis.backend.API.model.SysAttachments;
 import com.jitlantis.backend.API.service.SysAttachmentsService;
 import com.jitlantis.backend.API.utils.OSSFileUtils;
@@ -39,24 +40,38 @@ public class FileController {
     @RequestMapping(value = "/uploadToOOS", method = RequestMethod.POST)
     public ResponseEntity<Map<String, Object>> uploadToOOS(@RequestParam("file") MultipartFile file) throws IOException {
         Map<String, Object> map = new HashMap<>();
-        map.put("url", "6666");
-        map.put("fileid", "99999");
+        if (!file.isEmpty()) {
+            UploadResponseDto responseDto = OSSFileUtils.uploadToCloud(file);
+            if (responseDto.getCode().equals("1")) {
+                String url = responseDto.getUrl();
+                String fileName = file.getOriginalFilename();
+                String extension = fileName.substring(fileName.lastIndexOf("."));
+
+                SysAttachments attachmentEntity = new SysAttachments();
+                attachmentEntity.setFilename(fileName);
+                attachmentEntity.setExtension(extension);
+                sysAttachmentsService.create(attachmentEntity);
+                
+                map.put("fileid", attachmentEntity.getFileid());
+                map.put("url", url);
+            }
+        }
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "create attachment")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "attachment", value = "Attachment Entity", required = true, dataType = "SysAttachments")
-    })
-    @RequestMapping(value = "/createAttachment", method = RequestMethod.POST)
-    public ResponseEntity<Map<String, Object>> createAttachment(@RequestBody SysAttachments attachment) {
-        Map<String, Object> map = new HashMap<>();
-        int attachmentId = sysAttachmentsService.create(attachment);
-        map.put("data", attachment.getFileid());
-
-        return new ResponseEntity<>(map, HttpStatus.OK);
-    }
+//    @ApiOperation(value = "create attachment")
+//    @ApiImplicitParams({
+//            @ApiImplicitParam(name = "attachment", value = "Attachment Entity", required = true, dataType = "SysAttachments")
+//    })
+//    @RequestMapping(value = "/createAttachment", method = RequestMethod.POST)
+//    public ResponseEntity<Map<String, Object>> createAttachment(@RequestBody SysAttachments attachment) {
+//        Map<String, Object> map = new HashMap<>();
+//        int attachmentId = sysAttachmentsService.create(attachment);
+//        map.put("data", attachment.getFileid());
+//
+//        return new ResponseEntity<>(map, HttpStatus.OK);
+//    }
 
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
     public String uploadFile(@RequestParam("file") MultipartFile file) {

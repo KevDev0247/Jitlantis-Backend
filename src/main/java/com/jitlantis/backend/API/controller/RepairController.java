@@ -142,7 +142,7 @@ public class RepairController {
     }
 
     @ApiOperation(value = "work order details")
-    @RequestMapping(value = "/detail")
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> getRepair(Integer repairId) {
         Map<String, Object> map = new HashMap<>();
         Repair repair = repairService.selectById(repairId);

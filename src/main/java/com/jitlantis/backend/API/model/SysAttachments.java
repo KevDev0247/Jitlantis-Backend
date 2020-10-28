@@ -1,5 +1,7 @@
 package com.jitlantis.backend.API.model;
 
+import com.baomidou.mybatisplus.annotations.TableId;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +20,7 @@ import java.util.Date;
 public class SysAttachments {
 
     @Id
+    @TableId
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer fileid;
 
@@ -42,6 +45,12 @@ public class SysAttachments {
     private String downloadurl;
 
     private String status;
+
+    private Integer shareCount;
+
+    private Integer downCount;
+
+    private Integer userId;
 
     private String extension;
 
@@ -93,6 +102,18 @@ public class SysAttachments {
 
     public String getStatus() {
         return status;
+    }
+
+    public Integer getShareCount() {
+        return shareCount;
+    }
+
+    public Integer getDownCount() {
+        return downCount;
+    }
+
+    public Integer getUserId() {
+        return userId;
     }
 
     public String getExtension() {
@@ -149,6 +170,18 @@ public class SysAttachments {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public void setShareCount(Integer shareCount) {
+        this.shareCount = shareCount;
+    }
+
+    public void setDownCount(Integer downCount) {
+        this.downCount = downCount;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public void setExtension(String extension) {

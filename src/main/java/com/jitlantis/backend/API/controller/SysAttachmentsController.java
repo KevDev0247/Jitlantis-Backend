@@ -50,7 +50,7 @@ public class SysAttachmentsController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "sysAttachments", value = "SysAttachment Entity", required = true, dataType = "SysAttachments")
     })
-    @RequestMapping(value = "updateSysAttachments", method = RequestMethod.POST)
+    @RequestMapping(value = "/updateSysAttachments", method = RequestMethod.POST)
     public ResponseEntity<Map<String, Object>> updateSysAttachments(@RequestBody SysAttachments sysAttachment) {
         Map<String, Object> map = new HashMap<>();
         boolean response;

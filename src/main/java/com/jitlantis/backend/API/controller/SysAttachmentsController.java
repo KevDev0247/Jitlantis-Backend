@@ -1,7 +1,6 @@
 package com.jitlantis.backend.API.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.jitlantis.backend.API.model.Repair;
 import com.jitlantis.backend.API.model.SysAttachments;
 import com.jitlantis.backend.API.service.SysAttachmentsService;
 import com.jitlantis.backend.API.utils.StringUtils;

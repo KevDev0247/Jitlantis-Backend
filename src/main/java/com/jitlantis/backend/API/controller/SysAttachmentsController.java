@@ -27,6 +27,7 @@ import java.util.Map;
  */
 @Api(tags = {"file"})
 @RestController
+@RequestMapping(value = "/sysAttachments")
 public class SysAttachmentsController {
 
     @Autowired

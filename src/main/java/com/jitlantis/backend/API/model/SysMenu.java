@@ -37,6 +37,8 @@ public class SysMenu {
 
     private String icon;
 
+    private Integer isMain;
+
     private String creator;
 
     private String updater;
@@ -74,6 +76,10 @@ public class SysMenu {
 
     public String getIcon() {
         return icon;
+    }
+
+    public Integer getIsMain() {
+        return isMain;
     }
 
     public Integer getOrderNum() {
@@ -126,6 +132,10 @@ public class SysMenu {
 
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    public void setIsMain(Integer isMain) {
+        this.isMain = isMain;
     }
 
     public void setOrderNum(Integer orderNum) {

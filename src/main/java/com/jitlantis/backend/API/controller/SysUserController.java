@@ -1,9 +1,14 @@
 package com.jitlantis.backend.API.controller;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.jitlantis.backend.API.annotation.MyLog;
-import com.jitlantis.backend.API.model.SysRole;
+import com.jitlantis.backend.API.base.JitConverter;
+import com.jitlantis.backend.API.dto.MainMenuDto;
+import com.jitlantis.backend.API.model.*;
+import com.jitlantis.backend.API.service.SysMenuService;
+import com.jitlantis.backend.API.service.SysRoleMenuService;
+import com.jitlantis.backend.API.service.SysUserMenuService;
 import com.jitlantis.backend.API.service.SysUserService;
-import com.jitlantis.backend.API.model.SysUser;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -14,9 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * The controller for SysUser (System User) that handles HTTP requests and responses.
@@ -38,7 +41,19 @@ public class SysUserController {
     private SysUserService sysUserService;
 
     @Autowired
+    private SysUserMenuService sysUserMenuService;
+
+    @Autowired
+    private SysRoleMenuService sysRoleMenuService;
+
+    @Autowired
+    private SysMenuService sysMenuService;
+
+    @Autowired
     private BCryptPasswordEncoder encoder;
+
+    @Autowired
+    private JitConverter jitConverter;
 
     @ApiOperation(value = "User Sign Up")
     @ApiImplicitParams({
@@ -144,6 +159,27 @@ public class SysUserController {
         if (userRetrieved != null) {
             userRetrieved.setRoleId(roleId);
             response = sysUserService.updateById(userRetrieved);
+            if (response) {
+                EntityWrapper<SysRoleMenu> wrapper = new EntityWrapper<>();
+                wrapper.eq("role_id", roleId);
+
+                List<SysRoleMenu> roleMenuList = sysRoleMenuService.selectList(wrapper);
+                List<SysUserMenu> userMenuList = new ArrayList<>();
+
+                if (roleMenuList != null && roleMenuList.size() > 0) {
+                    List<Long> menuIds = jitConverter.getLongListFromEntityList(roleMenuList, "menuId");
+                    List<SysMenu> menuList = sysMenuService.selectBatchIds(menuIds);
+                    for (SysMenu menu: menuList) {
+                        SysUserMenu userMenu = new SysUserMenu();
+                        if (menu.getIsMain() == 1) {
+                            userMenu.setMenuId(menu.getId());
+                            userMenu.setUserId(userId);
+                            userMenuList.add(userMenu);
+                        }
+                    }
+                    sysUserMenuService.insertBatch(userMenuList);
+                }
+             }
         } else {
             response = false;
         }
@@ -202,6 +238,16 @@ public class SysUserController {
             response = false;
             map.put("data", response);
         }
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "get main menus")
+    @RequestMapping(value = "/getMainMenus", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> getMainMenus(Integer userId) {
+        Map<String, Object> map = new HashMap<>();
+        List<MainMenuDto> mainMenuDtoList = sysUserMenuService.getMainMenus(userId);
+        map.put("data", mainMenuDtoList);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }

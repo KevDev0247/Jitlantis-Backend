@@ -40,10 +40,7 @@ public class TokenUtil {
     }
 
     public static String getUserName(String token) {
-        String subject = getTokenBody(token).getSubject();
-        JSONObject jsonObject = JSONObject.parseObject(subject);
-
-        return subject;
+        return getTokenBody(token).getSubject();
     }
 
     private static Claims getTokenBody(String token) {

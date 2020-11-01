@@ -5,10 +5,12 @@
     <sql id="tableName">sys_user_menu</sql>
     <select id="getMainMenus" resultType="com.jitlantis.backend.API.dto.MainMenuDto">
         SELECT
-        menu.*, usermenu.is_show
+        menu.*, usermenu.is_show, usermenu.id AS userMenuId
         FROM sys_user_menu usermenu
         LEFT JOIN sys_menu menu ON usermenu.menu_id = menu.id
-        WHERE usermenu.user_id = ${userId} AND menu.is_delete = 0
+        WHERE usermenu.user_id = ${userId}
+        <if test="isShow != -1">usermenu.is_show = ${isShow} AND </if>
+        menu.is_delete = 0
         ORDER BY menu.id ASC
     </select>
 </mapper>

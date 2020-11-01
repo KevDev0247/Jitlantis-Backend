@@ -4,21 +4,21 @@ public class MainMenuDto {
 
     private Integer isShow;
 
-    private Integer umid;
+    private Integer userMenuId;
 
     public Integer getIsShow() {
         return isShow;
     }
 
-    public Integer getUmid() {
-        return umid;
+    public Integer getUserMenuId() {
+        return userMenuId;
     }
 
     public void setIsShow(Integer isShow) {
         this.isShow = isShow;
     }
 
-    public void setUmid(Integer umid) {
-        this.umid = umid;
+    public void setUserMenuId(Integer userMenuId) {
+        this.userMenuId = userMenuId;
     }
 }

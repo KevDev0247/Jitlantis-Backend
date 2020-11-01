@@ -13,5 +13,5 @@ import java.util.List;
 @Component
 public interface SysUserMenuDao extends BaseMapper<SysUserMenu> {
 
-    List<MainMenuDto> getMainMenus(@Param("userId") Integer userId);
+    List<MainMenuDto> getMainMenus(@Param("userId") Integer userId, @Param("isShow") Integer isShow);
 }

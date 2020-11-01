@@ -17,7 +17,7 @@ public class SysUserMenuServiceImpl extends ServiceImpl<SysUserMenuDao, SysUserM
     private SysUserMenuDao sysUserMenuDao;
 
     @Override
-    public List<MainMenuDto> getMainMenus(Integer userId) {
-        return sysUserMenuDao.getMainMenus(userId);
+    public List<MainMenuDto> getMainMenus(Integer userId, Integer isShow) {
+        return sysUserMenuDao.getMainMenus(userId, isShow);
     }
 }

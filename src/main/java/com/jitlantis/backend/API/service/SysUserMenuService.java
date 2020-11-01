@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface SysUserMenuService extends IService<SysUserMenu> {
 
-    List<MainMenuDto> getMainMenus(Integer userId);
+    List<MainMenuDto> getMainMenus(Integer userId, Integer isShow);
 }

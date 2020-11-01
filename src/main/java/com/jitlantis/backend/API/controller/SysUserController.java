@@ -241,14 +241,4 @@ public class SysUserController {
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
-
-    @ApiOperation(value = "get main menus")
-    @RequestMapping(value = "/getMainMenus", method = RequestMethod.GET)
-    public ResponseEntity<Map<String, Object>> getMainMenus(Integer userId) {
-        Map<String, Object> map = new HashMap<>();
-        List<MainMenuDto> mainMenuDtoList = sysUserMenuService.getMainMenus(userId);
-        map.put("data", mainMenuDtoList);
-
-        return new ResponseEntity<>(map, HttpStatus.OK);
-    }
 }

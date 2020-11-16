@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jitlantis.backend.API.dao.ContactDao">
+    <sql id="tableName">contact</sql>
+    <resultMap type="Contact" id="contactmap">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+    <select id="selectMapById" resultMap="contactmap" parameterType="int">
+        SELECT * FROM contact WHERE id=#{0}
+    </select>
+    <select id="selectById" resultType="Contact" parameterType="int">
+        SELECT * FROM contact WHERE id=#{0}
+    </select>
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jitlantis.backend.API.dao.SysOrganizationDao">
+    <sql id="tableName">sys_organization</sql>
+
+    <select id="selectOrgListByOrgId" resultType="com.jitlantis.backend.API.dto.OrgDto">
+        SELECT id, org_name AS title, org_abr AS 'key'
+            FROM
+            <include refid="tableName"></include>
+            WHERE org_parent_no =${orgId} ORDER BY id ASC;
+    </select>
+
+    <select id="selectOrgQueryList" resultType="com.jitlantis.backend.API.model.SysOrganization">
+        SELECT *
+            FROM
+            <include refid="tableName"></include>
+            WHERE
+            <if test="orgName != null">org_name LIKE '%${orgName}%' AND </if>
+            <if test="orgAbr != null">org_abr LIKE '%${orgAbr}%' AND </if>
+            1 = 1
+            ORDER BY id DESC;
+    </select>
+</mapper>

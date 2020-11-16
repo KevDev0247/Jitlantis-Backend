@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jitlantis.backend.API.dao.RepairDao">
+    <sql id="tableName">repair</sql>
+
+    <resultMap id="repairmap" type="com.jitlantis.backend.API.dto.RepairDto">
+        <result property="contactId" column="contact_id"/>
+        <result property="projectId" column="project_id"/>
+        <result property="installId" column="install_id"/>
+        <association property="contact" select="com.jitlantis.backend.API.dao.ContactDao.selectById" column="contact_id"></association>
+        <association property="project" select="com.jitlantis.backend.API.dao.ProjectDao.selectById" column="project_id"></association>
+        <association property="product" select="com.jitlantis.backend.API.dao.ProductDao.selectById" column="product_id"></association>
+    </resultMap>
+
+    <select id="selall" resultMap="repairmap">
+        SELECT * FROM repair
+    </select>
+
+    <select id="selectPageList" resultType="com.jitlantis.backend.API.model.Repair">
+        SELECT * FROM repair WHERE is_delete = 0 AND
+        <if test="status != null">status = ${status} AND </if>
+        <if test="search != null">name LIKE '%${search}%' AND </if>
+        1 = 1 ORDER BY id ASC
+    </select>
+
+    <select id="getSearchList" resultType="com.jitlantis.backend.API.model.Repair">
+        SELECT
+            repair.*
+        FROM
+            repair repair
+        LEFT JOIN product product ON repair.install_id = product.id
+        LEFT JOIN project project ON repair.project_id = project.id
+        LEFT JOIN contact contact ON repair.contact_id = contact.id
+        WHERE
+              <if test="search != null">concat(IFNULL(product.title, ''), IFNULL(project.name, ''), IFNULL(contact.name, '')) LIKE '%${search}%' AND</if>
+                        1 = 1
+        ORDER BY id ASC
+    </select>
+</mapper>

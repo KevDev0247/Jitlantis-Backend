@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jitlantis.backend.API.dao.SysMenuDao">
+    <sql id="tableName">sys_menu</sql>
+
+    <select id="selectMenuListByRoleId" resultType="com.jitlantis.backend.API.model.SysMenu">
+        SELECT
+            m.*
+        FROM
+            <include refid="tableName"></include> m LEFT JOIN sys_role_menu rm ON rm.menu_id = m.id
+        WHERE m.is_delete = 0 AND rm.role_id=${roleId} ORDER BY m.parent_id ASC
+    </select>
+
+    <select id="selectFirstMenuDtoList" resultType="com.jitlantis.backend.API.dto.BaseMenuDto">
+        SELECT id, text, i18n FROM sys_menu WHERE is_delete = 0 AND parent_id = 0 ORDER BY id ASC
+    </select>
+</mapper>

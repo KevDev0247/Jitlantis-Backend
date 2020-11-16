@@ -1,0 +1,9 @@
+refs/heads/backup
+refs/heads/dev
+refs/heads/dev-backup
+refs/heads/master
+refs/remotes/origin/master
+refs/remotes/origin/backup
+refs/remotes/origin/dev
+refs/remotes/origin/dev-backup
+refs/remotes/origin/master

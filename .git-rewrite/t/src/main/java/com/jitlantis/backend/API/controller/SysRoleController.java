@@ -3,10 +3,12 @@ package com.jitlantis.backend.API.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.jitlantis.backend.API.model.SysMenu;
 import com.jitlantis.backend.API.model.SysRoleMenu;
+import com.jitlantis.backend.API.model.SysUserMenu;
 import com.jitlantis.backend.API.service.SysMenuService;
 import com.jitlantis.backend.API.service.SysRoleMenuService;
 import com.jitlantis.backend.API.model.SysRole;
 import com.jitlantis.backend.API.service.SysRoleService;
+import com.jitlantis.backend.API.service.SysUserMenuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -47,6 +49,9 @@ public class SysRoleController {
 
     @Autowired
     private SysRoleMenuService sysRoleMenuService;
+
+    @Autowired
+    private SysUserMenuService sysUserMenuService;
 
     @ApiOperation("create new role")
     @ApiImplicitParams({
@@ -120,6 +125,13 @@ public class SysRoleController {
             sysRoleMenu.setMenuId(menuId);
             sysRoleMenu.setRoleId(roleId);
             response = sysRoleMenuService.insertOrUpdate(sysRoleMenu);
+
+//            if (menu.getIsMain() == 1) {
+//                SysUserMenu userMenu = new SysUserMenu();
+//                userMenu.setUserId(2);
+//                userMenu.setMenuId(menuId);
+//                sysUserMenuService.insert(userMenu);
+//            }
             if (response) {
                 message = "binding successful";
             } else {

@@ -2,6 +2,8 @@ package com.jitlantis.backend.API.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.jitlantis.backend.API.model.Accessory;
+import com.jitlantis.backend.API.model.SysRole;
+import com.jitlantis.backend.API.model.SysUser;
 import com.jitlantis.backend.API.service.AccessoryService;
 import com.jitlantis.backend.API.utils.DeletedEnum;
 import com.jitlantis.backend.API.utils.StringUtils;
@@ -12,11 +14,21 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The controller for Accessory (Appliance manufacturing accessories) that handles HTTP requests and responses.
+ * In this frontend-backend-separated architecture,
+ * the controller interacts with the particular service on the frontend.
+ *
+ * @author Kevin Zhijun Wang
+ * @see Accessory
+ * created on 2020/09/10
+ */
 @Api(tags = {"Accessory"})
 @RestController
 @RequestMapping(value = "/accessory")

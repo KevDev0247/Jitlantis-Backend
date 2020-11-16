@@ -2,6 +2,7 @@ package com.jitlantis.backend.API.dao;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.jitlantis.backend.API.dto.RepairStatusCountDto;
 import com.jitlantis.backend.API.model.Repair;
 import org.apache.ibatis.annotations.Param;
 import org.mapstruct.Mapper;
@@ -18,4 +19,6 @@ public interface RepairDao extends BaseMapper<Repair> {
     List<Repair> selall();
 
     List<Repair> getSearchList(@Param("search") String search);
+
+    List<RepairStatusCountDto> getRepairCountByStatus();
 }

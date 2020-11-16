@@ -2,20 +2,19 @@ package com.jitlantis.backend.API.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.jitlantis.backend.API.annotation.MyLog;
 import com.jitlantis.backend.API.base.JitConverter;
 import com.jitlantis.backend.API.base.JitEntityGroup;
 import com.jitlantis.backend.API.base.JitEntityStringGroup;
 import com.jitlantis.backend.API.base.PageRequest;
 import com.jitlantis.backend.API.dao.RepairDao;
 import com.jitlantis.backend.API.dto.RepairDto;
+import com.jitlantis.backend.API.dto.RepairStatusCountDto;
 import com.jitlantis.backend.API.model.Contact;
 import com.jitlantis.backend.API.model.Product;
 import com.jitlantis.backend.API.model.Project;
 import com.jitlantis.backend.API.model.Repair;
-import com.jitlantis.backend.API.service.ContactService;
-import com.jitlantis.backend.API.service.ProductService;
-import com.jitlantis.backend.API.service.ProjectService;
-import com.jitlantis.backend.API.service.RepairService;
+import com.jitlantis.backend.API.service.*;
 import com.jitlantis.backend.API.utils.DeletedEnum;
 import com.jitlantis.backend.API.utils.StringUtils;
 import io.swagger.annotations.Api;
@@ -28,10 +27,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityGraph;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * The controller for Repair (Work Order entity) that handles HTTP requests and responses.
@@ -58,6 +54,9 @@ public class RepairController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private SysUserService userService;
 
     @Autowired
     private JitConverter jitConverter;
@@ -143,7 +142,7 @@ public class RepairController {
     }
 
     @ApiOperation(value = "work order details")
-    @RequestMapping(value = "/detail")
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> getRepair(Integer repairId) {
         Map<String, Object> map = new HashMap<>();
         Repair repair = repairService.selectById(repairId);
@@ -156,13 +155,15 @@ public class RepairController {
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", name = "info", value = "Info (product, client, project)"),
             @ApiImplicitParam(paramType = "query", name = "code", value = "Repair company"),
-            @ApiImplicitParam(paramType = "query", name = "name", value = "Work Order"),
+            @ApiImplicitParam(paramType = "query", name = "name", value = "Work Order Name"),
+            @ApiImplicitParam(paramType = "query", name = "status", value = "Work Order Status"),
     })
     @RequestMapping(value = "/queryRepairList", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> queryRepairList(
             @RequestParam(value = "info", required = false) String info,
             @RequestParam(value = "code", required = false) String code,
-            @RequestParam(value = "name", required = false) String name) {
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "status", required = false) Integer status) {
         Map<String, Object> map = new HashMap<>();
         EntityWrapper<Repair> wrapper = new EntityWrapper<>();
 
@@ -188,6 +189,9 @@ public class RepairController {
         }
         if (StringUtils.isNotBlank(name)) {
             wrapper.like("name", name);
+        }
+        if (StringUtils.isNotBlank(status + "") && status > 0) {
+            wrapper.eq("status", status);
         }
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id");
@@ -218,6 +222,51 @@ public class RepairController {
 
         repairDtos = jitConverter.mergeListByAny(RepairDto.class, repairDtos, fileRule, fileMap);
         map.put("list", repairDtos);
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "query repairman list")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "name", value = "Repairman Name"),
+            @ApiImplicitParam(paramType = "query", name = "company", value = "Company"),
+    })
+    @RequestMapping(value = "/queryRepairmanList", method = RequestMethod.GET)
+    @MyLog(value = "query repairman list")
+    public ResponseEntity<Map<String, Object>> queryRepairmanList(
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "company", required = false) String company) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("data", userService.selectRepairmanQueryList(name, company));
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "get work order status counts")
+    @RequestMapping(value = "/getRepairCountByStatus", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> getRepairCountByStatus() {
+        Map<String, Object> map = new HashMap<>();
+        List<RepairStatusCountDto> repairStatusCounts = repairService.getRepairCountByStatus();
+        map.put("data", repairStatusCounts);
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "approve work orders")
+    @RequestMapping(value = "/approveWorkOrder", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> approveWorkOrder(Integer id) {
+        Map<String, Object> map = new HashMap<>();
+        Repair repair = repairService.selectById(id);
+        boolean response = false;
+
+        if (repair != null) {
+            if (repair.getStatus() == 1) {
+                repair.setStatus(2);
+                repair.setUpdateTime(new Date());
+                response = repairService.updateById(repair);
+            }
+        }
+        map.put("data", response);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }

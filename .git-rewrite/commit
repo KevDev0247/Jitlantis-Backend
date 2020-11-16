@@ -1,6 +1,6 @@
-tree 318766ecdc8b414ab94d0018cc4d1768e049c5e3
-parent f21e939e6ead3afd0e4f38917df1fef373110a2d
-author KevDev0247 <donkevin1980s@gmail.com> 1602472498 -0400
-committer KevDev0247 <donkevin1980s@gmail.com> 1602472498 -0400
+tree c33c5e687e520ef625c0e8a4bc07936dab4c3af4
+parent fa8d6b9dc8ec401d92eb82367e14bb14a1ef331b
+author KevDev0247 <donkevin1980s@gmail.com> 1604202836 -0400
+committer KevDev0247 <donkevin1980s@gmail.com> 1604202836 -0400
 
-Remove imports and fix typo
+Update SysUserMenu SQL script

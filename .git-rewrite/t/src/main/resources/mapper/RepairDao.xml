@@ -37,4 +37,7 @@
                         1 = 1
         ORDER BY id ASC
     </select>
+    <select id="getRepairCountByStatus" resultType="com.jitlantis.backend.API.dto.RepairStatusCountDto">
+        SELECT count(*) AS number, status FROM repair WHERE is_delete = 0 GROUP BY status;
+    </select>
 </mapper>

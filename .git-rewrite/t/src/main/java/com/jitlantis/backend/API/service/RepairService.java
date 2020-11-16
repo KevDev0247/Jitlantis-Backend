@@ -2,6 +2,7 @@ package com.jitlantis.backend.API.service;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
+import com.jitlantis.backend.API.dto.RepairStatusCountDto;
 import com.jitlantis.backend.API.model.Repair;
 
 import java.util.List;
@@ -13,4 +14,6 @@ public interface RepairService extends IService<Repair> {
     List<Repair> selall();
 
     List<Repair> getSearchList(String info);
+
+    List<RepairStatusCountDto> getRepairCountByStatus();
 }

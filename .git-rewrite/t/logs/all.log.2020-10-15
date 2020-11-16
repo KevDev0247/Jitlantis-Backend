@@ -1,0 +1,2 @@
+2020-10-15 00:05:10 [http-nio-8080-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line489] [INFO] - FrameworkServlet 'dispatcherServlet': initialization started
+2020-10-15 00:05:11 [http-nio-8080-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line508] [INFO] - FrameworkServlet 'dispatcherServlet': initialization completed in 222 ms

@@ -41,12 +41,6 @@ public class Project {
     private Integer isDelete;
 
     @JsonFormat(pattern="yyyy/MM/dd",timezone = "GMT+8")
-    private Date contractStartTime;
-
-    @JsonFormat(pattern="yyyy/MM/dd",timezone = "GMT+8")
-    private Date contractEndTime;
-
-    @JsonFormat(pattern="yyyy/MM/dd",timezone = "GMT+8")
     private Date deliveryTime;
 
     @JsonFormat(pattern="yyyy/MM/dd",timezone = "GMT+8")
@@ -55,10 +49,10 @@ public class Project {
     private String guaranteeType;
 
     @JsonFormat(pattern="yyyy/MM/dd",timezone = "GMT+8")
-    private Date guaranteeDueTime;
+    private Date guaranteeMonth;
 
     @JsonFormat(pattern="yyyy/MM/dd",timezone = "GMT+8")
-    private Date guaranteeMonth;
+    private Date guaranteeDueTime;
 
     private Integer staffId;
 
@@ -98,14 +92,6 @@ public class Project {
 
     public Integer getIsDelete() {
         return isDelete;
-    }
-
-    public Date getContractStartTime() {
-        return contractStartTime;
-    }
-
-    public Date getContractEndTime() {
-        return contractEndTime;
     }
 
     public Date getDeliveryTime() {
@@ -170,14 +156,6 @@ public class Project {
 
     public void setIsDelete(Integer isDelete) {
         this.isDelete = isDelete;
-    }
-
-    public void setContractStartTime(Date contractStartTime) {
-        this.contractStartTime = contractStartTime;
-    }
-
-    public void setContractEndTime(Date contractEndTime) {
-        this.contractEndTime = contractEndTime;
     }
 
     public void setDeliveryTime(Date deliveryTime) {

@@ -1,9 +1,0 @@
-77034e1cacc3d864fe2ad0804679d784a06aceb0 commit	refs/heads/backup
-8b213b0bc31a9f294ab89abf7f1cc690b9468174 commit	refs/heads/dev
-04a38eb4230b4baed3f29d6ad6c0654cf709e3e0 commit	refs/heads/dev-backup
-72c3d7bb752fa6a50b9bd5cd13e521e5bbccb403 commit	refs/heads/master
-72c3d7bb752fa6a50b9bd5cd13e521e5bbccb403 commit	refs/remotes/origin/HEAD
-77034e1cacc3d864fe2ad0804679d784a06aceb0 commit	refs/remotes/origin/backup
-8b213b0bc31a9f294ab89abf7f1cc690b9468174 commit	refs/remotes/origin/dev
-04a38eb4230b4baed3f29d6ad6c0654cf709e3e0 commit	refs/remotes/origin/dev-backup
-72c3d7bb752fa6a50b9bd5cd13e521e5bbccb403 commit	refs/remotes/origin/master

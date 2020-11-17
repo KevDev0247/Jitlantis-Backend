@@ -45,9 +45,6 @@ public class ClientController {
     @Autowired
     private SysUserService userService;
 
-    @Autowired
-    private SysUserMenuService userMenuService;
-
     @ApiOperation(value = "create client")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "client", value = "Client entity", required = true, dataType = "SysUser")
@@ -254,40 +251,6 @@ public class ClientController {
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id");
         map.put("list", ctaFollowService.selectList(wrapper));
-
-        return new ResponseEntity<>(map, HttpStatus.OK);
-    }
-
-    @ApiOperation(value = "get main menus")
-    @RequestMapping(value = "/getMainMenus", method = RequestMethod.GET)
-    public ResponseEntity<Map<String, Object>> getMainMenus(Integer userId, Integer isShow) {
-        Map<String, Object> map = new HashMap<>();
-        List<MainMenuDto> mainMenuList = userMenuService.getMainMenus(userId, isShow);
-        map.put("data", mainMenuList);
-
-        return new ResponseEntity<>(map, HttpStatus.OK);
-    }
-
-    @ApiOperation(value = "updateMainMenu")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "menuIds", value = "Menu Ids", required = true, dataType = "List<String>")
-    })
-    @RequestMapping(value = "updateMainMenu", method = RequestMethod.POST)
-    public ResponseEntity<Map<String, Object>> updateMainMenu(@RequestBody List<String> menuIds) {
-        Map<String, Object> map = new HashMap<>();
-        boolean response = false;
-        List<SysUserMenu> menuList = new ArrayList<>();
-
-        if (menuIds != null && menuIds.size() > 0) {
-            for (String menuId: menuIds) {
-                SysUserMenu userMenu = userMenuService.selectById(Integer.parseInt(menuId));
-                userMenu.setIsShow(1);
-                menuList.add(userMenu);
-            }
-
-            response = userMenuService.updateAllColumnBatchById(menuList);
-        }
-        map.put("data", response);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }

@@ -1,7 +1,10 @@
 package com.jitlantis.backend.API.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.jitlantis.backend.API.dto.MainMenuDto;
 import com.jitlantis.backend.API.model.SysRoleMenu;
+import com.jitlantis.backend.API.model.SysUserMenu;
+import com.jitlantis.backend.API.service.SysUserMenuService;
 import com.jitlantis.backend.API.utils.DeletedEnum;
 import com.jitlantis.backend.API.utils.StringUtils;
 import com.jitlantis.backend.API.model.SysMenu;
@@ -15,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +39,10 @@ import java.util.Map;
 public class SysMenuController {
 
     @Autowired
-    private SysMenuService sysMenuService;
+    private SysMenuService menuService;
+
+    @Autowired
+    private SysUserMenuService userMenuService;
 
     @ApiOperation("create menu")
     @ApiImplicitParams({
@@ -44,7 +51,7 @@ public class SysMenuController {
     @RequestMapping(value = "/createMenu", method = RequestMethod.POST)
     public ResponseEntity<Map<String, Object>> createMenu(@RequestBody SysMenu sysMenu) {
         Map<String, Object> map = new HashMap<>();
-        boolean response = sysMenuService.insert(sysMenu);
+        boolean response = menuService.insert(sysMenu);
         map.put("data", response);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
@@ -59,7 +66,7 @@ public class SysMenuController {
         Map<String, Object> map = new HashMap<>();
         boolean response;
 
-        SysMenu sysMenuRetrieved = sysMenuService.selectById(menuId);
+        SysMenu sysMenuRetrieved = menuService.selectById(menuId);
         if (sysMenuRetrieved == null) {
             response = false;
             map.put("data", response);
@@ -68,7 +75,7 @@ public class SysMenuController {
         }
 
         sysMenuRetrieved.setIsDelete(DeletedEnum.Y.value());
-        response = sysMenuService.updateById(sysMenuRetrieved);
+        response = menuService.updateById(sysMenuRetrieved);
 
         if (response) {
             map.put("message", "deletion successful");
@@ -89,7 +96,7 @@ public class SysMenuController {
         Map<String, Object> map = new HashMap<>();
         boolean response;
 
-        SysMenu sysMenuRetrieved = sysMenuService.selectById(sysMenu.getId());
+        SysMenu sysMenuRetrieved = menuService.selectById(sysMenu.getId());
         if (sysMenuRetrieved == null) {
             response = false;
             map.put("data", response);
@@ -97,7 +104,7 @@ public class SysMenuController {
             return new ResponseEntity<>(map, HttpStatus.OK);
         }
 
-        response = sysMenuService.updateById(sysMenu);
+        response = menuService.updateById(sysMenu);
         map.put("data", response);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
@@ -122,7 +129,7 @@ public class SysMenuController {
         }
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id", true);
-        map.put("list", sysMenuService.selectList(wrapper));
+        map.put("list", menuService.selectList(wrapper));
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
@@ -134,7 +141,7 @@ public class SysMenuController {
     @RequestMapping(value = "/createBatchMenu", method = RequestMethod.POST)
     public ResponseEntity<Map<String, Object>> createBatchMenus(@RequestBody List<SysMenu> sysMenuList) {
         Map<String, Object> map = new HashMap<>();
-        boolean response = sysMenuService.insertBatch(sysMenuList);
+        boolean response = menuService.insertBatch(sysMenuList);
         map.put("data", response);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
@@ -147,8 +154,42 @@ public class SysMenuController {
     @GetMapping(value = "/getRoleMenuList")
     public ResponseEntity<Map<String, Object>> getRoleMenuList(@RequestParam("roleId") Integer roleId) {
         Map<String, Object> map = new HashMap<>();
-        List<SysMenu> menuList = sysMenuService.selectMenuListByRoleId(roleId);
+        List<SysMenu> menuList = menuService.selectMenuListByRoleId(roleId);
         map.put("data", menuList);
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "get main menus")
+    @RequestMapping(value = "/getMainMenus", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> getMainMenus(Integer userId, Integer isShow) {
+        Map<String, Object> map = new HashMap<>();
+        List<MainMenuDto> mainMenuList = userMenuService.getMainMenus(userId, isShow);
+        map.put("data", mainMenuList);
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "add main menu")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "menuIds", value = "Menu Ids", required = true, dataType = "List<String>")
+    })
+    @RequestMapping(value = "/addMainMenu", method = RequestMethod.POST)
+    public ResponseEntity<Map<String, Object>> updateMainMenu(@RequestBody List<String> menuIds) {
+        Map<String, Object> map = new HashMap<>();
+        boolean response = false;
+        List<SysUserMenu> menuList = new ArrayList<>();
+
+        if (menuIds != null && menuIds.size() > 0) {
+            for (String menuId: menuIds) {
+                SysUserMenu userMenu = userMenuService.selectById(Integer.parseInt(menuId));
+                userMenu.setIsShow(1);
+                menuList.add(userMenu);
+            }
+
+            response = userMenuService.updateAllColumnBatchById(menuList);
+        }
+        map.put("data", response);
+
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }

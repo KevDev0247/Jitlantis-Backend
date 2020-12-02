@@ -32,6 +32,8 @@ public class SysUser implements Serializable {
 
     private String email;
 
+    private String company;
+
     private String password;
 
     private Integer roleId;
@@ -75,6 +77,10 @@ public class SysUser implements Serializable {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getCompany() {
+        return company;
     }
 
     public String getPassword() {
@@ -143,6 +149,10 @@ public class SysUser implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public void setPassword(String password) {

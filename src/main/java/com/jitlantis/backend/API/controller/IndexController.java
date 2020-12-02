@@ -3,10 +3,7 @@ package com.jitlantis.backend.API.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.jitlantis.backend.API.base.JitConverter;
 import com.jitlantis.backend.API.dto.NotificationDto;
-import com.jitlantis.backend.API.model.Repair;
-import com.jitlantis.backend.API.model.SysMessage;
-import com.jitlantis.backend.API.model.SysOrganization;
-import com.jitlantis.backend.API.model.SysUser;
+import com.jitlantis.backend.API.model.*;
 import com.jitlantis.backend.API.service.RepairService;
 import com.jitlantis.backend.API.service.SysMessageService;
 import com.jitlantis.backend.API.service.SysUserService;
@@ -22,6 +19,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The controller for Main Page that handles HTTP requests and responses.
+ * In this frontend-backend-separated architecture,
+ * the controller interacts with the particular service on the frontend.
+ *
+ * @author Kevin Zhijun Wang
+ * @see Repair
+ * @see SysUser
+ * @see SysMessage
+ * created on 2020/12/02
+ */
 @Api(tags = {"Main Page"})
 @RestController
 @RequestMapping(value = "/index")
@@ -80,6 +88,6 @@ public class IndexController {
 
         map.put("notifications", notificationDtoList);
 
-        return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }

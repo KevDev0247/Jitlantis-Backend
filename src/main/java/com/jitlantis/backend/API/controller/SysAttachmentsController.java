@@ -135,4 +135,17 @@ public class SysAttachmentsController {
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
+
+    @ApiOperation(value = "Add Download Count")
+    @RequestMapping(value = "/addDownloadCount", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> addDownloadCount(Integer id) {
+        Map<String, Object> map = new HashMap<>();
+        SysAttachments attachments = sysAttachmentsService.selectById(id);
+
+        attachments.setDownCount(attachments.getDownCount() + 1);
+        boolean response = sysAttachmentsService.updateById(attachments);
+        map.put("data", response);
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
 }

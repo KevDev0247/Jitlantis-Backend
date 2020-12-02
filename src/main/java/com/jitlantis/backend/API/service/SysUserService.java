@@ -16,6 +16,8 @@ public interface SysUserService extends IService<SysUser> {
 
     SysUser findUserByName(String name);
 
+    List<SysUser> findUsersByIds(List<Long> userIds);
+
     List<SysUser> selectQueryList(String name, String email);
 
     List<SysUser> selectClientQueryList(String name, String email);

@@ -37,6 +37,16 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     }
 
     @Override
+    public List<SysUser> findUsersByIds(List<Long> userIds) {
+        EntityWrapper<SysUser> wrapper = new EntityWrapper<>();
+        wrapper.in("id", userIds);
+        wrapper.eq("is_delete", DeletedEnum.N.value());
+        wrapper.orderBy("id", true);
+
+        return this.selectList(wrapper);
+    }
+
+    @Override
     public List<SysUser> selectQueryList(String name, String email) {
         EntityWrapper<SysUser> wrapper = new EntityWrapper<>();
         if (StringUtils.isNotBlank(name) && StringUtils.isNotBlank(email)) {

@@ -9,10 +9,12 @@ import com.jitlantis.backend.API.service.SysMessageService;
 import com.jitlantis.backend.API.service.SysUserService;
 import com.jitlantis.backend.API.utils.DeletedEnum;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -47,6 +49,8 @@ public class IndexController {
     @Autowired
     private JitConverter converter;
 
+    @ApiOperation(value = "get main page data")
+    @RequestMapping(value = "/getData", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> getIndexData() {
         Map<String, Object> map = new HashMap<>();
 

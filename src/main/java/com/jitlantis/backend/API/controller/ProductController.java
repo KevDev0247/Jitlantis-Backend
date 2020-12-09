@@ -113,26 +113,26 @@ public class ProductController {
 
     @ApiOperation(value = "query product list", notes = "no pagination")
     @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "query", name = "dept", value = "department"),
+            @ApiImplicitParam(paramType = "query", name = "spec", value = "specs"),
             @ApiImplicitParam(paramType = "query", name = "type", value = "type"),
-            @ApiImplicitParam(paramType = "query", name = "serial_no", value = "serial_no"),
+            @ApiImplicitParam(paramType = "query", name = "serialNo", value = "serialNo"),
     })
     @RequestMapping(value = "/queryProductList", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> queryProductList(
-            @RequestParam(value = "dept", required = false) String dept,
+            @RequestParam(value = "specs", required = false) String specs,
             @RequestParam(value = "type", required = false) String type,
-            @RequestParam(value = "serial_no", required = false) String serial_no) {
+            @RequestParam(value = "serialNo", required = false) String serialNo) {
         Map<String, Object> map = new HashMap<>();
         EntityWrapper<Product> wrapper = new EntityWrapper<>();
 
-        if (StringUtils.isNotBlank(dept)) {
-            wrapper.eq("dept", dept);
+        if (StringUtils.isNotBlank(specs)) {
+            wrapper.like("spec", specs);
         }
         if (StringUtils.isNotBlank(type)) {
-            wrapper.eq("type", type);
+            wrapper.like("type", type);
         }
-        if (StringUtils.isNotBlank(serial_no)) {
-            wrapper.eq("serial_no", serial_no);
+        if (StringUtils.isNotBlank(serialNo)) {
+            wrapper.like("serialNo", serialNo);
         }
 
         wrapper.eq("is_delete", DeletedEnum.N.value());

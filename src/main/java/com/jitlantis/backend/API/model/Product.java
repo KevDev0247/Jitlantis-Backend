@@ -1,5 +1,7 @@
 package com.jitlantis.backend.API.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,11 +26,18 @@ public class Product {
 
     private String title;
 
-    private String serial_no;
+    private String serialNo;
+
+    private String spec;
 
     private String type;
 
     private String brand;
+
+    private String description;
+
+    @JsonFormat(pattern = "yyyy/MM/dd", timezone = "GMT+8")
+    private Date produceTime;
 
     private Date createTime;
 
@@ -48,8 +57,12 @@ public class Product {
         return title;
     }
 
-    public String getSerial_no() {
-        return serial_no;
+    public String getSerialNo() {
+        return serialNo;
+    }
+
+    public String getSpec() {
+        return spec;
     }
 
     public String getType() {
@@ -58,6 +71,14 @@ public class Product {
 
     public String getBrand() {
         return brand;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Date getProduceTime() {
+        return produceTime;
     }
 
     public Date getCreateTime() {
@@ -84,8 +105,12 @@ public class Product {
         this.title = title;
     }
 
-    public void setSerial_no(String serial_no) {
-        this.serial_no = serial_no;
+    public void setSerialNo(String serial_no) {
+        this.serialNo = serial_no;
+    }
+
+    public void setSpec(String spec) {
+        this.spec = spec;
     }
 
     public void setType(String type) {
@@ -94,6 +119,14 @@ public class Product {
 
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setProduceTime(Date produceTime) {
+        this.produceTime = produceTime;
     }
 
     public void setCreateTime(Date createTime) {

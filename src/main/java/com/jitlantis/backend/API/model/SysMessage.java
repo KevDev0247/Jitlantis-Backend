@@ -1,5 +1,7 @@
 package com.jitlantis.backend.API.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 /**
@@ -24,8 +26,10 @@ public class SysMessage {
 
     private Integer createUserId;
 
+    @JsonFormat(pattern = "yyyy/MM/dd", timezone = "GMT+8")
     private Date createTime;
 
+    @JsonFormat(pattern = "yyyy/MM/dd", timezone = "GMT+8")
     private Date updateTime;
 
     private Integer isDelete;

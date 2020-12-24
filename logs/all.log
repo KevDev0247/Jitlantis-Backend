@@ -165,3 +165,7 @@
 2020-12-15 12:58:14 [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator] [line40] [INFO] - Generating unique operation named: queryRepairListUsingGET_1
 2020-12-15 12:58:15 [main] [org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer] [line201] [INFO] - Tomcat started on port(s): 8080 (http)
 2020-12-15 12:58:15 [main] [com.jitlantis.backend.API.JitlantisBackendApplication] [line57] [INFO] - Started JitlantisBackendApplication in 18.756 seconds (JVM running for 21.372)
+2020-12-15 13:01:18 [http-nio-8080-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line489] [INFO] - FrameworkServlet 'dispatcherServlet': initialization started
+2020-12-15 13:01:18 [http-nio-8080-exec-1] [org.springframework.web.servlet.DispatcherServlet] [line508] [INFO] - FrameworkServlet 'dispatcherServlet': initialization completed in 40 ms
+2020-12-15 13:01:18 [http-nio-8080-exec-1] [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] [line317] [INFO] - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2020-12-15 13:01:18 [http-nio-8080-exec-1] [org.springframework.jdbc.support.SQLErrorCodesFactory] [line127] [INFO] - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase, Hana]

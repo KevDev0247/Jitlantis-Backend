@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.jitlantis.backend.API.base.JitConverter;
 import com.jitlantis.backend.API.dto.NotificationDto;
 import com.jitlantis.backend.API.model.*;
+import com.jitlantis.backend.API.service.ProductService;
 import com.jitlantis.backend.API.service.RepairService;
 import com.jitlantis.backend.API.service.SysMessageService;
 import com.jitlantis.backend.API.service.SysUserService;
@@ -47,6 +48,9 @@ public class IndexController {
     private RepairService repairService;
 
     @Autowired
+    private ProductService productService;
+
+    @Autowired
     private JitConverter converter;
 
     @ApiOperation(value = "get main page data")
@@ -54,15 +58,20 @@ public class IndexController {
     public ResponseEntity<Map<String, Object>> getIndexData() {
         Map<String, Object> map = new HashMap<>();
 
-        EntityWrapper<Repair> exceptionWrapper = new EntityWrapper<>();
-        exceptionWrapper.eq("status", 14);
-        exceptionWrapper.eq("is_delete", DeletedEnum.N.value());
-        Integer exceptionOrderCount = repairService.selectCount(exceptionWrapper);
+        EntityWrapper<Repair> ordersWrapper = new EntityWrapper<>();
+        ordersWrapper.eq("status", 14);
+        ordersWrapper.eq("is_delete", DeletedEnum.N.value());
+        Integer exceptionOrderCount = repairService.selectCount(ordersWrapper);
 
         EntityWrapper<Repair> todoWrapper = new EntityWrapper<>();
         todoWrapper.eq("status", 1);
         todoWrapper.eq("is_delete", DeletedEnum.N.value());
         Integer todoOrderCount = repairService.selectCount(todoWrapper);
+
+        EntityWrapper<Product> productWrapper = new EntityWrapper<>();
+        productWrapper.eq("status", 5);
+        productWrapper.eq("is_delete", DeletedEnum.N.value());
+        Integer exceptionProductCount = productService.selectCount(productWrapper);
 
         EntityWrapper<SysMessage> messageWrapper = new EntityWrapper<>();
         messageWrapper.eq("type", 3);
@@ -91,6 +100,9 @@ public class IndexController {
         }
 
         map.put("notifications", notificationDtoList);
+        map.put("eRCount", exceptionOrderCount);
+        map.put("trCount", todoOrderCount);
+        map.put("ePCount", exceptionProductCount);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }

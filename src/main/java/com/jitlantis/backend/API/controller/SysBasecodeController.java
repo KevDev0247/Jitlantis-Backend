@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -135,6 +136,22 @@ public class SysBasecodeController {
         }
         wrapper.orderBy("basecode", true);
         map.put("list", sysBasecodeService.selectList(wrapper));
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Data Dictionary Options Query", notes = "no pagination")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "typeid", value = "Type Id"),
+            @ApiImplicitParam(paramType = "query", name = "info", value = "Info")
+    })
+    @RequestMapping(value = "/optionList", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> optionSysbasecodeList(
+            @RequestParam(value = "typeid", required = false) String typeId,
+            @RequestParam(value = "info", required = false)String info) {
+        Map<String, Object> map = new HashMap<>();
+        List<SysBasecode> basecodeList = sysBasecodeService.optionList(typeId, info);
+        map.put("list", basecodeList);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }

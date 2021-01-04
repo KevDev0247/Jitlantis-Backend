@@ -9,6 +9,7 @@ import com.jitlantis.backend.API.service.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -37,5 +38,16 @@ public class RepairServiceImpl extends ServiceImpl<RepairDao, Repair> implements
     @Override
     public List<RepairStatusCountDto> getRepairCountByStatus() {
         return repairDao.getRepairCountByStatus();
+    }
+
+    @Override
+    public boolean updateStatus(Repair repair, Integer status) {
+        boolean res = false;
+        if (repair != null) {
+            repair.setStatus(status);
+            repair.setUpdateTime(new Date());
+            res = this.updateById(repair);
+        }
+        return res;
     }
 }

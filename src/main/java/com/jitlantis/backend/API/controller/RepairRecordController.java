@@ -1,8 +1,10 @@
 package com.jitlantis.backend.API.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.jitlantis.backend.API.model.Repair;
 import com.jitlantis.backend.API.model.RepairRecord;
 import com.jitlantis.backend.API.service.RepairRecordService;
+import com.jitlantis.backend.API.service.RepairService;
 import com.jitlantis.backend.API.utils.DeletedEnum;
 import com.jitlantis.backend.API.utils.StringUtils;
 import io.swagger.annotations.Api;
@@ -32,6 +34,9 @@ public class RepairRecordController {
     @Autowired
     private RepairRecordService repairrecordService;
 
+    @Autowired
+    private RepairService repairService;
+
     @ApiOperation(value = "create repair record")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "repairrecord", value = "RepairRecord Entity", required = true, dataType = "RepairRecord")
@@ -39,8 +44,20 @@ public class RepairRecordController {
     @RequestMapping(value = "/createRepairRecord", method = RequestMethod.POST)
     public ResponseEntity<Map<String, Object>> createRepairRecord(@RequestBody RepairRecord repairrecord) {
         Map<String, Object> map = new HashMap<String,Object>();
-        boolean response = repairrecordService.insert(repairrecord);
-        map.put("data", response);
+        Repair repair = repairService.selectById(repairrecord.getRepairId());
+        Integer status = 3;
+        boolean res = false;
+
+        if (repair != null) {
+            if (repair.getStatus() == 2) {
+                res = repairService.updateStatus(repair, status);
+                if (res) {
+                    res = repairrecordService.insert(repairrecord);
+                }
+            }
+        }
+
+        map.put("data", res);
         return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
     }
 

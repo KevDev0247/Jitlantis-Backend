@@ -258,12 +258,11 @@ public class RepairController {
         Map<String, Object> map = new HashMap<>();
         Repair repair = repairService.selectById(id);
         boolean response = false;
+        Integer status = 2;
 
         if (repair != null) {
             if (repair.getStatus() == 1) {
-                repair.setStatus(2);
-                repair.setUpdateTime(new Date());
-                response = repairService.updateById(repair);
+                response = repairService.updateStatus(repair, status);
             }
         }
         map.put("data", response);

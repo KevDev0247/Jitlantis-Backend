@@ -6,6 +6,12 @@ import com.jitlantis.backend.API.model.Client;
 import com.jitlantis.backend.API.service.ClientService;
 import org.springframework.stereotype.Service;
 
+/**
+ * The implementation of the Service interface for Client
+ *
+ * @author Kevin Zhijun Wang
+ * created on 2020/09/10
+ */
 @Service
 public class ClientServiceImpl extends ServiceImpl<ClientDao, Client> implements ClientService {
 }

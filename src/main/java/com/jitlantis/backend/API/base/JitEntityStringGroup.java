@@ -10,7 +10,7 @@ import java.util.Map;
  * A class used to store string groups in Jitlantis
  *
  * @author Kevin Zhijun Wang
- * created on 2020/08/27
+ * created on 2020/08/29
  */
 public class JitEntityStringGroup<T> implements JitEntityGroup<T> {
 

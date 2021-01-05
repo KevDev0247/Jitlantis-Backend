@@ -3,12 +3,19 @@ package com.jitlantis.backend.API.base;
 import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.format.FastDateFormat;
 import com.alibaba.fastjson.JSON;
+import com.jitlantis.backend.API.model.Accessory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.util.*;
 
+/**
+ * A converter used to convert entities between beans, maps, and objects
+ *
+ * @author Kevin Zhijun Wang
+ * created on 2020/08/27
+ */
 @Component
 public class JitConverter {
 

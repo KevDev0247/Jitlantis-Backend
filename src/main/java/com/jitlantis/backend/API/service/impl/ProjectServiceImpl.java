@@ -13,6 +13,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * The implementation of the Service interface for Project
+ *
+ * @author Kevin Zhijun Wang, Yonggang Su
+ * created on 2020/07/27
+ */
 @Service
 public class ProjectServiceImpl extends ServiceImpl<ProjectDao, Project> implements ProjectService {
 

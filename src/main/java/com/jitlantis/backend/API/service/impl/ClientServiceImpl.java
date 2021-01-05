@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  * The implementation of the Service interface for Client
  *
  * @author Kevin Zhijun Wang
- * created on 2020/09/10
+ * created on 2020/07/27
  */
 @Service
 public class ClientServiceImpl extends ServiceImpl<ClientDao, Client> implements ClientService {

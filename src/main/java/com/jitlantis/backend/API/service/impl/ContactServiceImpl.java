@@ -20,7 +20,7 @@ import java.util.List;
  * The implementation of the Service interface for Contact
  *
  * @author Kevin Zhijun Wang
- * created on 2020/07/24
+ * created on 2020/07/27
  */
 @Service
 public class ContactServiceImpl extends ServiceImpl<ContactDao, Contact> implements ContactService {

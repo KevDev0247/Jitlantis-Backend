@@ -19,7 +19,7 @@ import java.util.List;
  * The implementation of the Service interface for Contract
  *
  * @author Kevin Zhijun Wang
- * created on 2020/07/24
+ * created on 2020/08/31
  */
 @Service
 public class ContractServiceImpl extends ServiceImpl<ContractDao, Contract> implements ContractService {

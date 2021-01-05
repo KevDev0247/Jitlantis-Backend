@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  * The implementation of the Service interface for CtaFollow
  *
  * @author Kevin Zhijun Wang
- * created on 2020/07/24
+ * created on 2020/07/27
  */
 @Service
 public class CtaFollowServiceImpl extends ServiceImpl<CtaFollowDao, CtaFollow> implements CtaFollowService {

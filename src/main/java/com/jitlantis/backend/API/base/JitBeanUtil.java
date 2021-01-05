@@ -7,6 +7,12 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A utility class for beans in Jitlantis
+ *
+ * @author Kevin Zhijun Wang
+ * created on 2020/08/27
+ */
 public class JitBeanUtil extends BeanUtil {
 
     public static <E> E mergeDefaultValueToBean(E bean) {

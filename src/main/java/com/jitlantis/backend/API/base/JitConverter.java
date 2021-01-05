@@ -11,7 +11,7 @@ import org.springframework.util.StringUtils;
 import java.util.*;
 
 /**
- * A converter used to convert entities between beans, maps, and objects
+ * A converter used to convert entities between beans, maps, and objects in Jitlantis
  *
  * @author Kevin Zhijun Wang
  * created on 2020/08/27

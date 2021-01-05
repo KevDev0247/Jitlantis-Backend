@@ -6,6 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * A class used to store string groups in Jitlantis
+ *
+ * @author Kevin Zhijun Wang
+ * created on 2020/08/27
+ */
 public class JitEntityStringGroup<T> implements JitEntityGroup<T> {
 
     private List<?> dataList;

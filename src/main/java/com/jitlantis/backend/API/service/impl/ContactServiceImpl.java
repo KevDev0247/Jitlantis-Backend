@@ -16,6 +16,12 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The implementation of the Service interface for Contact
+ *
+ * @author Kevin Zhijun Wang
+ * created on 2020/07/24
+ */
 @Service
 public class ContactServiceImpl extends ServiceImpl<ContactDao, Contact> implements ContactService {
 

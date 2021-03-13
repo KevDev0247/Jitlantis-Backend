@@ -56,22 +56,8 @@ public class FileController {
                 map.put("url", url);
             }
         }
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
-
-//    @ApiOperation(value = "create attachment")
-//    @ApiImplicitParams({
-//            @ApiImplicitParam(name = "attachment", value = "Attachment Entity", required = true, dataType = "SysAttachments")
-//    })
-//    @RequestMapping(value = "/createAttachment", method = RequestMethod.POST)
-//    public ResponseEntity<Map<String, Object>> createAttachment(@RequestBody SysAttachments attachment) {
-//        Map<String, Object> map = new HashMap<>();
-//        int attachmentId = sysAttachmentsService.create(attachment);
-//        map.put("data", attachment.getFileid());
-//
-//        return new ResponseEntity<>(map, HttpStatus.OK);
-//    }
 
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
     public String uploadFile(@RequestParam("file") MultipartFile file) {

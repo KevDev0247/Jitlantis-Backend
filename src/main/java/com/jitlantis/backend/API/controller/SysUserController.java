@@ -91,7 +91,6 @@ public class SysUserController {
         } else {
             map.put("message", "Sign up failed");
         }
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -109,7 +108,6 @@ public class SysUserController {
             response = false;
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -129,7 +127,6 @@ public class SysUserController {
             map.put("message", "user deletion failed");
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -145,7 +142,6 @@ public class SysUserController {
             @RequestParam(value = "email", required = false) String email) {
         Map<String, Object> map = new HashMap<>();
         map.put("list", sysUserService.selectQueryList(name, email));
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -184,7 +180,6 @@ public class SysUserController {
             response = false;
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -221,7 +216,6 @@ public class SysUserController {
         }
         map.put("data", response);
         map.put("message", message);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -238,7 +232,6 @@ public class SysUserController {
             response = false;
             map.put("data", response);
         }
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }

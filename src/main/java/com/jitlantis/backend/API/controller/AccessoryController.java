@@ -46,7 +46,6 @@ public class AccessoryController {
         Map<String, Object> map = new HashMap<>();
         boolean response = accessoryService.insert(accessory);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -66,7 +65,6 @@ public class AccessoryController {
             response = accessoryService.updateById(accessory);
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -96,7 +94,6 @@ public class AccessoryController {
             map.put("message", "deletion failed");
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -106,7 +103,6 @@ public class AccessoryController {
         Map<String, Object> map = new HashMap<>();
         Accessory accessory = accessoryService.selectById(accessoryId);
         map.put("data", accessory);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -137,7 +133,6 @@ public class AccessoryController {
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id");
         map.put("list", accessoryService.selectList(wrapper));
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }

@@ -46,7 +46,6 @@ public class SysMessageController {
         Map<String, Object> map = new HashMap<>();
         boolean response = sysMessageService.insert(sysMessage);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -66,7 +65,6 @@ public class SysMessageController {
             response = sysMessageService.updateById(sysMessage);
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -84,7 +82,6 @@ public class SysMessageController {
             response = false;
             map.put("data", response);
             map.put("message", "system message deletion successful");
-
             return new ResponseEntity<>(map, HttpStatus.OK);
         }
 
@@ -95,7 +92,6 @@ public class SysMessageController {
         } else {
             map.put("message", "system message deletion failed");
         }
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -131,7 +127,6 @@ public class SysMessageController {
         wrapper.eq("is_delete",DeletedEnum.N.value() );
         wrapper.orderBy("id");
         map.put("list", sysMessageService.selectList(wrapper));
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -141,7 +136,6 @@ public class SysMessageController {
         Map<String,Object> map = new HashMap<>();
         SysMessage sysMessage = sysMessageService.selectById(id);
         map.put("data", sysMessage);
-
         return new ResponseEntity<>(map,HttpStatus.OK);
     }
 }

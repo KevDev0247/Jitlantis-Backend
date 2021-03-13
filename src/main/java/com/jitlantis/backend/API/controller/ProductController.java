@@ -45,7 +45,6 @@ public class ProductController {
         Map<String, Object> map = new HashMap<>();
         boolean response = productService.insert(product);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -65,7 +64,6 @@ public class ProductController {
             response = productService.updateById(product);
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -83,7 +81,6 @@ public class ProductController {
             response = false;
             map.put("data", response);
             map.put("message", "deletion failed, the product does not exist!");
-
             return new ResponseEntity<>(map, HttpStatus.OK);
         }
 
@@ -95,7 +92,6 @@ public class ProductController {
         } else {
             map.put("message", "deletion failed");
         }
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -138,7 +134,6 @@ public class ProductController {
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id");
         map.put("list", productService.selectList(wrapper));
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 

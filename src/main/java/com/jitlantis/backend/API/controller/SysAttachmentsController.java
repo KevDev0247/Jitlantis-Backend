@@ -42,7 +42,6 @@ public class SysAttachmentsController {
         Map<String, Object> map = new HashMap<>();
         boolean response = sysAttachmentsService.insert(sysAttachments);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -62,7 +61,6 @@ public class SysAttachmentsController {
             response = sysAttachmentsService.updateById(sysAttachment);
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -91,7 +89,6 @@ public class SysAttachmentsController {
         } else {
             map.put("message", "deletion failed");
         }
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -122,7 +119,6 @@ public class SysAttachmentsController {
         wrapper.eq("status", "1");
         wrapper.orderBy("fileid");
         map.put("list", sysAttachmentsService.selectList(wrapper));
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -132,7 +128,6 @@ public class SysAttachmentsController {
         Map<String, Object> map = new HashMap<>();
         SysAttachments sysAttachments = sysAttachmentsService.selectById(id);
         map.put("data", sysAttachments);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -145,7 +140,6 @@ public class SysAttachmentsController {
         attachments.setDownCount(attachments.getDownCount() + 1);
         boolean response = sysAttachmentsService.updateById(attachments);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }

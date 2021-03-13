@@ -47,7 +47,6 @@ public class SysBasecodeController {
         Map<String, Object> map = new HashMap<>();
         boolean response = sysBasecodeService.insert(sysBasecode);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -66,7 +65,6 @@ public class SysBasecodeController {
         }
         response = sysBasecodeService.updateById(sysBasecode);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -86,7 +84,6 @@ public class SysBasecodeController {
             response = false;
             map.put("data", response);
             map.put("message", "The data does not exist. Deletion Failed!");
-
             return new ResponseEntity<>(map, HttpStatus.OK);
         }
 
@@ -97,7 +94,6 @@ public class SysBasecodeController {
             map.put("message", "Deletion failed!");
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -112,7 +108,6 @@ public class SysBasecodeController {
         }
         SysBasecode basecode = sysBasecodeService.selectOne(wrapper);
         map.put("data", basecode);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -136,7 +131,6 @@ public class SysBasecodeController {
         }
         wrapper.orderBy("basecode", true);
         map.put("list", sysBasecodeService.selectList(wrapper));
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -152,7 +146,6 @@ public class SysBasecodeController {
         Map<String, Object> map = new HashMap<>();
         List<SysBasecode> basecodeList = sysBasecodeService.optionList(typeId, info);
         map.put("list", basecodeList);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }

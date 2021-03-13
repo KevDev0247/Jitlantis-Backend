@@ -45,7 +45,6 @@ public class ContactController {
         Map<String, Object> map = new HashMap<>();
         boolean response = contactService.insert(contact);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -65,7 +64,6 @@ public class ContactController {
             response = contactService.updateById(contact);
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -83,7 +81,6 @@ public class ContactController {
             response = false;
             map.put("data", response);
             map.put("message", "deletion failed, the contact does not exist!");
-
             return new ResponseEntity<>(map, HttpStatus.OK);
         }
 
@@ -95,7 +92,6 @@ public class ContactController {
         } else {
             map.put("message", "deletion failed");
         }
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -138,7 +134,6 @@ public class ContactController {
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id");
         map.put("list", contactService.selectList(wrapper));
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 

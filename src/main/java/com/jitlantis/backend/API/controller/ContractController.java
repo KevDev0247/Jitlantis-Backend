@@ -46,7 +46,6 @@ public class ContractController {
         Map<String, Object> map = new HashMap<>();
         boolean response = contractService.insert(contract);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -66,7 +65,6 @@ public class ContractController {
             response = contractService.updateById(contract);
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -84,7 +82,6 @@ public class ContractController {
             response = false;
             map.put("data", response);
             map.put("message", "deletion failed, the contract does not exist!");
-
             return new ResponseEntity<>(map, HttpStatus.OK);
         }
 
@@ -96,7 +93,6 @@ public class ContractController {
         } else {
             map.put("message", "deletion failed");
         }
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -106,7 +102,6 @@ public class ContractController {
         Map<String, Object> map = new HashMap<>();
         Contract contract = contractService.selectById(id);
         map.put("data", contract);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -137,7 +132,6 @@ public class ContractController {
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id");
         map.put("list", contractService.selectList(wrapper));
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -150,7 +144,6 @@ public class ContractController {
         Map<String, Object> map = new HashMap<>();
         List<BaseItemDto> baseItemList = contractService.optionList(name);
         map.put("list", baseItemList);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }

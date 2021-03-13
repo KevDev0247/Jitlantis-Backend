@@ -72,7 +72,6 @@ public class SysOrgController {
         boolean response = orgService
                 .createOrg(orgParentNo, orgName, orgAbr, orgStatus, orgNo, sort, orgFoundDate, orgDissolveDate);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -94,7 +93,6 @@ public class SysOrgController {
             }
         }
         map.put("data", orgList);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 

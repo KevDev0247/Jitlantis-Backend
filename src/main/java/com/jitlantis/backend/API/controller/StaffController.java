@@ -43,7 +43,6 @@ public class StaffController {
         Map<String, Object> map = new HashMap<>();
         boolean response = staffService.insert(staff);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -63,7 +62,6 @@ public class StaffController {
             response = staffService.updateById(staff);
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -81,10 +79,8 @@ public class StaffController {
             response = false;
             map.put("data", response);
             map.put("message", "deletion failed, the staff does not exist!");
-
             return new ResponseEntity<>(map, HttpStatus.OK);
         }
-
         staffRetrieved.setIsDelete(DeletedEnum.Y.value());
         response = staffService.updateById(staffRetrieved);
 
@@ -93,7 +89,6 @@ public class StaffController {
         } else {
             map.put("message", "deletion failed");
         }
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -124,7 +119,6 @@ public class StaffController {
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id");
         map.put("list", staffService.selectList(wrapper));
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }

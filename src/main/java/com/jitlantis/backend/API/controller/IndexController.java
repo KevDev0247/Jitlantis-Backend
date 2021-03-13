@@ -103,7 +103,6 @@ public class IndexController {
         map.put("eRCount", exceptionOrderCount);
         map.put("trCount", todoOrderCount);
         map.put("ePCount", exceptionProductCount);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }

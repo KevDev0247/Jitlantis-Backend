@@ -53,7 +53,6 @@ public class SysMenuController {
         Map<String, Object> map = new HashMap<>();
         boolean response = menuService.insert(sysMenu);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -83,7 +82,6 @@ public class SysMenuController {
             map.put("message", "deletion failed");
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -106,7 +104,6 @@ public class SysMenuController {
 
         response = menuService.updateById(sysMenu);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -130,7 +127,6 @@ public class SysMenuController {
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id", true);
         map.put("list", menuService.selectList(wrapper));
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -143,7 +139,6 @@ public class SysMenuController {
         Map<String, Object> map = new HashMap<>();
         boolean response = menuService.insertBatch(sysMenuList);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -165,7 +160,6 @@ public class SysMenuController {
         Map<String, Object> map = new HashMap<>();
         List<MainMenuDto> mainMenuList = userMenuService.getMainMenus(userId, isShow);
         map.put("data", mainMenuList);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -189,7 +183,6 @@ public class SysMenuController {
             response = userMenuService.updateAllColumnBatchById(menuList);
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }

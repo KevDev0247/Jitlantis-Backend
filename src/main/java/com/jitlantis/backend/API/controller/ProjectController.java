@@ -48,7 +48,6 @@ public class ProjectController {
         Map<String, Object> map = new HashMap<>();
         boolean response = projectService.insert(project);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -66,7 +65,6 @@ public class ProjectController {
             response = false;
             map.put("data", response);
             map.put("message", "deletion failed, the project does not exist!");
-
             return new ResponseEntity<>(map, HttpStatus.OK);
         }
 
@@ -78,7 +76,6 @@ public class ProjectController {
             map.put("message", "deletion failed");
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -95,13 +92,11 @@ public class ProjectController {
         if (projectRetrieved == null) {
             response = false;
             map.put("data", response);
-
             return new ResponseEntity<>(map, HttpStatus.OK);
         }
 
         response = projectService.updateById(project);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -131,7 +126,6 @@ public class ProjectController {
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id", true);
         map.put("list", projectService.selectList(wrapper));
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -144,7 +138,6 @@ public class ProjectController {
         Map<String, Object> map = new HashMap<>();
         boolean response = projectService.insertBatch(projectList);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -157,7 +150,6 @@ public class ProjectController {
         Map<String, Object> map = new HashMap<>();
         boolean response = proFollowService.insert(proFollow);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -194,7 +186,6 @@ public class ProjectController {
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id");
         map.put("list", proFollowService.selectList(wrapper));
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 

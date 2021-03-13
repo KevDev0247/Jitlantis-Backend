@@ -54,7 +54,6 @@ public class ClientController {
         Map<String, Object> map = new HashMap<>();
         boolean response = userService.insert(client);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -74,7 +73,6 @@ public class ClientController {
             response = userService.updateById(client);
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -92,7 +90,6 @@ public class ClientController {
             response = false;
             map.put("data", response);
             map.put("message", "deletion failed, the client does not exist!");
-
             return new ResponseEntity<>(map, HttpStatus.OK);
         }
 
@@ -104,7 +101,6 @@ public class ClientController {
         } else {
             map.put("message", "deletion failed");
         }
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -154,7 +150,6 @@ public class ClientController {
         boolean response;
         response = clientProductService.insert(clientProduct);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -184,7 +179,6 @@ public class ClientController {
             map.put("message", "deletion failed");
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -207,7 +201,6 @@ public class ClientController {
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id");
         map.put("list", clientProductService.selectList(wrapper));
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -220,7 +213,6 @@ public class ClientController {
         Map<String, Object> map = new HashMap<>();
         boolean response = ctaFollowService.insert(ctaFollow);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -251,7 +243,6 @@ public class ClientController {
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id");
         map.put("list", ctaFollowService.selectList(wrapper));
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }

@@ -70,7 +70,6 @@ public class RepairController {
         Map<String, Object> map = new HashMap<>();
         boolean response = repairService.insert(repair);
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -90,7 +89,6 @@ public class RepairController {
             response = repairService.updateById(repair);
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -108,7 +106,6 @@ public class RepairController {
             response = false;
             map.put("data", response);
             map.put("message", "deletion failed, the order does not exist!");
-
             return new ResponseEntity<>(map, HttpStatus.OK);
         }
 
@@ -120,7 +117,6 @@ public class RepairController {
             map.put("message", "deletion failed");
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -137,7 +133,6 @@ public class RepairController {
         Map<String, Object> map = new HashMap<>();
         Page<Repair> page = repairService.selectPageList(pageQuery.getPageNum(), pageQuery.getPageSize(), status, search);
         map.put("data", page);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -147,7 +142,6 @@ public class RepairController {
         Map<String, Object> map = new HashMap<>();
         Repair repair = repairService.selectById(repairId);
         map.put("data", repair);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -207,13 +201,11 @@ public class RepairController {
             JitEntityStringGroup<String> fileGroup = new JitEntityStringGroup<>(projectList, "id", "name");
             fileMap.put("projectName", fileGroup);
         }
-
         if (productList != null && productList.size() > 0) {
             fileRule.put("productName", "productId");
             JitEntityStringGroup<String> fileGroup = new JitEntityStringGroup<>(productList, "id", "name");
             fileMap.put("productName", fileGroup);
         }
-
         if (contactList != null && contactList.size() > 0) {
             fileRule.put("contactName", "contactId");
             JitEntityStringGroup<String> fileGroup = new JitEntityStringGroup<>(contactList, "id", "name");
@@ -222,7 +214,6 @@ public class RepairController {
 
         repairDtos = jitConverter.mergeListByAny(RepairDto.class, repairDtos, fileRule, fileMap);
         map.put("list", repairDtos);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -238,7 +229,6 @@ public class RepairController {
             @RequestParam(value = "company", required = false) String company) {
         Map<String, Object> map = new HashMap<>();
         map.put("data", userService.selectRepairmanQueryList(name, company));
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -248,7 +238,6 @@ public class RepairController {
         Map<String, Object> map = new HashMap<>();
         List<RepairStatusCountDto> repairStatusCounts = repairService.getRepairCountByStatus();
         map.put("data", repairStatusCounts);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -266,7 +255,6 @@ public class RepairController {
             }
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }

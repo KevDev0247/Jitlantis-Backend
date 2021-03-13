@@ -117,6 +117,7 @@ public class RepairRecordController {
             @RequestParam(value = "content", required = false) String content) {
         Map<String, Object> map = new HashMap<String,Object>();
         EntityWrapper<RepairRecord> wrapper = new EntityWrapper<>();
+
         if (StringUtils.isNotBlank(dcode)) {
             wrapper.eq("dcode", dcode);
         }
@@ -126,10 +127,10 @@ public class RepairRecordController {
         if (StringUtils.isNotBlank(content)) {
             wrapper.like("content", content);
         }
+
         wrapper.eq("is_delete", DeletedEnum.N.value());
         wrapper.orderBy("id");
         map.put("list", repairrecordService.selectList(wrapper));
-
         return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
     }
 

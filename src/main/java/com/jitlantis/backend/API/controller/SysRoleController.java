@@ -87,7 +87,6 @@ public class SysRoleController {
             map.put("message", "deletion failed");
         }
         map.put("data", response);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -126,12 +125,6 @@ public class SysRoleController {
             sysRoleMenu.setRoleId(roleId);
             response = sysRoleMenuService.insertOrUpdate(sysRoleMenu);
 
-//            if (menu.getIsMain() == 1) {
-//                SysUserMenu userMenu = new SysUserMenu();
-//                userMenu.setUserId(2);
-//                userMenu.setMenuId(menuId);
-//                sysUserMenuService.insert(userMenu);
-//            }
             if (response) {
                 message = "binding successful";
             } else {
@@ -146,6 +139,7 @@ public class SysRoleController {
                 sysRoleMenu.setMenuId(menuId);
                 sysRoleMenu.setRoleId(roleId);
                 response = sysRoleMenuService.insertOrUpdate(sysRoleMenu);
+
                 if (response) {
                     message = "binding successful";
                 } else {
@@ -156,7 +150,6 @@ public class SysRoleController {
 
         map.put("data", response);
         map.put("message", message);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
@@ -191,7 +184,6 @@ public class SysRoleController {
         }
         map.put("data", response);
         map.put("message", message);
-
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }
